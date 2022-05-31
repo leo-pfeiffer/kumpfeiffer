@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Kristina and Leo's Wedding</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+        <script>
+            let proposalUrl = '{% static "img/proposal.jpeg" %}'
+            tailwind.config = {
+              theme: {
+                extend: {
+                  colors: {
+                    teal: '#367588',
+                  },
+                  backgroundImage: (theme) => ({
+                      proposal: `url('${proposalUrl}')`,
+                    }),
+                }
+              }
+            }
+          </script>
+
+    </head>
+
+    <body>
+    {% block content %}
+
+    {% endblock content %}
+    </body>
+</html>
