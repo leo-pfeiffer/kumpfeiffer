@@ -1,1 +1,1 @@
-web: gunicorn kumpfeiffer.wsgi
+web: python manage.py collectstatic --no-input; gunicorn kumpfeiffer.wsgi --log-file - --log-level debug
