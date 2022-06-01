@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <!-- Navbar goes here -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-7">
+                    <div>
+                        <!-- Website Logo -->
+                        <a href="#" class="flex items-center py-4 px-2">
+{#								<img src="logo.png" alt="Logo" class="h-8 w-8 mr-2">#}
+                        </a>
+                    </div>
+                    <!-- Primary Navbar items -->
+                    <div class="hidden md:flex items-center space-x-1">
+                        <button id="menu-venue" class="py-4 px-2 text-gray-500 font-semibold hover:text-teal transition duration-300">Venue</button>
+                        <button id="menu-registry" class="py-4 px-2 text-gray-500 font-semibold hover:text-teal transition duration-300">Registry</button>
+                        <button id="menu-rsvp" class="py-4 px-2 text-gray-500 font-semibold hover:text-teal transition duration-300">RSVP</button>
+                        <button id="menu-contact" class="py-4 px-2 text-gray-500 font-semibold hover:text-teal transition duration-300">Contact</button>
+                    </div>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button class="outline-none mobile-menu-button">
+                    <svg class=" w-6 h-6 text-gray-500 hover:text-teal "
+                        x-show="!showMenu"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+                </div>
+            </div>
+        </div>
+        <!-- mobile menu -->
+        <div class="hidden mobile-menu">
+            <ul class="">
+                <li><a href="#Venue" class="block text-sm px-2 py-4 hover:bg-teal transition duration-300">Venue</a></li>
+                <li><a href="#Registry" class="block text-sm px-2 py-4 hover:bg-teal transition duration-300">Registry</a></li>
+                <li><a href="#RSVP" class="block text-sm px-2 py-4 hover:bg-teal transition duration-300">RSVP</a></li>
+                <li><a href="#Contact" class="block text-sm px-2 py-4 hover:bg-teal transition duration-300">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="snap-y snap-mandatory h-screen overflow-scroll">
+        <section id="Venue" class="w-full h-screen bg-center bg-cover bg-red-900 snap-start">
+            <div class="max-w-6xl mx-auto px-4 justify-center">
+                <div class="text-center text-white">
+                    Venue
+                </div>
+            </div>
+        </section>
+        <section id="Registry" class="w-full h-screen bg-center bg-cover bg-teal snap-start">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="text-center text-white">
+                    Registry
+                </div>
+            </div>
+        </section>
+        <section id="RSVP" class="w-full h-screen bg-center bg-cover bg-red-900 snap-start">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="text-center text-white">
+                    RSVP
+                </div>
+            </div>
+        </section>
+        <section id="Contact" class="w-full h-screen bg-center bg-cover bg-teal snap-start">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="text-center text-white">
+                    Contact
+                </div>
+            </div>
+        </section>
+    </div>
+    <script>
+    const btn = document.querySelector("button.mobile-menu-button");
+    const menu = document.querySelector(".mobile-menu");
+
+    btn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+    });
+
+    // nav scrolling
+    const smoothScrollFromTo = function (fromId, toId) {
+        let fromElement = document.getElementById(fromId);
+        let toElement = document.getElementById(toId);
+        fromElement.onclick = () => {
+            toElement.scrollIntoView({behavior: "smooth"})
+        };
+    }
+
+    smoothScrollFromTo("menu-venue", "Venue")
+    smoothScrollFromTo("menu-registry", "Registry")
+    smoothScrollFromTo("menu-rsvp", "RSVP")
+    smoothScrollFromTo("menu-contact", "Contact")
+    </script>
+{% endblock content %}
