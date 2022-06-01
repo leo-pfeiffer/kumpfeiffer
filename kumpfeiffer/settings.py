@@ -25,21 +25,24 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
+ENVIRONMENT = os.environ.get('ENVIRONMENT')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-
-# Production
-DEBUG = False
-
-ALLOWED_HOSTS = [
-    ".wedding",
-    ".herokuapp.com",
+assert ENVIRONMENT in [
+    'heroku',
+    'local'
 ]
 
-# # Dev
-# DEBUG = True
-#
-# ALLOWED_HOSTS = []
+if ENVIRONMENT == 'heroku':
+    DEBUG = False
+
+    ALLOWED_HOSTS = [
+        ".wedding",
+        ".herokuapp.com",
+    ]
+
+elif ENVIRONMENT == 'local':
+    DEBUG = True
+    ALLOWED_HOSTS = []
 
 
 # Application definition
