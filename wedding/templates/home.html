@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
+    <script src="https://cdn.jsdelivr.net/npm/seamless-scroll-polyfill@latest/lib/bundle.min.js"></script>
     <!-- Navbar goes here -->
-    <nav class="sticky top-0 z-30 w-full px-2 py-4 bg-white sm:px-4 shadow-xl">
+    <nav class="sticky top-0 z-30 w-full px-2 bg-white sm:px-4 shadow-xl">
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex justify-between">
                 <div class="flex space-x-7">
@@ -48,7 +49,7 @@
             </ul>
         </div>
     </nav>
-    <div class="snap-y snap-mandatory h-screen overflow-scroll top-2 p-4 mx-auto max-w-7xl">
+    <div class="snap-y snap-mandatory h-screen overflow-scroll top-2 mx-auto">
         <section id="Venue" class="w-full h-screen bg-center bg-cover bg-red-900 snap-start flex justify-center items-center">
             <div class="max-w-6xl mx-auto px-4 justify-center">
                 <div class="text-center text-white">
@@ -91,7 +92,9 @@
         let fromElement = document.getElementById(fromId);
         let toElement = document.getElementById(toId);
         fromElement.onclick = () => {
-            toElement.scrollIntoView({behavior: "smooth"})
+            seamless.scrollIntoView(toElement, {
+                behavior: "smooth",
+            });
         };
     }
 
