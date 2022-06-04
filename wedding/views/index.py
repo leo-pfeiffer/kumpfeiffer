@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
+from django.contrib.auth import login, authenticate
 
 
 class IndexView(TemplateView):
@@ -7,3 +8,12 @@ class IndexView(TemplateView):
 
     def get(self, request, **kwargs):
         return render(request, self.template_name)
+
+    def post(self, request, **kwargs):
+        inviteCode = request.POST['invite-code']
+        user = authenticate(request, username=inviteCode, password=inviteCode)
+        if user is not None:
+            login(request, user)
+            return redirect('/home')
+        else:
+            return redirect('/')
