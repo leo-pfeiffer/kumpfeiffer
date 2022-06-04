@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.admin import SimpleListFilter
-from django.db.models import Q
+from django.db.models import Q, Count, Sum
 from django.forms import forms
 from django.shortcuts import redirect, render
 from django.urls import path, reverse
@@ -8,7 +8,7 @@ from django.utils.html import format_html
 from django.utils.http import urlencode
 
 from wedding.mixins.export_csv_mixin import ExportCsvMixin
-from wedding.models import Allergy, Rsvp, User
+from wedding.models import Allergy, Rsvp, User, AllergySummary, RsvpSummary
 
 from django.contrib.auth.hashers import make_password
 
@@ -126,6 +126,72 @@ class AllergyAdmin(admin.ModelAdmin):
         return obj.guest.first_name
 
 
+@admin.register(AllergySummary)
+class AllergySummaryAdmin(admin.ModelAdmin):
+    change_list_template = "admin/allergy_summary_change_list.html"
+
+    def changelist_view(self, request, extra_context=None):
+        response = super().changelist_view(
+            request,
+            extra_context=extra_context,
+        )
+
+        try:
+            qs = response.context_data['cl'].queryset
+        except (AttributeError, KeyError):
+            return response
+
+        metrics = {
+            'total': Count('id'),
+        }
+
+        summary = qs.filter(allergy__isnull=False)\
+            .values('allergy')\
+            .annotate(**metrics)\
+            .order_by('-total')
+
+        response.context_data['summary'] = list(summary)
+        response.context_data['total_allergies'] = summary.\
+            aggregate(Sum("total"))["total__sum"]
+
+        response.context_data['notes'] = list(
+            qs.filter(note__isnull=False).values('allergy', 'note')
+        )
+
+        return response
+
+
 @admin.register(Rsvp)
 class RsvpAdmin(admin.ModelAdmin):
     list_display = ("guest", "num_guests")
+
+
+@admin.register(RsvpSummary)
+class RsvpSummaryAdmin(admin.ModelAdmin):
+    change_list_template = "admin/rsvp_summary_change_list.html"
+
+    def changelist_view(self, request, extra_context=None):
+        response = super().changelist_view(
+            request,
+            extra_context=extra_context,
+        )
+
+        try:
+            qs = response.context_data['cl'].queryset
+        except (AttributeError, KeyError):
+            return response
+
+        rsvp_users = Rsvp.objects.values_list("guest_id")
+        num_rsvp = User.objects.filter(id__in=rsvp_users).count()
+        num_not_rsvp = User.objects.filter(is_superuser=False)\
+            .filter(~Q(id__in=rsvp_users)).count()
+        guest_count = Rsvp.objects.all().aggregate(Sum("num_guests"))
+
+        response.context_data['summary'] = {
+            "Has RSVP'd": num_rsvp,
+            "Has not RSVP'd": num_not_rsvp,
+            "Guest Count (so far)": guest_count['num_guests__sum']
+        }
+
+        return response
+

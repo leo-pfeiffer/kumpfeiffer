@@ -8,6 +8,10 @@ class User(AbstractUser):
 
 
 class Rsvp(models.Model):
+    class Meta:
+        verbose_name = "RSVP"
+        verbose_name_plural = "RSVPs"
+
     guest = models.ForeignKey(
         get_user_model(), on_delete=models.CASCADE, blank=False, null=False
     )
@@ -15,7 +19,17 @@ class Rsvp(models.Model):
     num_guests = models.IntegerField(blank=False, null=False)
 
 
+class RsvpSummary(Rsvp):
+    class Meta:
+        proxy = True
+        verbose_name = "RSVP Summary"
+        verbose_name_plural = "RSVPs Summary"
+
+
 class Allergy(models.Model):
+    class Meta:
+        verbose_name_plural = "Allergies"
+
     ALLERGY_CHOICES = (
         ('celery', 'Celery / Sellerie'),
         ('gluten', 'Gluten'),
@@ -37,5 +51,13 @@ class Allergy(models.Model):
         get_user_model(), on_delete=models.CASCADE, blank=False, null=False
     )
 
-    allergy = models.CharField(choices=ALLERGY_CHOICES, max_length=30)
+    allergy = models.CharField(
+        choices=ALLERGY_CHOICES, max_length=30, null=True, blank=True)
     note = models.CharField(max_length=200, null=True, blank=True)
+
+
+class AllergySummary(Allergy):
+    class Meta:
+        proxy = True
+        verbose_name = "Allergy Summary"
+        verbose_name_plural = "Allergies Summary"
