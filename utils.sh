@@ -19,3 +19,7 @@ heroku_manage() {
 heroku_logs() {
   heroku logs --tail -a kumpfeiffer
 }
+
+heroku_bash() {
+  heroku ps:exec -a kumpfeiffer
+}
