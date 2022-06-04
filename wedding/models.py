@@ -1,18 +1,26 @@
 from django.db import models
 
+from wedding.utils import invite_code_generator
 
-class User(models.Model):
-    name = models.CharField(max_length=100)
-    email = models.EmailField()
-    invite_code = models.CharField(max_length=4)
+
+class Guest(models.Model):
+    name = models.CharField(max_length=100, blank=False, null=False)
+    email = models.EmailField(blank=False, null=False)
+    invite_code = models.CharField(max_length=6, default=invite_code_generator)
+
+    def __str__(self):
+        return f"{self.name}"
 
 
 class Rsvp(models.Model):
-    user = models.ForeignKey(
-        User, on_delete=models.CASCADE, blank=False, null=False
+    guest = models.ForeignKey(
+        Guest, on_delete=models.CASCADE, blank=False, null=False
     )
     # todo min, max
-    guests = models.IntegerField(blank=False, null=False)
+    num_guests = models.IntegerField(blank=False, null=False)
+
+    def __str__(self):
+        return f"{self.guest.name}"
 
 
 class Allergy(models.Model):
@@ -33,9 +41,12 @@ class Allergy(models.Model):
         ('nuts', 'Tree nuts / Schalenfrüchte (Nüsse)'),
     )
 
-    user = models.ForeignKey(
-        User, on_delete=models.CASCADE, blank=False, null=False
+    guest = models.ForeignKey(
+        Guest, on_delete=models.CASCADE, blank=False, null=False
     )
 
     allergy = models.CharField(choices=ALLERGY_CHOICES, max_length=30)
     note = models.CharField(max_length=200)
+
+    def __str__(self):
+        return f"{self.guest.name}: {self.allergy}"
