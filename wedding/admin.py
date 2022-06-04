@@ -163,7 +163,13 @@ class AllergySummaryAdmin(admin.ModelAdmin):
 
 @admin.register(Rsvp)
 class RsvpAdmin(admin.ModelAdmin):
-    list_display = ("guest", "num_guests")
+    list_display = ("name", "invite_code", "num_guests")
+
+    def invite_code(self, obj):
+        return obj.guest.username
+
+    def name(self, obj):
+        return obj.guest.first_name
 
 
 @admin.register(RsvpSummary)

@@ -11,7 +11,9 @@ class HomeView(LoginRequiredMixin, TemplateView):
 
     def get(self, request, **kwargs):
         return render(request, self.template_name, {
-            'form': RsvpForm()
+            'form': RsvpForm(),
+            "invite_code": request.user.username,
+            "name": request.user.first_name
         })
 
     def post(self, request, *args, **kwargs):
