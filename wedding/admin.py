@@ -1,22 +1,85 @@
 from django.contrib import admin
+from django.contrib.admin import SimpleListFilter
+from django.db.models import Q
 from django.forms import forms
 from django.shortcuts import redirect, render
-from django.urls import path
+from django.urls import path, reverse
+from django.utils.html import format_html
+from django.utils.http import urlencode
 
 from wedding.mixins.export_csv_mixin import ExportCsvMixin
-from wedding.models import Guest, Allergy, Rsvp
+from wedding.models import Allergy, Rsvp, User
+
+from django.contrib.auth.hashers import make_password
+
+from wedding.utils import generate_invite_code
 
 
 class CsvImportForm(forms.Form):
     csv_file = forms.FileField()
 
 
-@admin.register(Guest)
+class HasRsvpFilter(SimpleListFilter):
+    title = "has RSVP"
+    parameter_name = "has_rsvp"
+
+    def lookups(self, request, model_admin):
+        return (
+            ("yes", "Yes"),
+            ("no", "No"),
+        )
+
+    def queryset(self, request, queryset):
+        rsvp_users = Rsvp.objects.values_list("guest_id")
+        if self.value() == "yes":
+            return queryset.filter(id__in=rsvp_users)
+        if self.value() == "no":
+            return queryset\
+                .filter(~Q(id__in=rsvp_users))\
+                .filter(is_superuser=False)
+
+
+@admin.register(User)
 class UserAdmin(admin.ModelAdmin, ExportCsvMixin):
-    list_display = ("name", "email", "invite_code")
+    list_display = ("name", "invite_code", "email", "has_rsvp", "rsvp")
+    list_filter = (HasRsvpFilter, "is_superuser", )
     actions = ["export_as_csv"]
 
     change_list_template = "entities/guests_changelist.html"
+
+    def name(self, obj):
+        if obj.is_superuser:
+            return obj.username
+        else:
+            return obj.first_name
+
+    def invite_code(self, obj):
+        if obj.is_superuser:
+            return ""
+        else:
+            return obj.username
+
+    def has_rsvp(self, obj):
+        if obj.is_superuser:
+            return None
+        return Rsvp.objects.filter(guest=obj).exists()
+
+    def rsvp(self, obj):
+        if obj.is_superuser:
+            return ""
+        else:
+            rsvp_obj = Rsvp.objects.filter(guest=obj).first()
+            has_rsvp = rsvp_obj is not None
+
+            if has_rsvp:
+                url = (
+                    reverse("admin:wedding_rsvp_changelist") + str(obj.id)
+                )
+                return format_html('<a href="{}">View</a>', url)
+            else:
+                return ""
+
+    has_rsvp.boolean = True
 
     def get_urls(self):
         urls = super().get_urls()
@@ -37,9 +100,14 @@ class UserAdmin(admin.ModelAdmin, ExportCsvMixin):
             for row in rows:
                 assert len(row) == 2
 
-            # create user object
+            # create users
             for row in rows:
-                Guest.objects.create(name=row[0], email=row[1])
+                invite_code = generate_invite_code()
+                user = User(username=invite_code)
+                user.first_name = row[0]
+                user.email = row[1]
+                user.password = make_password(invite_code)
+                user.save()
 
             self.message_user(request, "Guest list has been imported")
             return redirect("..")
@@ -52,7 +120,10 @@ class UserAdmin(admin.ModelAdmin, ExportCsvMixin):
 
 @admin.register(Allergy)
 class AllergyAdmin(admin.ModelAdmin):
-    list_display = ("guest", "allergy", "note")
+    list_display = ("name", "allergy", "note")
+
+    def name(self, obj):
+        return obj.guest.first_name
 
 
 @admin.register(Rsvp)

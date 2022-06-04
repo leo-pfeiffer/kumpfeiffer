@@ -4,7 +4,7 @@ import random
 import csv
 
 
-def invite_code_generator() -> str:
+def generate_invite_code() -> str:
     """
     Generate an alphanumeric invite code of length 6
     :return: invite code
