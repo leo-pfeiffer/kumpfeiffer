@@ -74,9 +74,11 @@
         </section>
         <section id="RSVP" class="w-full h-screen bg-center bg-cover bg-red-900 snap-start flex justify-center items-center">
             <div class="max-w-6xl mx-auto px-4">
-                <div class="text-center text-white">
-                    RSVP
-                </div>
+                <form id="rsvp-form" method="post" class="text-center">
+                    {% csrf_token %}
+                    {{ form }}
+                    <input type="submit" value="Submit" class="button">
+                </form>
             </div>
         </section>
         <section id="Contact" class="w-full h-screen bg-center bg-cover bg-teal snap-start flex justify-center items-center">
