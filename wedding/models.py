@@ -6,7 +6,8 @@ from wedding.utils import invite_code_generator
 class Guest(models.Model):
     name = models.CharField(max_length=100, blank=False, null=False)
     email = models.EmailField(blank=False, null=False)
-    invite_code = models.CharField(max_length=6, default=invite_code_generator)
+    invite_code = models.CharField(
+        max_length=6, default=invite_code_generator, unique=True)
 
     def __str__(self):
         return f"{self.name}"

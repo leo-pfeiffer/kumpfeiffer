@@ -1,5 +1,3 @@
-import csv
-
 from django.contrib import admin
 from django.forms import forms
 from django.shortcuts import redirect, render
