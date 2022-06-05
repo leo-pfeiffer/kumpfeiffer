@@ -6,7 +6,8 @@ from wedding.models import Allergy
 class RsvpForm(forms.Form):
 
     # this is disgusting, but django made me do it :-(
-    css_class = "shadow appearance-none border rounded py-1 px-1 text-gray-700"
+    css_class = "shadow appearance-none border border-black rounded " \
+                "py-1 px-1 text-black text-left"
 
     num_guests = forms.IntegerField(
         label="Number of guests",

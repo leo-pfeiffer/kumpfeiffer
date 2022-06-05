@@ -8,6 +8,8 @@
         <link rel="icon" type="image/x-icon" href="{% static "img/favicon.ico" %}">
         <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Assistant">
         <script>
             let proposalUrl = '{% static "img/proposal.jpeg" %}'
             tailwind.config = {
@@ -15,6 +17,14 @@
                 extend: {
                   colors: {
                     teal: '#367588',
+                  },
+                  fontFamily: {
+                    'tangerine': ['Tangerine', 'serif'],
+                    'assistant': ['Assistant', 'sans-serif'],
+                  },
+                  spacing: {
+                    '128': '32rem',
+                    '160': '40rem',
                   },
                   backgroundImage: (theme) => ({
                       proposal: `url('${proposalUrl}')`,

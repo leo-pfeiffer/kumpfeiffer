@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
     <header>
-        <nav class="flex items-center justify-between flex-wrap py-2 fixed w-full z-10 top-0 bg-white bg-opacity-75">
+        <nav class="flex items-center justify-between flex-wrap py-2 fixed w-full z-10 top-0 bg-gray-800 bg-opacity-50">
 
             <div class="flex items-center flex-shrink-0 mr-6">
                 <a class="no-underline hover:no-underline" href="#">
@@ -11,7 +11,7 @@
             </div>
 
             <div class="block lg:hidden">
-                <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-white hover:border-white">
+                <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-white border-gray-800 hover:text-white hover:border-white">
                     <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
                     </svg>
@@ -21,19 +21,22 @@
             <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0" id="nav-content">
                 <ul class="list-reset lg:flex justify-end flex-1 items-center">
                     <li class="mr-3">
-                        <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4" href="#Venue">Venue</a>
+                        <a class="inline-block text-white no-underline hover:text-gray-300 hover:text-underline py-2 px-4" href="#Wedding">Wedding</a>
                     </li>
                     <li class="mr-3">
-                        <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4" href="#Registry">Registry</a>
+                        <a class="inline-block text-white no-underline hover:text-gray-300 hover:text-underline py-2 px-4" href="#Venue">Venue</a>
                     </li>
                     <li class="mr-3">
-                        <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4" href="#RSVP">RSVP</a>
+                        <a class="inline-block text-white no-underline hover:text-gray-300 hover:text-underline py-2 px-4" href="#Registry">Registry</a>
                     </li>
                     <li class="mr-3">
-                        <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4" href="#Contact">Contact</a>
+                        <a class="inline-block text-white no-underline hover:text-gray-300 hover:text-underline py-2 px-4" href="#RSVP">RSVP</a>
                     </li>
                     <li class="mr-3">
-                        <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4" href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                        <a class="inline-block text-white no-underline hover:text-gray-300 hover:text-underline py-2 px-4" href="#Contact">Contact</a>
+                    </li>
+                    <li class="mr-3">
+                        <a class="inline-block text-white no-underline hover:text-gray-300 hover:text-underline py-2 px-4" href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
                     </li>
                 </ul>
             </div>
@@ -45,13 +48,16 @@
         background-position: 25% 40%;
       ">
         <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed"
-          style="background-color: rgba(0, 0, 0, 0.75)">
+          style="background-color: rgba(0, 0, 0, 0.60)">
           <div class="flex justify-center items-center h-full">
-            <div class="text-center text-white px-6 md:px-12">
-              <h1 class="text-5xl font-bold mt-0 mb-6">KRISTINA + LEOPOLD</h1>
-              <h3 class="text-3xl font-bold mb-8">21 June 2023 | Fingask Castle</h3>
+            <div class="text-center text-white px-6 md:px-12 font-tangerine">
+
+                <h1 class="text-9xl mt-0 lg:block md:block hidden">Kristina + Leopold</h1>
+                <h1 class="text-8xl mt-0 lg:hidden md:hidden block mb-10 leading-10">Kristina<br>&nbsp;+<br>Leopold</h1>
+
+              <h3 class="text-4xl font-bold mb-10">21 June 2023 | Fingask Castle</h3>
               <a type="button" href="#RSVP"
-                class="inline-block px-6 py-2.5 border-2 border-white text-white font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+                class="text-xl font-bold inline-block px-6 py-2.5 border-2 border-white text-white leading-tight uppercase rounded hover:bg-black hover:bg-opacity-10 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
                 data-mdb-ripple="true" data-mdb-ripple-color="light">
                 RSVP
               </a>
@@ -62,106 +68,185 @@
       <!-- Background image -->
     </header>
 
-    <section id="Venue" class="w-full h-96 min-h-fit bg-center bg-cover bg-red-900 flex justify-center items-center">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="text-center text-white">
-                Venue
-            </div>
-        </div>
-    </section>
-    <section id="Registry" class="w-full h-96 min-h-fit bg-center bg-cover bg-teal flex justify-center items-center">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="text-center text-white">
-                Registry
-            </div>
-        </div>
-    </section>
-    <section id="RSVP" class="w-full p-16 min-h-fit bg-center bg-cover bg-red-900 flex justify-center items-center">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="text-white text-center m-4">
-                <span class="text-xl">You're logged in as <strong>{{ name }}</strong>.</span>
-                <br>
-                <span class="text-xl">Your invite code is <strong>{{ invite_code }}</strong>.</span>
-                <br>
-                <span class="text-sm"> If this is not you, please
-                    <a href="/logout" class="underline">logout</a> and re-enter your invitation code.
-                </span>
+    <section id="Wedding" class="w-full min-h-fit bg-center bg-cover bg-white flex justify-center items-center">
+
+        <div class="max-w-6xl mx-auto px-4 my-10">
+
+            <div class="text-center text-black font-tangerine text-7xl">
+                The Wedding
             </div>
 
-            {% if has_rsvp %}
-                <div class="text-white text-center m-4">
-                    You already submitted your RSVP!
+            <div class="w-96 md:w-128 lg:w-160 mx-auto border border-solid border-2 border-black text-center text-black m-4 p-4">
+                <div class="mb-4">
+                    <h1 class="text-2xl">When</h1>
+                    <p>21 June 2023</p>
                 </div>
-                <table class="text-white text-center border mx-auto">
-                    <tbody>
-                        <tr>
-                            <td class="px-6 py-4">Number of guests</td>
-                            <td class="px-6 py-4">{{ rsvp.num_guests }}</td>
-                        </tr>
-                        <tr>
-                            <td class="px-6 py-4">Allergies</td>
-                            <td class="px-6 py-4">
-                            {% if rsvp.allergies %}
-                                {% for allergy in rsvp.allergies %}
-                                    <ul>{{ allergy }}</ul>
-                                {% endfor %}
-                            {% else %}
-                                n/a
-                            {% endif %}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="px-6 py-4">Note</td>
-                            <td class="px-6 py-4">
-                                {% if rsvp.note %}
-                                    {{ rsvp.note }}
+                <div class="mt-4">
+                    <h1 class="text-2xl">Where</h1>
+                    <p>Fingask Castle, Scotland</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <hr class="my-10">
+    <section id="Venue" class="w-full min-h-fit bg-center bg-cover bg-white flex justify-center items-center">
+
+        <div class="max-w-6xl mx-auto px-4 my-10">
+
+            <div class="text-center text-black font-tangerine text-7xl">
+                The Venue
+            </div>
+
+            <div class="w-96 md:w-128 lg:w-160 mx-auto border border-solid border-2 border-black text-center text-black m-4 p-4">
+                <div>
+                    <p>Some stuff about Fingask</p>
+                </div>
+            </div>
+
+          <div class="container px-5 py-2 mx-auto lg:px-32">
+            <div class="flex flex-wrap -m-1 md:-m-2">
+              <div class="flex flex-wrap w-2/5">
+                <div class="w-full p-1 md:p-2">
+                  <img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg"
+                    src="{% static 'img/topiary1.jpeg' %}">
+                </div>
+              </div>
+              <div class="flex flex-wrap w-3/5">
+                <div class="w-full p-1 md:p-2">
+                  <img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg"
+                    src="{% static 'img/castle.jpeg' %}">
+                </div>
+                <div class="w-full p-1 md:p-2">
+                  <img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg"
+                    src="{% static 'img/pavillon.jpeg' %}">
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+    </section>
+    <hr class="my-10">
+    <section id="Registry" class="w-full min-h-fit bg-center bg-cover bg-white flex justify-center items-center">
+        <div class="max-w-6xl mx-auto px-4 my-10">
+
+            <div class="text-center text-black font-tangerine text-7xl">
+                The Registry
+            </div>
+
+            <div class="w-96 md:w-128 lg:w-160 mx-auto border border-solid border-2 border-black text-center text-black m-4 p-4">
+                <div>
+                    <p>Presents hehe 🎁 🎁</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <hr class="my-10">
+    <section id="RSVP" class="w-full min-h-fit bg-center bg-cover bg-white flex justify-center items-center">
+        <div class="max-w-6xl mx-auto px-4 my-10">
+
+            <div class="text-center text-black font-tangerine text-7xl">
+                RSVP
+            </div>
+
+            <div class="w-96 md:w-128 lg:w-160 mx-auto border border-solid border-2 border-black text-center text-black m-4 p-4">
+                <div>
+                    <p class="text-xl">You're logged in as <strong>{{ name }}</strong>.</p>
+                    <p class="text-xl">Your invite code is <strong>{{ invite_code }}</strong>.</p>
+                    <p class="text-sm"> If this is not you, please
+                        <a href="/logout" class="underline">logout</a> and re-enter your invitation code.
+                    </p>
+                </div>
+
+                <div>
+                {% if has_rsvp %}
+                    <div class="text-white text-center m-4">
+                        You already submitted your RSVP!
+                    </div>
+                    <table class="text-white text-center mx-auto">
+                        <tbody>
+                            <tr>
+                                <td class="px-6 py-4">Number of guests</td>
+                                <td class="px-6 py-4">{{ rsvp.num_guests }}</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4">Allergies</td>
+                                <td class="px-6 py-4">
+                                {% if rsvp.allergies %}
+                                    {% for allergy in rsvp.allergies %}
+                                        <ul>{{ allergy }}</ul>
+                                    {% endfor %}
                                 {% else %}
                                     n/a
                                 {% endif %}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            {% else %}
-                <form id="rsvp-form" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" method="post">
-                    {% csrf_token %}
-                    <div class="form-group mb-4">
-                      <label class="block text-gray-700 text-sm font-bold mb-2" for="num_guests">
-                        Number of guests
-                      </label>
-                        {{ form.num_guests }}
-                    </div>
-                    <div class="form-group form-check mb-6">
-                      <label class="block text-gray-700 text-sm font-bold mb-2" for="allergies">
-                        Allergies
-                      </label>
-                        {{ form.allergies }}
-                    </div>
-                    <div class="form-group mb-4">
-                      <label class="block text-gray-700 text-sm font-bold mb-2" for="note">
-                        Other allergies / notes
-                      </label>
-                        {{ form.note }}
-                    </div>
-                    <div class="form-group">
-                        <input class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" value="Submit">
-                    </div>
-                </form>
-            {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4">Note</td>
+                                <td class="px-6 py-4">
+                                    {% if rsvp.note %}
+                                        {{ rsvp.note }}
+                                    {% else %}
+                                        n/a
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                {% else %}
+                    <form id="rsvp-form" class="bg-white rounded px-8 pt-6 pb-8 mb-4" method="post">
+                        {% csrf_token %}
+                        <div class="form-group mb-4">
+                          <label class="block text-black text-sm font-bold mb-2" for="num_guests">
+                            Number of guests
+                          </label>
+                            {{ form.num_guests }}
+                        </div>
+                        <div class="form-group form-check mb-6">
+                          <label class="block text-black text-sm font-bold mb-2" for="allergies">
+                            Allergies
+                          </label>
+                            {{ form.allergies }}
+                        </div>
+                        <div class="form-group mb-4">
+                          <label class="block text-black text-sm font-bold mb-2" for="note">
+                            Other allergies / notes
+                          </label>
+                            {{ form.note }}
+                        </div>
+                        <div class="form-group">
+                            <input class="inline-block px-6 py-2.5 border-2 border-black text-black leading-tight rounded hover:bg-black hover:bg-opacity-10 focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor-pointer"
+                                   type="submit"
+                                   value="Submit">
+
+                        </div>
+                    </form>
+                {% endif %}
+                </div>
+
+            </div>
+
         </div>
     </section>
-    <section id="Contact" class="w-full h-96 min-h-fit bg-center bg-cover bg-teal flex justify-center items-center">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="text-center text-white">
+    <hr class="my-10">
+    <section id="Contact" class="w-full min-h-fit bg-center bg-cover bg-white flex justify-center items-center">
+        <div class="max-w-6xl mx-auto px-4 my-10">
+            <div class="text-center text-black font-tangerine text-7xl">
                 Contact
+            </div>
+
+            <div class="w-96 md:w-128 lg:w-160 mx-auto border border-solid border-2 border-black text-center text-black m-4 p-4">
+                <div>
+                    <p>How can you reach us?</p>
+                </div>
             </div>
         </div>
     </section>
-    <footer id="Contact" class="w-full h-96 min-h-fit bg-center bg-cover bg-white flex justify-center items-center">
+    <footer id="Footer" class="w-full h-24 min-h-fit bg-center bg-cover bg-white flex justify-center items-center">
         <div class="max-w-6xl mx-auto px-4">
-            <div class="text-center">
-                Contact
-            </div>
+            {# Footer #}
         </div>
     </footer>
 	<script>
