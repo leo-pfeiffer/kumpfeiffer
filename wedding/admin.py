@@ -8,6 +8,7 @@ from django.utils.html import format_html
 from django.utils.http import urlencode
 
 from wedding.mixins.export_csv_mixin import ExportCsvMixin
+from wedding.mixins.send_reminder_mixin import SendReminderMixin
 from wedding.models import Allergy, Rsvp, User, AllergySummary, RsvpSummary
 
 from django.contrib.auth.hashers import make_password
@@ -40,10 +41,10 @@ class HasRsvpFilter(SimpleListFilter):
 
 
 @admin.register(User)
-class UserAdmin(admin.ModelAdmin, ExportCsvMixin):
+class UserAdmin(admin.ModelAdmin, ExportCsvMixin, SendReminderMixin):
     list_display = ("name", "invite_code", "email", "has_rsvp", "rsvp")
     list_filter = (HasRsvpFilter, "is_superuser", )
-    actions = ["export_as_csv"]
+    actions = ["export_as_csv", "send_reminder"]
 
     change_list_template = "entities/guests_changelist.html"
 
