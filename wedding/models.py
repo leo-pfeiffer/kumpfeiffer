@@ -18,6 +18,11 @@ class Rsvp(models.Model):
     # todo min, max
     num_guests = models.IntegerField(blank=False, null=False)
 
+    note = models.CharField(max_length=200, null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.guest.first_name}"
+
 
 class RsvpSummary(Rsvp):
     class Meta:
@@ -53,7 +58,6 @@ class Allergy(models.Model):
 
     allergy = models.CharField(
         choices=ALLERGY_CHOICES, max_length=30, null=True, blank=True)
-    note = models.CharField(max_length=200, null=True, blank=True)
 
 
 class AllergySummary(Allergy):

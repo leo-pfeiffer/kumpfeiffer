@@ -1,9 +1,8 @@
-import os
-
+from django.contrib.auth import get_user_model
+from django.contrib.auth.hashers import make_password
 from django.core.management.base import BaseCommand
 
-from wedding.models import Guest
-from wedding.utils import read_guest_csv
+from wedding.utils import read_guest_csv, generate_invite_code
 
 
 class Command(BaseCommand):
@@ -22,5 +21,18 @@ class Command(BaseCommand):
     @staticmethod
     def import_guest_csv(path):
         rows = read_guest_csv(path)
+
+        # assert row before saving
         for row in rows:
-            Guest.objects.create(name=row[0], email=row[1])
+            assert len(row) == 2
+
+        User = get_user_model()
+
+        # create users
+        for row in rows:
+            invite_code = generate_invite_code()
+            user = User(username=invite_code)
+            user.first_name = row[0]
+            user.email = row[1]
+            user.password = make_password(invite_code)
+            user.save()

@@ -73,7 +73,7 @@ class UserAdmin(admin.ModelAdmin, ExportCsvMixin):
 
             if has_rsvp:
                 url = (
-                    reverse("admin:wedding_rsvp_changelist") + str(obj.id)
+                    reverse("admin:wedding_rsvp_changelist") + str(rsvp_obj.id)
                 )
                 return format_html('<a href="{}">View</a>', url)
             else:
@@ -120,7 +120,7 @@ class UserAdmin(admin.ModelAdmin, ExportCsvMixin):
 
 @admin.register(Allergy)
 class AllergyAdmin(admin.ModelAdmin):
-    list_display = ("name", "allergy", "note")
+    list_display = ("name", "allergy")
 
     def name(self, obj):
         return obj.guest.first_name
@@ -154,16 +154,12 @@ class AllergySummaryAdmin(admin.ModelAdmin):
         response.context_data['total_allergies'] = summary.\
             aggregate(Sum("total"))["total__sum"]
 
-        response.context_data['notes'] = list(
-            qs.filter(note__isnull=False).values('allergy', 'note')
-        )
-
         return response
 
 
 @admin.register(Rsvp)
 class RsvpAdmin(admin.ModelAdmin):
-    list_display = ("name", "invite_code", "num_guests")
+    list_display = ("name", "invite_code", "num_guests", "note")
 
     def invite_code(self, obj):
         return obj.guest.username

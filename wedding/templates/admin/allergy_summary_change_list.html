@@ -82,34 +82,6 @@
 
   </table>
 <br>
-<table>
-
-    <thead>
-      <tr>
-        <th>
-          <div class="text">
-            <a href="#">Allergen</a>
-          </div>
-        </th>
-        <th>
-          <div class="text">
-            <a href="#">Note</a>
-          </div>
-        </th>
-      </tr>
-    </thead>
-
-    <tbody>
-      {% for row in notes %}
-      <tr class="{% cycle 'row1' 'row2' %}">
-        <td> {{ row.allergy }} </td>
-        <td> {{ row.note }} </td>
-      </tr>
-      {% endfor %}
-    </tbody>
-
-  </table>
-<br>
 <div class="bar-chart">
     {% for x in summary %}
         <div class="bar" style="height:{{x.total | divide:total_allergies | multiply:100}}%">
