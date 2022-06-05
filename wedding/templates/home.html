@@ -163,37 +163,41 @@
                 <div>
                     <p class="text-xl">You're logged in as <strong>{{ name }}</strong>.</p>
                     <p class="text-xl">Your invite code is <strong>{{ invite_code }}</strong>.</p>
-                    <p class="text-sm"> If this is not you, please
+                    <p class="text-sm m-2"> If this is not you, please
                         <a href="/logout" class="underline">logout</a> and re-enter your invitation code.
                     </p>
                 </div>
 
+                <hr>
+
                 <div>
                 {% if has_rsvp %}
-                    <div class="text-white text-center m-4">
+                    <div class="text-black text-center m-2 text-xl">
                         You already submitted your RSVP!
                     </div>
-                    <table class="text-white text-center mx-auto">
+                    <table class="text-black text-center mx-auto mt-4">
                         <tbody>
-                            <tr>
-                                <td class="px-6 py-4">Number of guests</td>
-                                <td class="px-6 py-4">{{ rsvp.num_guests }}</td>
+                            <tr class="border-b">
+                                <td class="px-6 ">Number of guests</td>
+                                <td class="px-6 ">{{ rsvp.num_guests }}</td>
                             </tr>
-                            <tr>
-                                <td class="px-6 py-4">Allergies</td>
-                                <td class="px-6 py-4">
+                            <tr class="border-b">
+                                <td class="px-6">Allergies</td>
+                                <td class="px-6">
                                 {% if rsvp.allergies %}
+                                    <ul>
                                     {% for allergy in rsvp.allergies %}
-                                        <ul>{{ allergy }}</ul>
+                                        <li class="list-disc">{{ allergy }}</li>
                                     {% endfor %}
+                                    </ul>
                                 {% else %}
                                     n/a
                                 {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <td class="px-6 py-4">Note</td>
-                                <td class="px-6 py-4">
+                                <td class="px-6">Note</td>
+                                <td class="px-6">
                                     {% if rsvp.note %}
                                         {{ rsvp.note }}
                                     {% else %}
