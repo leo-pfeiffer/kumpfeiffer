@@ -40,6 +40,11 @@
                     </li>
                 </ul>
             </div>
+
+            <div class="progress-container w-full h-1 bg-gray-800 bg-opacity-50 -mb-2">
+                <div class="progress-bar h-1 w-0 bg-teal" id="progress-indicator-bar"></div>
+            </div>
+
         </nav>
 
       <!-- Background image -->
@@ -266,5 +271,15 @@
 		document.getElementById('nav-toggle').onclick = function(){
 			document.getElementById("nav-content").classList.toggle("hidden");
 		}
+
+        window.onscroll = progressIndicator;
+
+        function progressIndicator() {
+          const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+          const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+          const scrolled = (winScroll / height) * 100;
+          document.getElementById("progress-indicator-bar").style.width = scrolled + "%";
+        }
+
 	</script>
 {% endblock content %}
