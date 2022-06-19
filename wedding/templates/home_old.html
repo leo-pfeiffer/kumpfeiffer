@@ -1,0 +1,285 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <header>
+        <nav class="flex items-center justify-between flex-wrap py-2 fixed w-full z-10 top-0 bg-gray-800 bg-opacity-50">
+
+            <div class="flex items-center flex-shrink-0 mr-6">
+                <a class="no-underline hover:no-underline" href="#">
+                    <span class="text-2xl pl-2"></span>
+                </a>
+            </div>
+
+            <div class="block lg:hidden">
+                <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-white border-gray-800 hover:text-white hover:border-white">
+                    <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0" id="nav-content">
+                <ul class="list-reset lg:flex justify-end flex-1 items-center">
+                    <li class="mr-3">
+                        <a class="inline-block text-white no-underline hover:text-gray-300 hover:text-underline py-2 px-4" href="#Wedding">Wedding</a>
+                    </li>
+                    <li class="mr-3">
+                        <a class="inline-block text-white no-underline hover:text-gray-300 hover:text-underline py-2 px-4" href="#Venue">Venue</a>
+                    </li>
+                    <li class="mr-3">
+                        <a class="inline-block text-white no-underline hover:text-gray-300 hover:text-underline py-2 px-4" href="#Registry">Registry</a>
+                    </li>
+                    <li class="mr-3">
+                        <a class="inline-block text-white no-underline hover:text-gray-300 hover:text-underline py-2 px-4" href="#RSVP">RSVP</a>
+                    </li>
+                    <li class="mr-3">
+                        <a class="inline-block text-white no-underline hover:text-gray-300 hover:text-underline py-2 px-4" href="#Contact">Contact</a>
+                    </li>
+                    <li class="mr-3">
+                        <a class="inline-block text-white no-underline hover:text-gray-300 hover:text-underline py-2 px-4" href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="progress-container w-full h-1 bg-gray-800 bg-opacity-50 -mb-2">
+                <div class="progress-bar h-1 w-0 bg-teal" id="progress-indicator-bar"></div>
+            </div>
+
+        </nav>
+
+      <!-- Background image -->
+      <div class="relative overflow-hidden bg-no-repeat bg-cover bg-proposal" style="
+        height: 600px;
+        background-position: 25% 40%;
+      ">
+        <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed"
+          style="background-color: rgba(0, 0, 0, 0.60)">
+          <div class="flex justify-center items-center h-full">
+            <div class="text-center text-white px-6 md:px-12 font-tangerine">
+
+                <h1 class="text-9xl mt-0 lg:block md:block hidden">Kristina + Leopold</h1>
+                <h1 class="text-8xl mt-0 lg:hidden md:hidden block mb-10 leading-10">Kristina<br>&nbsp;+<br>Leopold</h1>
+
+              <h3 class="text-4xl font-bold mb-10">21 June 2023 | Fingask Castle</h3>
+              <a type="button" href="#RSVP"
+                class="text-xl font-bold inline-block px-6 py-2.5 border-2 border-white text-white leading-tight uppercase rounded hover:bg-black hover:bg-opacity-10 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+                data-mdb-ripple="true" data-mdb-ripple-color="light">
+                RSVP
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Background image -->
+    </header>
+
+    <section id="Wedding" class="w-full min-h-fit bg-center bg-cover bg-white flex justify-center items-center">
+
+        <div class="max-w-6xl mx-auto px-4 my-10">
+
+            <div class="text-center text-black font-tangerine text-7xl">
+                The Wedding
+            </div>
+
+            <div class="w-96 md:w-128 lg:w-160 mx-auto border border-solid border-2 border-black text-center text-black m-4 p-4">
+                <div class="mb-4">
+                    <h1 class="text-2xl">When</h1>
+                    <p>21 June 2023</p>
+                </div>
+                <div class="mt-4">
+                    <h1 class="text-2xl">Where</h1>
+                    <p>Fingask Castle, Scotland</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <hr class="my-10">
+    <section id="Venue" class="w-full min-h-fit bg-center bg-cover bg-white flex justify-center items-center">
+
+        <div class="max-w-6xl mx-auto px-4 my-10">
+
+            <div class="text-center text-black font-tangerine text-7xl">
+                The Venue
+            </div>
+
+            <div class="w-96 md:w-128 lg:w-160 mx-auto border border-solid border-2 border-black text-center text-black m-4 p-4">
+                <div>
+                    <p>Some stuff about Fingask</p>
+                </div>
+            </div>
+
+          <div class="container px-5 py-2 mx-auto lg:px-32">
+            <div class="flex flex-wrap -m-1 md:-m-2">
+              <div class="flex flex-wrap w-2/5">
+                <div class="w-full p-1 md:p-2">
+                  <img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg"
+                    src="{% static 'img/topiary1.jpeg' %}">
+                </div>
+              </div>
+              <div class="flex flex-wrap w-3/5">
+                <div class="w-full p-1 md:p-2">
+                  <img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg"
+                    src="{% static 'img/castle.jpeg' %}">
+                </div>
+                <div class="w-full p-1 md:p-2">
+                  <img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg"
+                    src="{% static 'img/pavillon.jpeg' %}">
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <div class="container px-5 py-2 mx-auto lg:px-32 map-responsive">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d490263.97172563954!2d-3.3563270936981335!3d56.40740275668615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48863f4db050db23%3A0xd3e254d2e5e9ab20!2sFingask%20Castle!5e0!3m2!1sen!2suk!4v1654432477565!5m2!1sen!2suk"
+                    class="w-full h-96 border-0"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        </div>
+    </section>
+    <hr class="my-10">
+    <section id="Registry" class="w-full min-h-fit bg-center bg-cover bg-white flex justify-center items-center">
+        <div class="max-w-6xl mx-auto px-4 my-10">
+
+            <div class="text-center text-black font-tangerine text-7xl">
+                The Registry
+            </div>
+
+            <div class="w-96 md:w-128 lg:w-160 mx-auto border border-solid border-2 border-black text-center text-black m-4 p-4">
+                <div>
+                    <p>Presents hehe 🎁 🎁</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <hr class="my-10">
+    <section id="RSVP" class="w-full min-h-fit bg-center bg-cover bg-white flex justify-center items-center">
+        <div class="max-w-6xl mx-auto px-4 my-10">
+
+            <div class="text-center text-black font-tangerine text-7xl">
+                RSVP
+            </div>
+
+            <div class="w-96 md:w-128 lg:w-160 mx-auto border border-solid border-2 border-black text-center text-black m-4 p-4">
+                <div>
+                    <p class="text-xl">You're logged in as <strong>{{ name }}</strong>.</p>
+                    <p class="text-xl">Your invite code is <strong>{{ invite_code }}</strong>.</p>
+                    <p class="text-sm m-2"> If this is not you, please
+                        <a href="/logout" class="underline">logout</a> and re-enter your invitation code.
+                    </p>
+                </div>
+
+                <hr>
+
+                <div>
+                {% if has_rsvp %}
+                    <div class="text-black text-center m-2 text-xl">
+                        You already submitted your RSVP!
+                    </div>
+                    <table class="text-black text-center mx-auto mt-4">
+                        <tbody>
+                            <tr class="border-b">
+                                <td class="px-6 ">Number of guests</td>
+                                <td class="px-6 ">{{ rsvp.num_guests }}</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="px-6">Allergies</td>
+                                <td class="px-6">
+                                {% if rsvp.allergies %}
+                                    <ul>
+                                    {% for allergy in rsvp.allergies %}
+                                        <li class="list-disc">{{ allergy }}</li>
+                                    {% endfor %}
+                                    </ul>
+                                {% else %}
+                                    n/a
+                                {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6">Note</td>
+                                <td class="px-6">
+                                    {% if rsvp.note %}
+                                        {{ rsvp.note }}
+                                    {% else %}
+                                        n/a
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                {% else %}
+                    <form id="rsvp-form" class="bg-white rounded px-8 pt-6 pb-8 mb-4" method="post">
+                        {% csrf_token %}
+                        <div class="form-group mb-4">
+                          <label class="block text-black text-sm font-bold mb-2" for="num_guests">
+                            Number of guests
+                          </label>
+                            {{ form.num_guests }}
+                        </div>
+                        <div class="form-group form-check mb-6">
+                          <label class="block text-black text-sm font-bold mb-2" for="allergies">
+                            Allergies
+                          </label>
+                            {{ form.allergies }}
+                        </div>
+                        <div class="form-group mb-4">
+                          <label class="block text-black text-sm font-bold mb-2" for="note">
+                            Other allergies / notes
+                          </label>
+                            {{ form.note }}
+                        </div>
+                        <div class="form-group">
+                            <input class="inline-block px-6 py-2.5 border-2 border-black text-black leading-tight rounded hover:bg-black hover:bg-opacity-10 focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor-pointer"
+                                   type="submit"
+                                   value="Submit">
+
+                        </div>
+                    </form>
+                {% endif %}
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <hr class="my-10">
+    <section id="Contact" class="w-full min-h-fit bg-center bg-cover bg-white flex justify-center items-center">
+        <div class="max-w-6xl mx-auto px-4 my-10">
+            <div class="text-center text-black font-tangerine text-7xl">
+                Contact
+            </div>
+
+            <div class="w-96 md:w-128 lg:w-160 mx-auto border border-solid border-2 border-black text-center text-black m-4 p-4">
+                <div>
+                    <p>How can you reach us?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer id="Footer" class="w-full h-24 min-h-fit bg-center bg-cover bg-white flex justify-center items-center">
+        <div class="max-w-6xl mx-auto px-4">
+            {# Footer #}
+        </div>
+    </footer>
+	<script>
+		//Javascript to toggle the menu
+		document.getElementById('nav-toggle').onclick = function(){
+			document.getElementById("nav-content").classList.toggle("hidden");
+		}
+
+        window.onscroll = progressIndicator;
+
+        function progressIndicator() {
+          const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+          const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+          const scrolled = (winScroll / height) * 100;
+          document.getElementById("progress-indicator-bar").style.width = scrolled + "%";
+        }
+
+	</script>
+{% endblock content %}

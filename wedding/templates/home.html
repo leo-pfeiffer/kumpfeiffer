@@ -1,285 +1,658 @@
-{% extends "base.html" %}
-{% load static %}
-{% block content %}
-    <header>
-        <nav class="flex items-center justify-between flex-wrap py-2 fixed w-full z-10 top-0 bg-gray-800 bg-opacity-50">
+﻿{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kristina and Leo's Wedding</title>
 
-            <div class="flex items-center flex-shrink-0 mr-6">
-                <a class="no-underline hover:no-underline" href="#">
-                    <span class="text-2xl pl-2"></span>
-                </a>
-            </div>
 
-            <div class="block lg:hidden">
-                <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-white border-gray-800 hover:text-white hover:border-white">
-                    <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
-                    </svg>
-                </button>
-            </div>
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="{% static "img/favicon.ico" %}">
 
-            <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0" id="nav-content">
-                <ul class="list-reset lg:flex justify-end flex-1 items-center">
-                    <li class="mr-3">
-                        <a class="inline-block text-white no-underline hover:text-gray-300 hover:text-underline py-2 px-4" href="#Wedding">Wedding</a>
-                    </li>
-                    <li class="mr-3">
-                        <a class="inline-block text-white no-underline hover:text-gray-300 hover:text-underline py-2 px-4" href="#Venue">Venue</a>
-                    </li>
-                    <li class="mr-3">
-                        <a class="inline-block text-white no-underline hover:text-gray-300 hover:text-underline py-2 px-4" href="#Registry">Registry</a>
-                    </li>
-                    <li class="mr-3">
-                        <a class="inline-block text-white no-underline hover:text-gray-300 hover:text-underline py-2 px-4" href="#RSVP">RSVP</a>
-                    </li>
-                    <li class="mr-3">
-                        <a class="inline-block text-white no-underline hover:text-gray-300 hover:text-underline py-2 px-4" href="#Contact">Contact</a>
-                    </li>
-                    <li class="mr-3">
-                        <a class="inline-block text-white no-underline hover:text-gray-300 hover:text-underline py-2 px-4" href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
-                    </li>
-                </ul>
-            </div>
+<!-- Library CSS -->
+<link href="{% static "css/glanz_library.css" %}" rel="stylesheet">
 
-            <div class="progress-container w-full h-1 bg-gray-800 bg-opacity-50 -mb-2">
-                <div class="progress-bar h-1 w-0 bg-teal" id="progress-indicator-bar"></div>
-            </div>
+<!-- Icons CSS -->
+<link href="{% static "fonts/themify-icons.css" %}" rel="stylesheet">
 
-        </nav>
+<!-- Theme CSS -->
+<link href="{% static "css/glanz_style.css" %}" rel="stylesheet">
 
-      <!-- Background image -->
-      <div class="relative overflow-hidden bg-no-repeat bg-cover bg-proposal" style="
-        height: 600px;
-        background-position: 25% 40%;
-      ">
-        <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed"
-          style="background-color: rgba(0, 0, 0, 0.60)">
-          <div class="flex justify-center items-center h-full">
-            <div class="text-center text-white px-6 md:px-12 font-tangerine">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Dosis:300,400,600,700%7COpen+Sans:300,400,700%7CPlayfair+Display:400,400i,700,700i" rel="stylesheet">
 
-                <h1 class="text-9xl mt-0 lg:block md:block hidden">Kristina + Leopold</h1>
-                <h1 class="text-8xl mt-0 lg:hidden md:hidden block mb-10 leading-10">Kristina<br>&nbsp;+<br>Leopold</h1>
+<!-- Other Fonts -->
+<link href="{% static "fonts/marsha/stylesheet.css" %}" rel="stylesheet">
 
-              <h3 class="text-4xl font-bold mb-10">21 June 2023 | Fingask Castle</h3>
-              <a type="button" href="#RSVP"
-                class="text-xl font-bold inline-block px-6 py-2.5 border-2 border-white text-white leading-tight uppercase rounded hover:bg-black hover:bg-opacity-10 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
-                data-mdb-ripple="true" data-mdb-ripple-color="light">
-                RSVP
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Background image -->
-    </header>
+</head>
 
-    <section id="Wedding" class="w-full min-h-fit bg-center bg-cover bg-white flex justify-center items-center">
 
-        <div class="max-w-6xl mx-auto px-4 my-10">
+<!-- Body -->
+<body class="gla_middle_titles">
 
-            <div class="text-center text-black font-tangerine text-7xl">
-                The Wedding
-            </div>
 
-            <div class="w-96 md:w-128 lg:w-160 mx-auto border border-solid border-2 border-black text-center text-black m-4 p-4">
-                <div class="mb-4">
-                    <h1 class="text-2xl">When</h1>
-                    <p>21 June 2023</p>
-                </div>
-                <div class="mt-4">
-                    <h1 class="text-2xl">Where</h1>
-                    <p>Fingask Castle, Scotland</p>
-                </div>
-            </div>
+<!-- Page -->
+<div class="gla_page" id="gla_page">
 
-        </div>
-    </section>
-    <hr class="my-10">
-    <section id="Venue" class="w-full min-h-fit bg-center bg-cover bg-white flex justify-center items-center">
+    
+    
+    <!-- To Top -->
+    <a href="#gla_page" class="gla_top ti ti-angle-up gla_go"></a>
+    
+    <!-- Header -->
+    <header>       
 
-        <div class="max-w-6xl mx-auto px-4 my-10">
+        
+    
+        <nav class="gla_light_nav gla_transp_nav">
 
-            <div class="text-center text-black font-tangerine text-7xl">
-                The Venue
-            </div>
-
-            <div class="w-96 md:w-128 lg:w-160 mx-auto border border-solid border-2 border-black text-center text-black m-4 p-4">
-                <div>
-                    <p>Some stuff about Fingask</p>
-                </div>
-            </div>
-
-          <div class="container px-5 py-2 mx-auto lg:px-32">
-            <div class="flex flex-wrap -m-1 md:-m-2">
-              <div class="flex flex-wrap w-2/5">
-                <div class="w-full p-1 md:p-2">
-                  <img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg"
-                    src="{% static 'img/topiary1.jpeg' %}">
-                </div>
-              </div>
-              <div class="flex flex-wrap w-3/5">
-                <div class="w-full p-1 md:p-2">
-                  <img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg"
-                    src="{% static 'img/castle.jpeg' %}">
-                </div>
-                <div class="w-full p-1 md:p-2">
-                  <img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg"
-                    src="{% static 'img/pavillon.jpeg' %}">
-                </div>
-              </div>
-            </div>
-          </div>
-
-        <div class="container px-5 py-2 mx-auto lg:px-32 map-responsive">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d490263.97172563954!2d-3.3563270936981335!3d56.40740275668615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48863f4db050db23%3A0xd3e254d2e5e9ab20!2sFingask%20Castle!5e0!3m2!1sen!2suk!4v1654432477565!5m2!1sen!2suk"
-                    class="w-full h-96 border-0"
-                    allowfullscreen=""
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-
-        </div>
-    </section>
-    <hr class="my-10">
-    <section id="Registry" class="w-full min-h-fit bg-center bg-cover bg-white flex justify-center items-center">
-        <div class="max-w-6xl mx-auto px-4 my-10">
-
-            <div class="text-center text-black font-tangerine text-7xl">
-                The Registry
-            </div>
-
-            <div class="w-96 md:w-128 lg:w-160 mx-auto border border-solid border-2 border-black text-center text-black m-4 p-4">
-                <div>
-                    <p>Presents hehe 🎁 🎁</p>
-                </div>
-            </div>
-
-        </div>
-    </section>
-    <hr class="my-10">
-    <section id="RSVP" class="w-full min-h-fit bg-center bg-cover bg-white flex justify-center items-center">
-        <div class="max-w-6xl mx-auto px-4 my-10">
-
-            <div class="text-center text-black font-tangerine text-7xl">
-                RSVP
-            </div>
-
-            <div class="w-96 md:w-128 lg:w-160 mx-auto border border-solid border-2 border-black text-center text-black m-4 p-4">
-                <div>
-                    <p class="text-xl">You're logged in as <strong>{{ name }}</strong>.</p>
-                    <p class="text-xl">Your invite code is <strong>{{ invite_code }}</strong>.</p>
-                    <p class="text-sm m-2"> If this is not you, please
-                        <a href="/logout" class="underline">logout</a> and re-enter your invitation code.
-                    </p>
-                </div>
-
-                <hr>
-
-                <div>
-                {% if has_rsvp %}
-                    <div class="text-black text-center m-2 text-xl">
-                        You already submitted your RSVP!
+            <div class="container">
+                
+                <div class="gla_logo_container clearfix">
+                    <div class="gla_logo_txt">
+                        <!-- Logo -->
+                        <a href="/" class="gla_logo">Kristina & Leo</a>
+                        
+                        <!-- Text Logo -->
+                        <div class="gla_logo_und">June 21, 2023</div>
                     </div>
-                    <table class="text-black text-center mx-auto mt-4">
-                        <tbody>
-                            <tr class="border-b">
-                                <td class="px-6 ">Number of guests</td>
-                                <td class="px-6 ">{{ rsvp.num_guests }}</td>
-                            </tr>
-                            <tr class="border-b">
-                                <td class="px-6">Allergies</td>
-                                <td class="px-6">
-                                {% if rsvp.allergies %}
-                                    <ul>
-                                    {% for allergy in rsvp.allergies %}
-                                        <li class="list-disc">{{ allergy }}</li>
-                                    {% endfor %}
-                                    </ul>
-                                {% else %}
-                                    n/a
-                                {% endif %}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="px-6">Note</td>
-                                <td class="px-6">
-                                    {% if rsvp.note %}
-                                        {{ rsvp.note }}
-                                    {% else %}
-                                        n/a
-                                    {% endif %}
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                {% else %}
-                    <form id="rsvp-form" class="bg-white rounded px-8 pt-6 pb-8 mb-4" method="post">
-                        {% csrf_token %}
-                        <div class="form-group mb-4">
-                          <label class="block text-black text-sm font-bold mb-2" for="num_guests">
-                            Number of guests
-                          </label>
-                            {{ form.num_guests }}
-                        </div>
-                        <div class="form-group form-check mb-6">
-                          <label class="block text-black text-sm font-bold mb-2" for="allergies">
-                            Allergies
-                          </label>
-                            {{ form.allergies }}
-                        </div>
-                        <div class="form-group mb-4">
-                          <label class="block text-black text-sm font-bold mb-2" for="note">
-                            Other allergies / notes
-                          </label>
-                            {{ form.note }}
-                        </div>
-                        <div class="form-group">
-                            <input class="inline-block px-6 py-2.5 border-2 border-black text-black leading-tight rounded hover:bg-black hover:bg-opacity-10 focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor-pointer"
-                                   type="submit"
-                                   value="Submit">
-
-                        </div>
-                    </form>
-                {% endif %}
                 </div>
 
-            </div>
-
-        </div>
-    </section>
-    <hr class="my-10">
-    <section id="Contact" class="w-full min-h-fit bg-center bg-cover bg-white flex justify-center items-center">
-        <div class="max-w-6xl mx-auto px-4 my-10">
-            <div class="text-center text-black font-tangerine text-7xl">
-                Contact
-            </div>
-
-            <div class="w-96 md:w-128 lg:w-160 mx-auto border border-solid border-2 border-black text-center text-black m-4 p-4">
-                <div>
-                    <p>How can you reach us?</p>
+                <!-- Menu -->
+                <div class="gla_main_menu gla_main_menu_mobile">
+                    
+                    <div class="gla_main_menu_icon">
+                        <i></i><i></i><i></i><i></i>
+                        <b>Menu</b>
+                        <b class="gla_main_menu_icon_b">Back</b>
+                    </div>
                 </div>
+                
+                <!-- Menu Content -->
+                <div class="gla_main_menu_content gla_image_bck" data-color="rgba(0,0,0,0.9)" data-image="{% static "images/proposal.jpeg" %}">
+                    <!-- Over -->
+                    <div class="gla_over" data-color="#000" data-opacity="0.7"></div>
+                </div>
+
+                <div class="gla_main_menu_content_menu gla_wht_txt text-right">
+                    <div class="container">
+                        <ul>
+
+                            <li class="gla_parent"><a href="#">Blog</a>
+                                <ul>
+                                    <li><a href="03_01_blog_sidebar.html">Blog with Sidebar</a></li>
+                                    <li><a href="03_02_blog_1col.html">Blog Full Width</a></li>
+                                    <li><a href="03_03_blog_single_sidebar.html">Single Post with Sidebar</a></li>
+                                    <li><a href="03_04_blog_single_col1.html">Single Post Full Width</a></li>
+                                </ul>
+                            </li>
+                            <li class="gla_parent"><a href="#">Shop</a>
+                                <ul>
+                                    <li><a href="04_01_shop_category_col1.html">Shop Category</a></li>
+                                    <li><a href="04_02_shop_category_sidebar.html">Shop Category with Sidebar</a></li>
+                                    <li><a href="04_03_shop_single_sidebar.html">Shop Item Page</a></li>
+                                    <li><a href="04_04_shop_cart.html">Shop Cart</a></li>
+                                    <li><a href="04_05_shop_checkout.html">Shop Checkout</a></li>
+                                </ul>
+                            </li>
+                          
+                        </ul>
+                        <div class="gla_main_menu_content_menu_copy">
+                            <form>
+                                <input type="text" class="form-control" placeholder="Enter Your Keywords">
+                                <button type="submit" class="btn">
+                                  Search
+                                </button>
+                            </form>
+                            <br>
+                            <p>© GlanzThemes 2017</p>
+                            <!-- Social Buttons -->
+                            <div class="gla_footer_social">
+                                <a href="#"><i class="ti ti-facebook gla_icon_box"></i></a>
+                                <a href="#"><i class="ti ti-instagram gla_icon_box"></i></a>
+                                <a href="#"><i class="ti ti-google gla_icon_box"></i></a>
+                                <a href="#"><i class="ti ti-youtube gla_icon_box"></i></a>
+                                <a href="#"><i class="ti ti-twitter gla_icon_box"></i></a>
+                                <a href="#"><i class="ti ti-pinterest gla_icon_box"></i></a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <!-- container end -->
+                </div>
+                <!-- menu content end -->
+
+                <!-- Search Block -->
+                <div class="gla_search_block">
+                    
+                    <div class="gla_search_block_link gla_search_parent"><i class="ti ti-search"></i>
+                        <ul>
+                            <li>
+                                <form>
+                                    <input type="text" class="form-control" placeholder="Enter Your Keywords">
+                                    <button type="submit" class="btn">
+                                      <i class="ti ti-search"></i>
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Search Block End -->
+
+                <!-- Top Menu -->
+                <div class="gla_default_menu">
+                    <ul>
+
+                        <li class="gla_parent"><a href="#">Blog</a>
+                            <ul>
+                                <li><a href="03_01_blog_sidebar.html">Blog with Sidebar</a></li>
+                                <li><a href="03_02_blog_1col.html">Blog Full Width</a></li>
+                                <li><a href="03_03_blog_single_sidebar.html">Single Post with Sidebar</a></li>
+                                <li><a href="03_04_blog_single_col1.html">Single Post Full Width</a></li>
+                            </ul>
+                        </li>
+                        <li class="gla_parent"><a href="#">Shop</a>
+                            <ul>
+                                <li><a href="04_01_shop_category_col1.html">Shop Category</a></li>
+                                <li><a href="04_02_shop_category_sidebar.html">Shop Category with Sidebar</a></li>
+                                <li><a href="04_03_shop_single_sidebar.html">Shop Item Page</a></li>
+                                <li><a href="04_04_shop_cart.html">Shop Cart</a></li>
+                                <li><a href="04_05_shop_checkout.html">Shop Checkout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Top Menu End -->
+
+
+               
             </div>
+            <!-- container end -->
+        </nav>
+        
+    </header>
+    <!-- Header End -->
+
+
+    <!-- Slider -->
+    <div class="gla_slider gla_image_bck  gla_wht_txt gla_fixed"  data-image="{% static "images/proposal.jpeg" %}" data-stellar-background-ratio="0.8">
+
+        <!-- Over -->
+        <div class="gla_over" data-color="#1e1d2d" data-opacity="0.2"></div>
+
+
+        <div class="container">
+
+            
+            <!-- Slider Texts -->
+            <div class="gla_slide_txt gla_slide_center_middle text-center">
+                 <div class="gla_flower gla_flower2">
+                    <div class="gla_flower2_name_l">Kristina <b>Save The Date</b></div>
+                    <div class="gla_flower2_name_r">Leo <b>June 21, 2023</b></div>
+                    <img src="https://via.placeholder.com/600x600" alt="">
+                </div>
+
+
+            </div>
+            <!-- Slider Texts End -->
+
         </div>
+        <!-- container end -->
+
+        <!-- Slide Down -->
+        <a class="gla_scroll_down gla_go" href="#gla_content">
+            <b></b>
+            Scroll
+        </a>
+
+
+    </div>
+    <!-- Slider End -->
+
+    <!-- Content -->
+    <section id="gla_content" class="gla_content">
+
+
+       <!-- section -->
+        <section class="gla_section gla_image_bck" data-color="#fafafd">
+
+            <div class="container text-center">
+                <p><img src="{% static "images/animations/flower5.gif" %}" data-bottom-top="@src:{% static "images/animations/flower5.gif" %}; opacity:1" class="gla_animated_flower" height="150" alt=""></p>
+                <h2>Our Story</h2>
+                <h3 class="gla_subtitle">The Fourth of July</h3>
+
+
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam euismod lacinia ante quis feugiat. Nunc interdum orci vitae quam dignissim, et sagittis mi viverra. Donec efficitur diam sit amet hendrerit malesuada. Proin eget ex sed risus fermentum pulvinar. Sed congue, leo vitae tempus commodo, tortor ex ornare tortor, porta pharetra diam ipsum quis ipsum.</p>
+
+
+
+            </div>
+            <!-- container end -->
+
+        </section>
+        <!-- section end -->
+
+
+        <!-- section -->
+        <section class="gla_section gla_image_bck gla_fixed gla_wht_txt" data-stellar-background-ratio="0.8" data-image="{% static "images/castle.jpeg" %}">
+
+            <!-- Over -->
+            <div class="gla_over" data-color="#1e1d2d" data-opacity="0.4"></div>
+
+            <div class="container text-center">
+                <p><img src="{% static "images/animations/savethedate_wh.gif" %}" data-bottom-top="@src:{% static "images/animations/savethedate_wh.gif" %}" height="150" alt=""></p>
+                <h2>June 21st, 2023</h2>
+                <h3 class="gla_subtitle">Fingask Castle,<br>Scotland</h3>
+                <div class="gla_countdown" data-year="2023" data-month="06" data-day="21"></div>
+
+            </div>
+            <!-- container end -->
+
+        </section>
+        <!-- section end -->
+
+
+        <!-- section -->
+        <section class="gla_section">
+
+
+            <div class="container text-center">
+                <p><img src="{% static "images/animations/flower6.gif" %}" data-bottom-top="@src:{% static "images/animations/flower6.gif" %}; opacity:1" class="gla_animated_flower" height="110" alt=""></p>
+                <h2>Wedding Details</h2>
+                <h3 class="gla_subtitle">When & Where</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam euismod lacinia ante quis feugiat. Nunc interdum orci vitae quam dignissim, et sagittis mi viverra. Donec efficitur diam sit amet hendrerit malesuada. Proin eget ex sed risus fermentum pulvinar.</p>
+                <div class="row text-center">
+                    <div class="col-md-4 gla_round_block">
+                        <div class="gla_round_im gla_image_bck" data-image="{% static "images/castle.jpeg" %}"></div>
+                        <h3>The Reception</h3>
+                        <p>4:00 PM – 5:30 PM<br>
+                        St. Thomas's Church,<br>
+                        Bristol<br>
+                        U.K.<br>
+                        +1 777-123-4567</p>
+                        <a href="#" class="btn">View Map</a>
+                    </div>
+                    <div class="col-md-4 gla_round_block">
+                        <div class="gla_round_im gla_image_bck" data-image="{% static "images/topiary1.jpeg" %}"></div>
+                        <h3>The Ceremony</h3>
+                        <p>4:00 PM – 5:30 PM<br>
+                        St. Thomas's Church,<br>
+                        Bristol<br>
+                        U.K.<br>
+                        +1 777-123-4567</p>
+                        <a href="#" class="btn">View Map</a>
+                    </div>
+                    <div class="col-md-4 gla_round_block">
+                        <div class="gla_round_im gla_image_bck" data-image="{% static "images/pavillon.jpeg" %}"></div>
+                        <h3>The Afterparty</h3>
+                        <p>4:00 PM – 5:30 PM<br>
+                        St. Thomas's Church,<br>
+                        Bristol<br>
+                        U.K.<br>
+                        +1 777-123-4567</p>
+                        <a href="#" class="btn">View Map</a>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- container end -->
+
+        </section>
+        <!-- section end -->
+
+
+        <!-- section -->
+        <section class="gla_section gla_image_bck gla_fixed gla_wht_txt" data-stellar-background-ratio="0.2" data-image="{% static "images/topiary1.jpeg" %}">
+
+            <!-- Over -->
+            <div class="gla_over" data-color="#1e1d2d" data-opacity="0.4"></div>
+
+            <div class="container text-center">
+                <p><img src="{% static "images/animations/rsvp_wh.gif" %}" data-bottom-top="@src:{% static "images/animations/rsvp_wh.gif" %}" height="200" alt=""></p>
+
+                <div class="row">
+                    <div class="col-md-8 col-md-push-2">
+                        <form action="https://formspree.io/your@mail.com" method="POST">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Your name*</label>
+                                    <input type="text" name="name" class="form-control form-opacity">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Your e-mail*</label>
+                                    <input type="text" name="email" class="form-control form-opacity">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label>Will you attend?</label>
+
+                                    <input type="radio" name="attend" value="Yes, I will be there">
+                                    <span>Yes, I will be there</span><br>
+                                    <input type="radio" name="attend" value="Sorry, I can't come">
+                                    <span>Sorry, I can't come</span>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Meal preference</label>
+                                    <select name="meal" class="form-control form-opacity">
+                                        <option value="I eat anything">I eat anything</option>
+                                        <option value="Beef">Beef</option>
+                                        <option value="Chicken">Chicken</option>
+                                        <option value="Vegetarian">Vegetarian</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12">
+                                    <label>Notes</label>
+                                    <textarea name="message" class="form-control form-opacity"></textarea>
+                                </div>
+                                <div class="col-md-12">
+                                    <input type="submit" class="btn submit" value="Send">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- container end -->
+
+        </section>
+        <!-- section end -->
+
+
+        <!-- section -->
+        <section class="gla_section gla_image_bck">
+
+
+            <div class="container text-center">
+                <p><img src="{% static "images/animations/flower7.gif" %}" data-bottom-top="@src:{% static "images/animations/flower7.gif" %}; opacity:1" class="gla_animated_flower" height="110" alt=""></p>
+                <h2>The Day They Got Engaged</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam euismod lacinia ante quis feugiat. Nunc interdum orci vitae quam dignissim, et sagittis mi viverra. Donec efficitur diam sit amet hendrerit malesuada. Proin eget ex sed risus fermentum pulvinar. Sed congue, leo vitae tempus commodo, tortor ex ornare tortor, porta pharetra diam ipsum quis ipsum.</p>
+
+                <!-- filters -->
+                <div class="button-group filter-button-group">
+                    <a data-filter="*">Show All</a>
+                    <a data-filter=".engagement">Engagement</a>
+                    <a data-filter=".ceremony">Ceremony</a>
+                </div>
+                <!-- filters end -->
+
+                <!-- grid -->
+                <div class="gla_portfolio_no_padding grid">
+
+                    <div class="col-sm-4 gla_anim_box grid-item engagement">
+                        <div class="gla_shop_item">
+                            <a href="https://via.placeholder.com/1400x800" class="lightbox">
+                                <img src="https://via.placeholder.com/600x600" alt="">
+                            </a>
+
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 gla_anim_box grid-item engagement">
+                        <div class="gla_shop_item">
+                            <a href="https://via.placeholder.com/1400x800" class="lightbox">
+                                <img src="https://via.placeholder.com/600x600" alt="">
+                            </a>
+
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 gla_anim_box grid-item ceremony">
+                        <div class="gla_shop_item">
+                            <a href="https://via.placeholder.com/1400x800" class="lightbox">
+                                <img src="https://via.placeholder.com/600x600" alt="">
+                            </a>
+
+                        </div>
+                    </div>
+
+
+                 </div>
+                 <!-- grid end -->
+
+
+
+            </div>
+            <!-- container end -->
+
+        </section>
+        <!-- section end -->
+
+
+        <!-- section -->
+        <section class="gla_section gla_image_bck gla_wht_txt gla_fixed" data-stellar-background-ratio="0.8" data-image="https://via.placeholder.com/1400x800">
+
+            <!-- Over -->
+            <div class="gla_over" data-color="#1e1d2d" data-opacity="0.4"></div>
+
+            <div class="container text-center">
+
+
+                <h2>Registry</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam euismod lacinia ante quis feugiat. Nunc interdum orci vitae quam dignissim, et sagittis mi viverra. Donec efficitur diam sit amet hendrerit malesuada. Proin eget ex sed risus fermentum pulvinar. Sed congue, leo vitae tempus commodo, tortor ex ornare tortor, porta pharetra diam ipsum quis ipsum.</p>
+
+                <!-- icon boxes -->
+                <div class="gla_icon_boxes gla_partners row">
+
+
+                    <!-- item -->
+                    <div class="gla_partner_box">
+                        <a href="#"><img src="https://via.placeholder.com/250x100" height="80" alt=""></a>
+                    </div>
+
+                    <!-- item -->
+                    <div class="gla_partner_box">
+                        <a href="#"><img src="https://via.placeholder.com/250x100" height="80" alt=""></a>
+                    </div>
+
+                    <!-- item -->
+                    <div class="gla_partner_box">
+                        <a href="#"><img src="https://via.placeholder.com/250x100" height="80" alt=""></a>
+                    </div>
+
+                    <!-- item -->
+                    <div class="gla_partner_box">
+                        <a href="#"><img src="https://via.placeholder.com/250x100" height="80" alt=""></a>
+                    </div>
+
+                    <!-- item -->
+                    <div class="gla_partner_box">
+                        <a href="#"><img src="https://via.placeholder.com/250x100" height="80" alt=""></a>
+                    </div>
+
+                    <!-- item -->
+                    <div class="gla_partner_box">
+                        <a href="#"><img src="https://via.placeholder.com/250x100" height="80" alt=""></a>
+                    </div>
+
+                    <!-- item -->
+                    <div class="gla_partner_box">
+                        <a href="#"><img src="https://via.placeholder.com/250x100" height="80" alt=""></a>
+                    </div>
+
+                    <!-- item -->
+                    <div class="gla_partner_box">
+                        <a href="#"><img src="https://via.placeholder.com/250x100" height="80" alt=""></a>
+                    </div>
+
+                    <!-- item -->
+                    <div class="gla_partner_box">
+                        <a href="#"><img src="https://via.placeholder.com/250x100" height="80" alt=""></a>
+                    </div>
+
+                    <!-- item -->
+                    <div class="gla_partner_box">
+                        <a href="#"><img src="https://via.placeholder.com/250x100" height="80" alt=""></a>
+                    </div>
+
+
+                </div>
+                <!-- icon boxes end -->
+
+            </div>
+            <!-- container end -->
+
+        </section>
+        <!-- section end -->
+
+
+        <!-- section -->
+        <section class="gla_section gla_image_bck" data-color="#fff">
+
+
+            <div class="container text-center">
+
+                <h2>The Wedding Party</h2>
+
+                <!-- filters -->
+                <div class="button-group filter-button-group">
+                    <a data-filter="*">Show All</a>
+                    <a data-filter=".groomsmen">Groomsmen</a>
+                    <a data-filter=".bridesmaids">Bridesmaids</a>
+                </div>
+                <!-- filters end -->
+
+                <!-- grid -->
+                <div class="gla_portfolio_no_padding grid">
+
+                    <div class="col-sm-4 gla_anim_box grid-item bridesmaids">
+                        <div class="gla_shop_item">
+                            <a href="https://via.placeholder.com/1400x800" class="lightbox">
+                                <img src="https://via.placeholder.com/600x600" alt="">
+                            </a>
+
+                            <a href="#" class="gla_shop_item_title">
+                                Andrew & Joanna
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 gla_anim_box grid-item bridesmaids">
+                        <div class="gla_shop_item">
+                            <a href="https://via.placeholder.com/1400x800" class="lightbox">
+                                <img src="https://via.placeholder.com/600x600" alt="">
+                            </a>
+
+                            <a href="#" class="gla_shop_item_title">
+                                Stewart & Ann
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 gla_anim_box grid-item bridesmaids">
+                        <div class="gla_shop_item">
+                            <a href="https://via.placeholder.com/1400x800" class="lightbox">
+                                <img src="https://via.placeholder.com/600x600" alt="">
+                            </a>
+
+                            <a href="#" class="gla_shop_item_title">
+                                Mark & Jenny
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 gla_anim_box grid-item broombridesmaidssmen">
+                        <div class="gla_shop_item">
+                            <a href="https://via.placeholder.com/1400x800" class="lightbox">
+                                <img src="https://via.placeholder.com/600x600" alt="">
+                            </a>
+
+                            <a href="#" class="gla_shop_item_title">
+                                Izzy & Katy
+                            </a>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-sm-4 gla_anim_box grid-item groomsmen">
+                        <div class="gla_shop_item">
+                            <a href="https://via.placeholder.com/1400x800" class="lightbox">
+                                <img src="https://via.placeholder.com/600x600" alt="">
+                            </a>
+
+                            <a href="#" class="gla_shop_item_title">
+                                Bob
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 gla_anim_box grid-item groomsmen">
+                        <div class="gla_shop_item">
+                            <a href="https://via.placeholder.com/1400x800" class="lightbox">
+                                <img src="https://via.placeholder.com/600x600" alt="">
+                            </a>
+
+                            <a href="#" class="gla_shop_item_title">
+                                Mark
+                            </a>
+                        </div>
+                    </div>
+
+
+                 </div>
+                 <!-- grid end -->
+
+
+
+            </div>
+            <!-- container end -->
+
+        </section>
+        <!-- section end -->
+
+
+
+
+        <!-- section -->
+        <section class="gla_section gla_image_bck gla_fixed gla_wht_txt" data-stellar-background-ratio="0.8" data-image="https://via.placeholder.com/1400x800">
+            
+            <!-- Over -->
+            <div class="gla_over" data-color="#1e1d2d" data-opacity="0.4"></div>
+            
+            <div class="container text-center">
+                <p><img src="{% static "images/animations/thnyou_wh.gif" %}" alt="" height="200" data-bottom-top="@src:{% static "images/animations/thnyou_wh.gif" %}"></p>
+
+                
+                
+            </div>
+            <!-- container end -->
+
+        </section>
+        <!-- section end -->
+
+    
+
+            
+        
+
     </section>
-    <footer id="Footer" class="w-full h-24 min-h-fit bg-center bg-cover bg-white flex justify-center items-center">
-        <div class="max-w-6xl mx-auto px-4">
-            {# Footer #}
-        </div>
-    </footer>
-	<script>
-		//Javascript to toggle the menu
-		document.getElementById('nav-toggle').onclick = function(){
-			document.getElementById("nav-content").classList.toggle("hidden");
-		}
+    <!-- Content End -->
+    
 
-        window.onscroll = progressIndicator;
+    
 
-        function progressIndicator() {
-          const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-          const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-          const scrolled = (winScroll / height) * 100;
-          document.getElementById("progress-indicator-bar").style.width = scrolled + "%";
-        }
+</div>
+<!-- Page End -->
 
-	</script>
-{% endblock content %}
+
+
+<!-- JQuery -->
+<script src="{% static "js/jquery-1.12.4.min.js" %}"></script>
+<!-- Library JS -->
+<script src="{% static "js/glanz_library.js" %}"></script>
+
+<!-- Theme JS -->
+<script src="{% static "js/glanz_script.js" %}"></script>
+
+
+</body>
+</html>
