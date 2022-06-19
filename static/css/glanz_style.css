@@ -1425,13 +1425,6 @@ header {
 	.gla_default_menu > ul > li:hover > a:before {
 		width: 80%;
 	}
-	.gla_parent > a:after {
-		display: inline-block;
-		content: "\e64b";
-		font-family: themify;
-		font-size: 12px;
-		margin-left: 10px;
-	}
 
 /*Search Block*/
 .gla_search_block {
