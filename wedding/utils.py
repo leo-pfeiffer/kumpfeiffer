@@ -19,7 +19,7 @@ def generate_invite_code() -> str:
 def read_guest_csv(path: str) -> list:
     """
     Read guest list from a csv file.
-    Columns must be: name, email
+    First three columns must be: name, email, max_guests
     Header: None
     :param path: path to the csv file
     :return: list containing a list of two elements for each row
@@ -30,6 +30,5 @@ def read_guest_csv(path: str) -> list:
         rows = []
         for row in reader:
             clean_row = [word.strip() for word in row]
-            assert len(clean_row) == 2
-            rows.append(clean_row)
+            rows.append(clean_row[:3])
     return rows

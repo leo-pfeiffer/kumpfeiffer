@@ -22,10 +22,6 @@ class Command(BaseCommand):
     def import_guest_csv(path):
         rows = read_guest_csv(path)
 
-        # assert row before saving
-        for row in rows:
-            assert len(row) == 2
-
         User = get_user_model()
 
         # create users
@@ -34,5 +30,6 @@ class Command(BaseCommand):
             user = User(username=invite_code)
             user.first_name = row[0]
             user.email = row[1]
+            user.max_guests = row[2]
             user.password = make_password(invite_code)
             user.save()
