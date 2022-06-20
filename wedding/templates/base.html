@@ -1,44 +1,42 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Kristina and Leo's Wedding</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/x-icon" href="{% static "img/favicon.ico" %}">
-        <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Assistant">
-        <script>
-            let proposalUrl = '{% static "img/proposal.jpeg" %}'
-            tailwind.config = {
-              theme: {
-                extend: {
-                  colors: {
-                    teal: '#367588',
-                  },
-                  fontFamily: {
-                    'tangerine': ['Tangerine', 'serif'],
-                    'assistant': ['Assistant', 'sans-serif'],
-                  },
-                  spacing: {
-                    '128': '32rem',
-                    '160': '40rem',
-                  },
-                  backgroundImage: (theme) => ({
-                      proposal: `url('${proposalUrl}')`,
-                    }),
-                }
-              }
-            }
-          </script>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kristina and Leo's Wedding</title>
 
-    </head>
 
-    <body>
-    {% block content %}
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="{% static "img/favicon.ico" %}">
 
-    {% endblock content %}
-    </body>
+<!-- Library CSS -->
+<link href="{% static "css/glanz_library.css" %}" rel="stylesheet">
+
+<!-- Icons CSS -->
+<link href="{% static "fonts/themify-icons.css" %}" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<!-- Theme CSS -->
+<link href="{% static "css/glanz_style.css" %}" rel="stylesheet">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Dosis:300,400,600,700%7COpen+Sans:300,400,700%7CPlayfair+Display:400,400i,700,700i" rel="stylesheet">
+
+<!-- Other Fonts -->
+<link href="{% static "fonts/marsha/stylesheet.css" %}" rel="stylesheet">
+<link href="{% static "fonts/tangerine/stylesheet.css" %}" rel="stylesheet">
+
+</head>
+<body class="gla_middle_titles">
+{% block content %}
+
+{% endblock content %}
+<!-- JQuery -->
+<script src="{% static "js/jquery-1.12.4.min.js" %}"></script>
+<!-- Library JS -->
+<script src="{% static "js/glanz_library.js" %}"></script>
+<!-- Theme JS -->
+<script src="{% static "js/glanz_script.js" %}"></script>
+</body>
 </html>

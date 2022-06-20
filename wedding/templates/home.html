@@ -1,51 +1,16 @@
-﻿{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kristina and Leo's Wedding</title>
-
-
-<!-- Favicon -->
-<link rel="icon" type="image/x-icon" href="{% static "img/favicon.ico" %}">
-
-<!-- Library CSS -->
-<link href="{% static "css/glanz_library.css" %}" rel="stylesheet">
-
-<!-- Icons CSS -->
-<link href="{% static "fonts/themify-icons.css" %}" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-<!-- Theme CSS -->
-<link href="{% static "css/glanz_style.css" %}" rel="stylesheet">
-
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css?family=Dosis:300,400,600,700%7COpen+Sans:300,400,700%7CPlayfair+Display:400,400i,700,700i" rel="stylesheet">
-
-<!-- Other Fonts -->
-<link href="{% static "fonts/marsha/stylesheet.css" %}" rel="stylesheet">
-<link href="{% static "fonts/tangerine/stylesheet.css" %}" rel="stylesheet">
-
-</head>
-
-
-<!-- Body -->
-<body class="gla_middle_titles">
-
+﻿{% extends "base.html" %}
+{% load static %}
+{% block content %}
 
 <!-- Page -->
 <div class="gla_page" id="gla_page">
 
-    
-    
+
     <!-- To Top -->
     <a href="#gla_page" class="gla_top ti ti-angle-up gla_go"></a>
     
     <!-- Header -->
-    <header>       
-
-        
+    <header>
     
         <nav class="gla_light_nav gla_transp_nav">
 
@@ -669,30 +634,11 @@
         </section>
         <!-- section end -->
 
-    
-
-            
-        
 
     </section>
     <!-- Content End -->
-    
-
-    
 
 </div>
 <!-- Page End -->
 
-
-
-<!-- JQuery -->
-<script src="{% static "js/jquery-1.12.4.min.js" %}"></script>
-<!-- Library JS -->
-<script src="{% static "js/glanz_library.js" %}"></script>
-
-<!-- Theme JS -->
-<script src="{% static "js/glanz_script.js" %}"></script>
-
-
-</body>
-</html>
+{% endblock content %}
