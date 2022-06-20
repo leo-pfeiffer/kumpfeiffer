@@ -245,6 +245,10 @@
                         <h3 class="gla_subtitle">You already submitted your RSVP!</h3>
                         <hr>
                         <h4 style="margin-bottom: 30px">
+                            <span><strong>Attending?</strong></span><br>
+                            <span>{{ rsvp.coming }}</span>
+                        </h4>
+                        <h4 style="margin-bottom: 30px">
                             <span><strong>Number of guests</strong></span><br>
                             <span>{{ rsvp.num_guests }}</span>
                         </h4>
@@ -282,15 +286,12 @@
                                     </div>
 
                                     <div style="margin-bottom: 20px">
-                                        <label>Will you attend?</label>
-                                        <select name="meal" class="form-control form-opacity">
-                                            <option value="yes">Yes, I will be there</option>
-                                            <option value="no">Sorry, I can't come</option>
-                                        </select>
+                                        <label for="coming">Will you attend?</label>
+                                        {{ form.coming }}
                                     </div>
 
                                     <div style="margin-bottom: 20px">
-                                        <label for="num_guests">Number of guests</label>
+                                        <label for="num_guests">Number of guests (incl. yourself, max {{ max_guests }})</label>
                                         {{ form.num_guests }}
                                     </div>
 

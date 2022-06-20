@@ -1,10 +1,14 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import AbstractUser
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 
 
 class User(AbstractUser):
-    pass
+    max_guests = models.IntegerField(
+        blank=False, null=False, default=1,
+        validators=[MaxValueValidator(10), MinValueValidator(1)]
+    )
 
 
 class Rsvp(models.Model):
@@ -15,6 +19,9 @@ class Rsvp(models.Model):
     guest = models.ForeignKey(
         get_user_model(), on_delete=models.CASCADE, blank=False, null=False
     )
+
+    coming = models.BooleanField(blank=False, null=False)
+
     # todo min, max
     num_guests = models.IntegerField(blank=False, null=False)
 
