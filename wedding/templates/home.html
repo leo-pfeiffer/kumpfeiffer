@@ -200,34 +200,27 @@
                     <div class="col-md-4 gla_round_block">
                         <div class="gla_round_im gla_image_bck" data-image="{% static "images/castle.jpeg" %}"></div>
                         <h3>The Reception</h3>
-                        <p>4:00 PM – 5:30 PM<br>
-                        St. Thomas's Church,<br>
-                        Bristol<br>
-                        U.K.<br>
-                        +1 777-123-4567</p>
-                        <a href="#" class="btn">View Map</a>
+                        <p>20 June 2023, 7 PM<br>
+                        Fingask Castle Pavillon<br>
+                        Scotland</p>
                     </div>
                     <div class="col-md-4 gla_round_block">
                         <div class="gla_round_im gla_image_bck" data-image="{% static "images/topiary1.jpeg" %}"></div>
                         <h3>The Ceremony</h3>
-                        <p>4:00 PM – 5:30 PM<br>
-                        St. Thomas's Church,<br>
-                        Bristol<br>
-                        U.K.<br>
-                        +1 777-123-4567</p>
-                        <a href="#" class="btn">View Map</a>
+                        <p>21 June 2023, 3 PM<br>
+                        Fingask Castle Lawn<br>
+                        Scotland</p>
                     </div>
                     <div class="col-md-4 gla_round_block">
                         <div class="gla_round_im gla_image_bck" data-image="{% static "images/pavillon.jpeg" %}"></div>
                         <h3>The Afterparty</h3>
-                        <p>4:00 PM – 5:30 PM<br>
-                        St. Thomas's Church,<br>
-                        Bristol<br>
-                        U.K.<br>
-                        +1 777-123-4567</p>
-                        <a href="#" class="btn">View Map</a>
+                        <p>20 June 2023, 5 PM<br>
+                        Fingask Castle Pavillon<br>
+                        Scotland</p>
                     </div>
                 </div>
+
+                <a href="https://goo.gl/maps/1NFf5PSdiy48MBu59" class="btn">View Map</a>
 
 
             </div>
@@ -251,11 +244,11 @@
                     <div class="col-md-8 col-md-push-2 container text-center">
                         <h3 class="gla_subtitle">You already submitted your RSVP!</h3>
                         <hr>
-                        <h4 style="margin: 30px">
+                        <h4 style="margin-bottom: 30px">
                             <span><strong>Number of guests</strong></span><br>
                             <span>{{ rsvp.num_guests }}</span>
                         </h4>
-                        <h4 style="margin: 30px">
+                        <h4 style="margin-bottom: 30px">
                             <span><strong>Allergies</strong></span><br>
                             <span>
                             {% if rsvp.allergies %}
@@ -265,7 +258,7 @@
                             {% endif %}
                             </span>
                         </h4>
-                        <h4 style="margin: 30px">
+                        <h4>
                             <span><strong>Note</strong></span><br>
                             <span>
                             {% if rsvp.note %}
