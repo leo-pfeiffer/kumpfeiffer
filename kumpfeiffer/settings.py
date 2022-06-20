@@ -28,16 +28,17 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 ENVIRONMENT = os.environ.get('ENVIRONMENT')
 
 assert ENVIRONMENT in [
-    'heroku',
+    'prod',
     'local'
 ]
 
-if ENVIRONMENT == 'heroku':
+if ENVIRONMENT == 'prod':
     DEBUG = False
 
     ALLOWED_HOSTS = [
-        ".wedding",
+        "kumpfeiffer.wedding",
         ".herokuapp.com",
+        "leopfeiffer.pythonanywhere.com"
     ]
 
 elif ENVIRONMENT == 'local':
