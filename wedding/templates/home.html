@@ -247,46 +247,81 @@
                 <p><img src="{% static "images/animations/rsvp_wh.gif" %}" data-bottom-top="@src:{% static "images/animations/rsvp_wh.gif" %}" height="200" alt=""></p>
 
                 <div class="row">
-                    <div class="col-md-8 col-md-push-2">
-                        <form action="https://formspree.io/your@mail.com" method="POST">
+                    {% if has_rsvp %}
+                    <div class="col-md-8 col-md-push-2 container text-center">
+                        <h3 class="gla_subtitle">You already submitted your RSVP!</h3>
+                        <hr>
+                        <h4 style="margin: 30px">
+                            <span><strong>Number of guests</strong></span><br>
+                            <span>{{ rsvp.num_guests }}</span>
+                        </h4>
+                        <h4 style="margin: 30px">
+                            <span><strong>Allergies</strong></span><br>
+                            <span>
+                            {% if rsvp.allergies %}
+                                {{ rsvp.allergies |join:", "}}
+                            {% else %}
+                                n/a
+                            {% endif %}
+                            </span>
+                        </h4>
+                        <h4 style="margin: 30px">
+                            <span><strong>Note</strong></span><br>
+                            <span>
+                            {% if rsvp.note %}
+                                {{ rsvp.note }}
+                            {% else %}
+                                n/a
+                            {% endif %}
+                            </span>
+                        </h4>
+                    </div>
+                    {% else %}
+                        <div class="col-md-8 col-md-push-2">
+                        <form id="rsvp-form" method="POST">
+                            {% csrf_token %}
                             <div class="row">
-                                <div class="col-md-6">
-                                    <label>Your name*</label>
-                                    <input type="text" name="name" class="form-control form-opacity">
-                                </div>
-                                <div class="col-md-6">
-                                    <label>Your e-mail*</label>
-                                    <input type="text" name="email" class="form-control form-opacity">
-                                </div>
 
                                 <div class="col-md-6">
-                                    <label>Will you attend?</label>
+                                    <div style="margin-bottom: 20px">
+                                        <label>Invite code</label>
+                                        <input type="text" name="name" class="form-control form-opacity" placeholder="{{ invite_code }}" disabled>
+                                    </div>
 
-                                    <input type="radio" name="attend" value="Yes, I will be there">
-                                    <span>Yes, I will be there</span><br>
-                                    <input type="radio" name="attend" value="Sorry, I can't come">
-                                    <span>Sorry, I can't come</span>
+                                    <div style="margin-bottom: 20px">
+                                        <label>Will you attend?</label>
+                                        <select name="meal" class="form-control form-opacity">
+                                            <option value="yes">Yes, I will be there</option>
+                                            <option value="no">Sorry, I can't come</option>
+                                        </select>
+                                    </div>
 
+                                    <div style="margin-bottom: 20px">
+                                        <label for="num_guests">Number of guests</label>
+                                        {{ form.num_guests }}
+                                    </div>
+
+                                    <div style="margin-bottom: 20px">
+                                        <label for="note"> Other allergies / notes</label>
+                                        {{ form.note }}
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <label>Meal preference</label>
-                                    <select name="meal" class="form-control form-opacity">
-                                        <option value="I eat anything">I eat anything</option>
-                                        <option value="Beef">Beef</option>
-                                        <option value="Chicken">Chicken</option>
-                                        <option value="Vegetarian">Vegetarian</option>
-                                    </select>
+
+
+                                <div class="col-md-6"
+                                     style="background: rgba(255,255,255,0.1); color: #fff; border: #fff thin solid; text-align: left; margin-bottom: 20px">
+                                    <label for="allergies">Allergies</label>
+                                    {{ form.allergies }}
                                 </div>
+
                                 <div class="col-md-12">
-                                    <label>Notes</label>
-                                    <textarea name="message" class="form-control form-opacity"></textarea>
+                                    <input class="btn submit" type="submit" value="Send">
                                 </div>
-                                <div class="col-md-12">
-                                    <input type="submit" class="btn submit" value="Send">
-                                </div>
+
                             </div>
                         </form>
                     </div>
+                    {% endif %}
                 </div>
 
 
