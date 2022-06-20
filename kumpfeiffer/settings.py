@@ -36,7 +36,6 @@ if ENVIRONMENT == 'prod':
 
     ALLOWED_HOSTS = [
         "kumpfeiffer.wedding",
-        ".herokuapp.com",
         "leopfeiffer.pythonanywhere.com"
     ]
 
