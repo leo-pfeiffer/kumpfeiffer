@@ -341,43 +341,62 @@
                 <h2>The Day They Got Engaged</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam euismod lacinia ante quis feugiat. Nunc interdum orci vitae quam dignissim, et sagittis mi viverra. Donec efficitur diam sit amet hendrerit malesuada. Proin eget ex sed risus fermentum pulvinar. Sed congue, leo vitae tempus commodo, tortor ex ornare tortor, porta pharetra diam ipsum quis ipsum.</p>
 
-                <!-- filters -->
-                <div class="button-group filter-button-group">
-                    <a data-filter="*">Show All</a>
-                    <a data-filter=".engagement">Engagement</a>
-                    <a data-filter=".ceremony">Ceremony</a>
-                </div>
-                <!-- filters end -->
-
                 <!-- grid -->
                 <div class="gla_portfolio_no_padding grid">
 
                     <div class="col-sm-4 gla_anim_box grid-item engagement">
                         <div class="gla_shop_item">
-                            <a href="https://via.placeholder.com/1400x800" class="lightbox">
-                                <img src="https://via.placeholder.com/600x600" alt="">
+                            <a href="{% static 'images/proposal.jpeg'%}" class="lightbox">
+                                <img src="{% static 'images/proposal.jpeg'%}" alt="">
                             </a>
-
-
                         </div>
                     </div>
 
                     <div class="col-sm-4 gla_anim_box grid-item engagement">
                         <div class="gla_shop_item">
-                            <a href="https://via.placeholder.com/1400x800" class="lightbox">
-                                <img src="https://via.placeholder.com/600x600" alt="">
+                            <a href="{% static 'images/engagement2.jpeg'%}" class="lightbox">
+                                <img src="{% static 'images/engagement2.jpeg'%}" alt="">
                             </a>
-
-
                         </div>
                     </div>
 
-                    <div class="col-sm-4 gla_anim_box grid-item ceremony">
+                    <div class="col-sm-4 gla_anim_box grid-item engagement">
                         <div class="gla_shop_item">
-                            <a href="https://via.placeholder.com/1400x800" class="lightbox">
-                                <img src="https://via.placeholder.com/600x600" alt="">
+                            <a href="{% static 'images/engagement3.jpeg'%}" class="lightbox">
+                                <img src="{% static 'images/engagement3.jpeg'%}" alt="">
                             </a>
+                        </div>
+                    </div>
 
+                    <div class="col-sm-4 gla_anim_box grid-item engagement">
+                        <div class="gla_shop_item">
+                            <a href="{% static 'images/engagement4.jpeg'%}" class="lightbox">
+                                <img src="{% static 'images/engagement4.jpeg'%}" alt="">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 gla_anim_box grid-item engagement">
+                        <div class="gla_shop_item">
+                            <a href="{% static 'images/engagement5.jpeg'%}" class="lightbox">
+                                <img src="{% static 'images/engagement5.jpeg'%}" alt="">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 gla_anim_box grid-item engagement">
+                        <div class="gla_shop_item">
+                            <a href="{% static 'images/engagement6.jpeg'%}" class="lightbox">
+                                <img src="{% static 'images/engagement6.jpeg'%}" alt="">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 gla_anim_box grid-item engagement">
+                        <div class="gla_shop_item">
+                            <a href="{% static 'images/engagement1.jpeg'%}" class="lightbox">
+                                <img src="{% static 'images/engagement1.jpeg'%}" alt="">
+                            </a>
                         </div>
                     </div>
 
@@ -395,7 +414,7 @@
 
 
         <!-- section -->
-        <section id="registry" class="gla_section gla_image_bck gla_wht_txt gla_fixed" data-stellar-background-ratio="0.8" data-image="https://via.placeholder.com/1400x800">
+        <section id="registry" class="gla_section gla_image_bck gla_wht_txt gla_fixed" data-stellar-background-ratio="0.8" data-image="{% static 'images/tay.jpeg' %}">
 
             <!-- Over -->
             <div class="gla_over" data-color="#1e1d2d" data-opacity="0.4"></div>
@@ -490,76 +509,124 @@
                 <!-- grid -->
                 <div class="gla_portfolio_no_padding grid">
 
-                    <div class="col-sm-4 gla_anim_box grid-item bridesmaids">
+                    <div class="col-sm-3 gla_anim_box grid-item bridesmaids">
                         <div class="gla_shop_item">
                             <a href="https://via.placeholder.com/1400x800" class="lightbox">
                                 <img src="https://via.placeholder.com/600x600" alt="">
                             </a>
 
                             <a href="#" class="gla_shop_item_title">
-                                Andrew & Joanna
+                                Joanna
                             </a>
                         </div>
                     </div>
 
-                    <div class="col-sm-4 gla_anim_box grid-item bridesmaids">
+                    <div class="col-sm-3 gla_anim_box grid-item bridesmaids">
                         <div class="gla_shop_item">
                             <a href="https://via.placeholder.com/1400x800" class="lightbox">
                                 <img src="https://via.placeholder.com/600x600" alt="">
                             </a>
 
                             <a href="#" class="gla_shop_item_title">
-                                Stewart & Ann
+                                Brandon
                             </a>
                         </div>
                     </div>
 
-                    <div class="col-sm-4 gla_anim_box grid-item bridesmaids">
+                    <div class="col-sm-3 gla_anim_box grid-item bridesmaids">
                         <div class="gla_shop_item">
                             <a href="https://via.placeholder.com/1400x800" class="lightbox">
                                 <img src="https://via.placeholder.com/600x600" alt="">
                             </a>
 
                             <a href="#" class="gla_shop_item_title">
-                                Mark & Jenny
+                                Sophie
                             </a>
                         </div>
                     </div>
 
-                    <div class="col-sm-4 gla_anim_box grid-item broombridesmaidssmen">
+                    <div class="col-sm-3 gla_anim_box grid-item bridesmaids">
                         <div class="gla_shop_item">
                             <a href="https://via.placeholder.com/1400x800" class="lightbox">
                                 <img src="https://via.placeholder.com/600x600" alt="">
                             </a>
 
                             <a href="#" class="gla_shop_item_title">
-                                Izzy & Katy
+                                Ruth
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3 gla_anim_box grid-item bridesmaids">
+                        <div class="gla_shop_item">
+                            <a href="https://via.placeholder.com/1400x800" class="lightbox">
+                                <img src="https://via.placeholder.com/600x600" alt="">
+                            </a>
+
+                            <a href="#" class="gla_shop_item_title">
+                                Liv
                             </a>
                         </div>
                     </div>
 
 
 
-                    <div class="col-sm-4 gla_anim_box grid-item groomsmen">
+                    <div class="col-sm-3 gla_anim_box grid-item groomsmen">
                         <div class="gla_shop_item">
                             <a href="https://via.placeholder.com/1400x800" class="lightbox">
                                 <img src="https://via.placeholder.com/600x600" alt="">
                             </a>
 
                             <a href="#" class="gla_shop_item_title">
-                                Bob
+                                Emanu
                             </a>
                         </div>
                     </div>
 
-                    <div class="col-sm-4 gla_anim_box grid-item groomsmen">
+                    <div class="col-sm-3 gla_anim_box grid-item groomsmen">
                         <div class="gla_shop_item">
                             <a href="https://via.placeholder.com/1400x800" class="lightbox">
                                 <img src="https://via.placeholder.com/600x600" alt="">
                             </a>
 
                             <a href="#" class="gla_shop_item_title">
-                                Mark
+                                Antonia
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3 gla_anim_box grid-item groomsmen">
+                        <div class="gla_shop_item">
+                            <a href="https://via.placeholder.com/1400x800" class="lightbox">
+                                <img src="https://via.placeholder.com/600x600" alt="">
+                            </a>
+
+                            <a href="#" class="gla_shop_item_title">
+                                Niko
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3 gla_anim_box grid-item groomsmen">
+                        <div class="gla_shop_item">
+                            <a href="https://via.placeholder.com/1400x800" class="lightbox">
+                                <img src="https://via.placeholder.com/600x600" alt="">
+                            </a>
+
+                            <a href="#" class="gla_shop_item_title">
+                                Kathi
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3 gla_anim_box grid-item groomsmen">
+                        <div class="gla_shop_item">
+                            <a href="https://via.placeholder.com/1400x800" class="lightbox">
+                                <img src="https://via.placeholder.com/600x600" alt="">
+                            </a>
+
+                            <a href="#" class="gla_shop_item_title">
+                                Patrick
                             </a>
                         </div>
                     </div>
@@ -580,7 +647,7 @@
 
 
         <!-- section -->
-        <section class="gla_section gla_image_bck gla_fixed gla_wht_txt" data-stellar-background-ratio="0.8" data-image="https://via.placeholder.com/1400x800">
+        <section class="gla_section gla_image_bck gla_fixed gla_wht_txt" data-stellar-background-ratio="0.8" data-image="{% static 'images/perthshire.jpeg' %}">
             
             <!-- Over -->
             <div class="gla_over" data-color="#1e1d2d" data-opacity="0.4"></div>
