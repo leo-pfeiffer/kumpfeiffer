@@ -15,6 +15,7 @@
 
 <!-- Icons CSS -->
 <link href="{% static "fonts/themify-icons.css" %}" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <!-- Theme CSS -->
 <link href="{% static "css/glanz_style.css" %}" rel="stylesheet">
@@ -85,6 +86,8 @@
                             <li class="gla_parent"><a href="#engagement">Engagement</a></li>
                             <li class="gla_parent"><a href="#registry">Registry</a></li>
                             <li class="gla_parent"><a href="#wedding-party">Wedding Party</a></li>
+                            <li class="gla_parent"><a href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
+                            <li class="gla_parent"><a href="/admin"><i class="fa-solid fa-gear" aria-hidden="true"></i></a></li>
                         </ul>
                     </div>
                     <!-- container end -->
@@ -100,6 +103,8 @@
                         <li class="gla_parent"><a href="#engagement">Engagement</a></li>
                         <li class="gla_parent"><a href="#registry">Registry</a></li>
                         <li class="gla_parent"><a href="#wedding-party">Wedding Party</a></li>
+                        <li class="gla_parent"><a href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
+                        <li class="gla_parent"><a href="/admin"><i class="fa-solid fa-gear" aria-hidden="true"></i></a></li>
                     </ul>
                 </div>
                 <!-- Top Menu End -->
@@ -241,18 +246,18 @@
 
                 <div class="row">
                     {% if has_rsvp %}
-                    <div class="col-md-8 col-md-push-2 container text-center">
+                    <div class="col-md-8 col-md-push-2 container text-center gla_large_text">
                         <h3 class="gla_subtitle">You already submitted your RSVP!</h3>
                         <hr>
-                        <h4 style="margin-bottom: 30px">
+                        <p>
                             <span><strong>Attending?</strong></span><br>
                             <span>{{ rsvp.coming }}</span>
-                        </h4>
-                        <h4 style="margin-bottom: 30px">
+                        </p>
+                        <p>
                             <span><strong>Number of guests</strong></span><br>
                             <span>{{ rsvp.num_guests }}</span>
-                        </h4>
-                        <h4 style="margin-bottom: 30px">
+                        </p>
+                        <p>
                             <span><strong>Allergies</strong></span><br>
                             <span>
                             {% if rsvp.allergies %}
@@ -261,8 +266,8 @@
                                 n/a
                             {% endif %}
                             </span>
-                        </h4>
-                        <h4>
+                        </p>
+                        <p>
                             <span><strong>Note</strong></span><br>
                             <span>
                             {% if rsvp.note %}
@@ -271,10 +276,17 @@
                                 n/a
                             {% endif %}
                             </span>
-                        </h4>
+                        </p>
                     </div>
                     {% else %}
                         <div class="col-md-8 col-md-push-2">
+                        <div class="gla_large_text" style="margin-bottom: 30px">
+                            <span>You're logged in as <strong>{{ name }}</strong>.</span><br>
+                            <span>Your invite code is <strong>{{ invite_code }}</strong>.</span><br>
+                            <span> If this is not you, please
+                                <a href="/logout" class="underline">logout</a> and re-enter your invitation code.
+                            </span>
+                        </div>
                         <form id="rsvp-form" method="POST">
                             {% csrf_token %}
                             <div class="row">

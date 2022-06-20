@@ -30,5 +30,6 @@ def read_guest_csv(path: str) -> list:
         rows = []
         for row in reader:
             clean_row = [word.strip() for word in row]
-            rows.append(clean_row[:3])
+            if len(clean_row) >= 3:
+                rows.append(clean_row[:3])
     return rows

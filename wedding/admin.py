@@ -42,7 +42,7 @@ class HasRsvpFilter(SimpleListFilter):
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin, ExportCsvMixin, SendReminderMixin):
-    list_display = ("name", "invite_code", "email", "has_rsvp", "rsvp")
+    list_display = ("name", "invite_code", "max_guests", "email", "has_rsvp", "rsvp")
     list_filter = (HasRsvpFilter, "is_superuser", )
     actions = ["export_as_csv", "send_reminder"]
 
@@ -97,16 +97,15 @@ class UserAdmin(admin.ModelAdmin, ExportCsvMixin, SendReminderMixin):
             rows = file_data.split("\n")
             rows = [row.split(",") for row in rows]
 
-            # assert row before saving
-            for row in rows:
-                assert len(row) == 2
-
             # create users
             for row in rows:
+                if len(row) < 3:
+                    continue
                 invite_code = generate_invite_code()
                 user = User(username=invite_code)
                 user.first_name = row[0]
                 user.email = row[1]
+                user.max_guests = row[2]
                 user.password = make_password(invite_code)
                 user.save()
 
@@ -160,7 +159,7 @@ class AllergySummaryAdmin(admin.ModelAdmin):
 
 @admin.register(Rsvp)
 class RsvpAdmin(admin.ModelAdmin):
-    list_display = ("name", "invite_code", "num_guests", "note")
+    list_display = ("name", "invite_code", "num_guests", "coming", "note")
 
     def invite_code(self, obj):
         return obj.guest.username
