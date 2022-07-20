@@ -1,8 +1,6 @@
-from django.contrib.auth import get_user_model
-from django.contrib.auth.hashers import make_password
 from django.core.management.base import BaseCommand
 
-from wedding.utils import read_guest_csv, generate_invite_code, save_guest_list_rows
+from wedding.utils import read_guest_csv, save_guest_list_rows
 
 
 class Command(BaseCommand):

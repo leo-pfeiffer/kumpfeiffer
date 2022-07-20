@@ -5,15 +5,14 @@ from django.forms import forms
 from django.shortcuts import redirect, render
 from django.urls import path, reverse
 from django.utils.html import format_html
-from django.utils.http import urlencode
 
 from wedding.mixins.export_csv_mixin import ExportCsvMixin
+from wedding.mixins.generate_invite_links_mixin import GenerateInviteLinksMixin
 from wedding.mixins.send_reminder_mixin import SendReminderMixin
 from wedding.models import Allergy, Rsvp, User, AllergySummary, RsvpSummary
 
-from django.contrib.auth.hashers import make_password
 
-from wedding.utils import generate_invite_code, save_guest_list_rows
+from wedding.utils import save_guest_list_rows
 
 
 class CsvImportForm(forms.Form):
@@ -35,16 +34,28 @@ class HasRsvpFilter(SimpleListFilter):
         if self.value() == "yes":
             return queryset.filter(id__in=rsvp_users)
         if self.value() == "no":
-            return queryset\
-                .filter(~Q(id__in=rsvp_users))\
-                .filter(is_superuser=False)
+            return queryset.filter(~Q(id__in=rsvp_users)).filter(is_superuser=False)
 
 
 @admin.register(User)
-class UserAdmin(admin.ModelAdmin, ExportCsvMixin, SendReminderMixin):
-    list_display = ("name", "invite_code", "max_guests", "email", "is_rehearsal_guest", "has_rsvp", "rsvp")
-    list_filter = (HasRsvpFilter, "is_rehearsal_guest", "is_superuser", )
-    actions = ["export_as_csv", "send_reminder"]
+class UserAdmin(
+    admin.ModelAdmin, ExportCsvMixin, SendReminderMixin, GenerateInviteLinksMixin
+):
+    list_display = (
+        "name",
+        "invite_code",
+        "max_guests",
+        "email",
+        "is_rehearsal_guest",
+        "has_rsvp",
+        "rsvp",
+    )
+    list_filter = (
+        HasRsvpFilter,
+        "is_rehearsal_guest",
+        "is_superuser",
+    )
+    actions = ["export_as_csv", "generate_invite_links", "send_reminder"]
 
     change_list_template = "entities/guests_changelist.html"
 
@@ -76,9 +87,7 @@ class UserAdmin(admin.ModelAdmin, ExportCsvMixin, SendReminderMixin):
             has_rsvp = rsvp_obj is not None
 
             if has_rsvp:
-                url = (
-                    reverse("admin:wedding_rsvp_changelist") + str(rsvp_obj.id)
-                )
+                url = reverse("admin:wedding_rsvp_changelist") + str(rsvp_obj.id)
                 return format_html('<a href="{}">View</a>', url)
             else:
                 return ""
@@ -88,7 +97,7 @@ class UserAdmin(admin.ModelAdmin, ExportCsvMixin, SendReminderMixin):
     def get_urls(self):
         urls = super().get_urls()
         my_urls = [
-            path('import-csv/', self.import_csv),
+            path("import-csv/", self.import_csv),
         ]
         return my_urls + urls
 
@@ -107,9 +116,7 @@ class UserAdmin(admin.ModelAdmin, ExportCsvMixin, SendReminderMixin):
             return redirect("..")
         form = CsvImportForm()
         payload = {"form": form}
-        return render(
-            request, "admin/csv_form.html", payload
-        )
+        return render(request, "admin/csv_form.html", payload)
 
 
 @admin.register(Allergy)
@@ -131,22 +138,25 @@ class AllergySummaryAdmin(admin.ModelAdmin):
         )
 
         try:
-            qs = response.context_data['cl'].queryset
+            qs = response.context_data["cl"].queryset
         except (AttributeError, KeyError):
             return response
 
         metrics = {
-            'total': Count('id'),
+            "total": Count("id"),
         }
 
-        summary = qs.filter(allergy__isnull=False)\
-            .values('allergy')\
-            .annotate(**metrics)\
-            .order_by('-total')
+        summary = (
+            qs.filter(allergy__isnull=False)
+            .values("allergy")
+            .annotate(**metrics)
+            .order_by("-total")
+        )
 
-        response.context_data['summary'] = list(summary)
-        response.context_data['total_allergies'] = summary.\
-            aggregate(Sum("total"))["total__sum"]
+        response.context_data["summary"] = list(summary)
+        response.context_data["total_allergies"] = summary.aggregate(Sum("total"))[
+            "total__sum"
+        ]
 
         return response
 
@@ -173,21 +183,23 @@ class RsvpSummaryAdmin(admin.ModelAdmin):
         )
 
         try:
-            qs = response.context_data['cl'].queryset
+            qs = response.context_data["cl"].queryset
         except (AttributeError, KeyError):
             return response
 
         rsvp_users = Rsvp.objects.values_list("guest_id")
         num_rsvp = User.objects.filter(id__in=rsvp_users).count()
-        num_not_rsvp = User.objects.filter(is_superuser=False)\
-            .filter(~Q(id__in=rsvp_users)).count()
+        num_not_rsvp = (
+            User.objects.filter(is_superuser=False)
+            .filter(~Q(id__in=rsvp_users))
+            .count()
+        )
         guest_count = Rsvp.objects.all().aggregate(Sum("num_guests"))
 
-        response.context_data['summary'] = {
+        response.context_data["summary"] = {
             "Has RSVP'd": num_rsvp,
             "Has not RSVP'd": num_not_rsvp,
-            "Guest Count (so far)": guest_count['num_guests__sum']
+            "Guest Count (so far)": guest_count["num_guests__sum"],
         }
 
         return response
-
