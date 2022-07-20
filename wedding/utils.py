@@ -50,6 +50,6 @@ def save_guest_list_rows(rows: list[list[str]]):
         user.first_name = row[0]
         user.email = row[1]
         user.max_guests = row[2]
-        user.is_rehearsal_guest = row[3] == 'true'
+        user.is_rehearsal_guest = row[3] == "true"
         user.password = make_password(invite_code)
         user.save()

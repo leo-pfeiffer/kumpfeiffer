@@ -4,3 +4,7 @@ python-dotenv==0.20.0
 whitenoise==6.1.0
 sendgrid==6.9.7
 psycopg2-binary==2.9.3  # need this for mac OS
+
+# qr code
+qrcode==7.3.1
+pillow==9.2.0
