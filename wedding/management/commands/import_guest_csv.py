@@ -2,13 +2,13 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import make_password
 from django.core.management.base import BaseCommand
 
-from wedding.utils import read_guest_csv, generate_invite_code
+from wedding.utils import read_guest_csv, generate_invite_code, save_guest_list_rows
 
 
 class Command(BaseCommand):
     """
     Example usage:
-    python manage.py import_guest_csv "kumpfeiffer/fixtures/test_guests.csv"
+    python manage.py import_guest_csv "resources/guests.csv"
     """
 
     def add_arguments(self, parser):
@@ -22,14 +22,5 @@ class Command(BaseCommand):
     def import_guest_csv(path):
         rows = read_guest_csv(path)
 
-        User = get_user_model()
-
         # create users
-        for row in rows:
-            invite_code = generate_invite_code()
-            user = User(username=invite_code)
-            user.first_name = row[0]
-            user.email = row[1]
-            user.max_guests = row[2]
-            user.password = make_password(invite_code)
-            user.save()
+        save_guest_list_rows(rows)

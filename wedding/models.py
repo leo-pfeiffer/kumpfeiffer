@@ -9,6 +9,9 @@ class User(AbstractUser):
         blank=False, null=False, default=1,
         validators=[MaxValueValidator(10), MinValueValidator(1)]
     )
+    is_rehearsal_guest = models.BooleanField(
+        blank=False, null=False, default=False
+    )
 
 
 class Rsvp(models.Model):

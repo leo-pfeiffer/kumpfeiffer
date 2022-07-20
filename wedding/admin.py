@@ -13,7 +13,7 @@ from wedding.models import Allergy, Rsvp, User, AllergySummary, RsvpSummary
 
 from django.contrib.auth.hashers import make_password
 
-from wedding.utils import generate_invite_code
+from wedding.utils import generate_invite_code, save_guest_list_rows
 
 
 class CsvImportForm(forms.Form):
@@ -42,8 +42,8 @@ class HasRsvpFilter(SimpleListFilter):
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin, ExportCsvMixin, SendReminderMixin):
-    list_display = ("name", "invite_code", "max_guests", "email", "has_rsvp", "rsvp")
-    list_filter = (HasRsvpFilter, "is_superuser", )
+    list_display = ("name", "invite_code", "max_guests", "email", "is_rehearsal_guest", "has_rsvp", "rsvp")
+    list_filter = (HasRsvpFilter, "is_rehearsal_guest", "is_superuser", )
     actions = ["export_as_csv", "send_reminder"]
 
     change_list_template = "entities/guests_changelist.html"
@@ -59,6 +59,9 @@ class UserAdmin(admin.ModelAdmin, ExportCsvMixin, SendReminderMixin):
             return ""
         else:
             return obj.username
+
+    def is_rehearsal_guest(self, obj: User):
+        return obj.is_rehearsal_guest
 
     def has_rsvp(self, obj):
         if obj.is_superuser:
@@ -98,16 +101,7 @@ class UserAdmin(admin.ModelAdmin, ExportCsvMixin, SendReminderMixin):
             rows = [row.split(",") for row in rows]
 
             # create users
-            for row in rows:
-                if len(row) < 3:
-                    continue
-                invite_code = generate_invite_code()
-                user = User(username=invite_code)
-                user.first_name = row[0]
-                user.email = row[1]
-                user.max_guests = row[2]
-                user.password = make_password(invite_code)
-                user.save()
+            save_guest_list_rows(rows)
 
             self.message_user(request, "Guest list has been imported")
             return redirect("..")

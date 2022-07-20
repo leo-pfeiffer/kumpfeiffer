@@ -3,6 +3,11 @@ import string
 import random
 import csv
 
+from django.contrib.auth import get_user_model
+from django.contrib.auth.hashers import make_password
+
+User = get_user_model()
+
 
 def generate_invite_code() -> str:
     """
@@ -30,6 +35,21 @@ def read_guest_csv(path: str) -> list:
         rows = []
         for row in reader:
             clean_row = [word.strip() for word in row]
-            if len(clean_row) >= 3:
-                rows.append(clean_row[:3])
+            if len(clean_row) >= 4:
+                rows.append(clean_row[:4])
     return rows
+
+
+def save_guest_list_rows(rows: list[list[str]]):
+    for row in rows:
+        if len(row) < 4:
+            continue
+
+        invite_code = generate_invite_code()
+        user = User(username=invite_code)
+        user.first_name = row[0]
+        user.email = row[1]
+        user.max_guests = row[2]
+        user.is_rehearsal_guest = row[3] == 'true'
+        user.password = make_password(invite_code)
+        user.save()
