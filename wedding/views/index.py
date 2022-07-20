@@ -7,6 +7,13 @@ class IndexView(TemplateView):
     template_name = "index.html"
 
     def get(self, request, **kwargs):
+        if "inviteCode" in request.GET:
+            inviteCode = request.GET['inviteCode']
+            user = authenticate(request, username=inviteCode, password=inviteCode)
+            if user is not None:
+                login(request, user)
+                return redirect('/home')
+
         return render(request, self.template_name)
 
     def post(self, request, **kwargs):
