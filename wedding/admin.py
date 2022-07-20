@@ -8,6 +8,7 @@ from django.utils.html import format_html
 
 from wedding.mixins.export_csv_mixin import ExportCsvMixin
 from wedding.mixins.generate_invite_links_mixin import GenerateInviteLinksMixin
+from wedding.mixins.generate_qr_codes import GenerateQrCodes
 from wedding.mixins.send_reminder_mixin import SendReminderMixin
 from wedding.models import Allergy, Rsvp, User, AllergySummary, RsvpSummary
 
@@ -39,7 +40,11 @@ class HasRsvpFilter(SimpleListFilter):
 
 @admin.register(User)
 class UserAdmin(
-    admin.ModelAdmin, ExportCsvMixin, SendReminderMixin, GenerateInviteLinksMixin
+    admin.ModelAdmin,
+    ExportCsvMixin,
+    SendReminderMixin,
+    GenerateInviteLinksMixin,
+    GenerateQrCodes,
 ):
     list_display = (
         "name",
@@ -55,7 +60,12 @@ class UserAdmin(
         "is_rehearsal_guest",
         "is_superuser",
     )
-    actions = ["export_as_csv", "generate_invite_links", "send_reminder"]
+    actions = [
+        "export_as_csv",
+        "generate_invite_links",
+        "generate_qr_codes",
+        "send_reminder",
+    ]
 
     change_list_template = "entities/guests_changelist.html"
 

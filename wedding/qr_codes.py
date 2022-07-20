@@ -1,5 +1,5 @@
 import qrcode
-from PIL import ImageFont, ImageDraw, Image
+from PIL import ImageFont, ImageDraw
 
 import io
 import zipfile
@@ -19,24 +19,22 @@ def generate_qr_code(url: str, invite_code: str):
     draw = ImageDraw.Draw(img)
     font = ImageFont.truetype("Monaco", 64)
 
-    draw.text((170, 460), invite_code, (0, 0, 0), font=font)
+    draw.text((200, 500), invite_code, (0, 0, 0), font=font)
 
-    # img.save(f"{invite_code}.png")
     return img
 
 
-def zip_images(images: list[(str, Image)]):
-    # temp_file = io.BytesIO()
-    temp_file = "sample.zip"
+def zip_images(images: list[dict]):
+    """
+    :param images: Images to zip, format [{name: str, image: Image}]
+    :return: zipped images
+    """
+    temp_file = io.BytesIO()
+    # temp_file = "sample.zip"
     with zipfile.ZipFile(temp_file, "w", zipfile.ZIP_DEFLATED) as file:
-        for name, image in images:
+        for image in images:
             img_byte_arr = io.BytesIO()
-            image.save(img_byte_arr, format="PNG")
-            file.writestr(f"{name}.png", img_byte_arr.getvalue())
+            image["image"].save(img_byte_arr, format="PNG")
+            file.writestr(f"{image['name']}.png", img_byte_arr.getvalue())
 
-
-img1 = generate_qr_code("My Silly Test", "abc")
-img2 = generate_qr_code("My Silly Test", "def")
-img3 = generate_qr_code("My Silly Test", "ghi")
-
-zip_images([("img1", img1), ("img2", img2), ("img3", img3)])
+    return temp_file.getvalue()
