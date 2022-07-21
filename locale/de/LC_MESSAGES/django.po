@@ -1,0 +1,59 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-07-21 21:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: wedding/templates/langs.html:20
+msgid "Have a good day"
+msgstr "Genieß deinen Tag"
+
+msgid "Thank you, we have received your RSVP!"
+msgstr "Danke, wir haben deine RSVP erhalten!"
+
+msgid "Back to main page"
+msgstr "Zurück zur Hauptseite"
+
+msgid "21 June 2023"
+msgstr "21. Juni 2023"
+
+msgid "June 21, 2023"
+msgstr "21. Juni 2023"
+
+msgid "Menu"
+msgstr "Menü"
+
+msgid "Back"
+msgstr "Zurück"
+
+msgid "Our Story"
+msgstr "Unsere Geschichte"
+
+msgid "Wedding Details"
+msgstr "Details zur Hochzeit"
+
+msgid "Engagement"
+msgstr "Verlobung"
+
+msgid "Registry"
+msgstr "Hochzeitstisch"
+
+msgid "Wedding Party"
+msgstr "Trauzeugen"
+
+msgid "The Day They Got Engaged"
+msgstr "Die Verlobung"

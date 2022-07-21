@@ -1,16 +1,30 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% load static %}
 {% block content %}
-    <section id="thank" class="w-full h-screen bg-center bg-cover bg-proposal flex justify-center items-center">
-        <div class="max-w-6xl p-8 justify-center bg-cover bg-gray-800 bg-opacity-75 rounded-full">
-            <div class="text-center text-white">
-                <p class="text-4xl m-2">Thank you, we have received your RSVP!</p>
-                <p class="text-4xl m-2">Danke, wir haben deine RSVP erhalten!</p>
-                <hr class="m-4">
-                <a href="home">
-                    Back to main page
+<div class="gla_page" id="gla_page">
+
+    <div class="gla_slider gla_image_bck  gla_wht_txt gla_fixed"  data-image="{% static "images/proposal.jpeg" %}"
+         data-stellar-background-ratio="0.8" style="background-position: 25%">
+
+        <!-- Over -->
+        <div class="gla_over" data-color="#1e1d2d" data-opacity="0.35"></div>
+
+        <div class="container">
+
+            <div class="gla_slide_txt gla_slide_center_middle text-center">
+
+                <div class="gla_slide_midtitle">
+                    {% trans "Thank you, we have received your RSVP!" %}
+                </div>
+
+                <a href="/home">
+                    {% trans "Back to main page" %}
                 </a>
             </div>
+            <!-- Slider Texts End -->
+
         </div>
-    </section>
+    </div>
+</div>
 {% endblock content %}
