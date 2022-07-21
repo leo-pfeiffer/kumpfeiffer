@@ -54,3 +54,6 @@ msgstr "Hochzeitstisch"
 
 msgid "Wedding Party"
 msgstr "Trauzeugen"
+
+msgid "The Day They Got Engaged"
+msgstr "Die Verlobung"
