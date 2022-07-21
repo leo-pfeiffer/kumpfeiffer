@@ -46,6 +46,25 @@
                     <div class="container">
                         <ul>
                             <li class="gla_parent"><a href="/admin"><i class="fa-solid fa-gear" aria-hidden="true"></i></a></li>
+                            <li class="gla-parent">
+                                <a>
+                                    <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                                        {% get_current_language as LANGUAGE_CODE %}
+                                        {% get_available_languages as LANGUAGES %}
+                                        {% if LANGUAGE_CODE == 'de' %}
+                                            <label>
+                                                <input name="language" style="display: none" value="en">
+                                                <input type="submit" value="🇺🇸" style="background: none; border: none">
+                                            </label>
+                                        {% else %}
+                                            <label>
+                                                <input name="language" style="display: none" value="de">
+                                                <input type="submit" value="🇩🇪" style="background: none; border: none">
+                                            </label>
+                                        {% endif %}
+                                    </form>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <!-- container end -->
@@ -56,6 +75,25 @@
                 <div class="gla_default_menu">
                     <ul>
                         <li class="gla_parent"><a href="/admin"><i class="fa-solid fa-gear" aria-hidden="true"></i></a></li>
+                        <li class="gla-parent">
+                            <a>
+                                <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                                    {% get_current_language as LANGUAGE_CODE %}
+                                    {% get_available_languages as LANGUAGES %}
+                                    {% if LANGUAGE_CODE == 'de' %}
+                                        <label>
+                                            <input name="language" style="display: none" value="en">
+                                            <input type="submit" value="🇺🇸" style="background: none; border: none">
+                                        </label>
+                                    {% else %}
+                                        <label>
+                                            <input name="language" style="display: none" value="de">
+                                            <input type="submit" value="🇩🇪" style="background: none; border: none">
+                                        </label>
+                                    {% endif %}
+                                </form>
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <!-- Top Menu End -->
