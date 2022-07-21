@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+    <section id="thank" class="w-full h-screen bg-center bg-cover bg-proposal flex justify-center items-center">
+        <div class="max-w-6xl p-8 justify-center bg-cover bg-gray-800 bg-opacity-75 rounded-full">
+
+        <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+            {% get_current_language as LANGUAGE_CODE %}
+            {% get_available_languages as LANGUAGES %}
+            {% if LANGUAGE_CODE == 'de' %}
+                <label>
+                    <input name="language" style="display: none" value="en">
+                    <input type="submit" value="🇺🇸" style="background: none; border: none">
+                </label>
+            {% else %}
+                <label>
+                    <input name="language" style="display: none" value="de">
+                    <input type="submit" value="🇩🇪" style="background: none; border: none">
+                </label>
+            {% endif %}
+        </form>
+
+        {% trans "Have a good day" %}
+        </div>
+    </section>
+{% endblock content %}

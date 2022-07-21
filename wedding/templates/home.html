@@ -1,4 +1,5 @@
 ﻿{% extends "base.html" %}
+{% load i18n %}
 {% load static %}
 {% block content %}
 
@@ -22,7 +23,7 @@
                         <a href="/" class="gla_logo">Kristina & Leo</a>
                         
                         <!-- Text Logo -->
-                        <div class="gla_logo_und">June 21, 2023</div>
+                        <div class="gla_logo_und">{% trans "June 21, 2023" %}</div>
                     </div>
                 </div>
 
@@ -31,8 +32,8 @@
                     
                     <div class="gla_main_menu_icon">
                         <i></i><i></i><i></i><i></i>
-                        <b>Menu</b>
-                        <b class="gla_main_menu_icon_b">Back</b>
+                        <b>{% trans "Menu" %}</b>
+                        <b class="gla_main_menu_icon_b">{% trans "Back" %}</b>
                     </div>
                 </div>
                 
@@ -45,14 +46,32 @@
                 <div class="gla_main_menu_content_menu gla_wht_txt text-right">
                     <div class="container">
                         <ul>
-                            <li class="gla_parent"><a href="#our-story">Our Story</a></li>
-                            <li class="gla_parent"><a href="#wedding-details">Wedding Details</a></li>
-                            <li class="gla_parent"><a href="#rsvp">RSVP</a></li>
-                            <li class="gla_parent"><a href="#engagement">Engagement</a></li>
-                            <li class="gla_parent"><a href="#registry">Registry</a></li>
-                            <li class="gla_parent"><a href="#wedding-party">Wedding Party</a></li>
+                            <li class="gla_parent"><a href="#our-story">{% trans "Our Story" %}</a></li>
+                            <li class="gla_parent"><a href="#wedding-details">{% trans "Wedding Details" %}</a></li>
+                            <li class="gla_parent"><a href="#rsvp">{% trans "RSVP" %}</a></li>
+                            <li class="gla_parent"><a href="#engagement">{% trans "Engagement" %}</a></li>
+                            <li class="gla_parent"><a href="#registry">{% trans "Registry" %}</a></li>
+                            <li class="gla_parent"><a href="#wedding-party">{% trans "Wedding Party" %}</a></li>
                             <li class="gla_parent"><a href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
-                            <li class="gla_parent"><a href="/admin"><i class="fa-solid fa-gear" aria-hidden="true"></i></a></li>
+                            <li class="gla-parent">
+                                <a>
+                                    <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                                        {% get_current_language as LANGUAGE_CODE %}
+                                        {% get_available_languages as LANGUAGES %}
+                                        {% if LANGUAGE_CODE == 'de' %}
+                                            <label>
+                                                <input name="language" style="display: none" value="en">
+                                                <input type="submit" value="🇺🇸" style="background: none; border: none">
+                                            </label>
+                                        {% else %}
+                                            <label>
+                                                <input name="language" style="display: none" value="de">
+                                                <input type="submit" value="🇩🇪" style="background: none; border: none">
+                                            </label>
+                                        {% endif %}
+                                    </form>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <!-- container end -->
@@ -62,14 +81,32 @@
                 <!-- Top Menu -->
                 <div class="gla_default_menu">
                     <ul>
-                        <li class="gla_parent"><a href="#our-story">Our Story</a></li>
-                        <li class="gla_parent"><a href="#wedding-details">Wedding Details</a></li>
-                        <li class="gla_parent"><a href="#rsvp">RSVP</a></li>
-                        <li class="gla_parent"><a href="#engagement">Engagement</a></li>
-                        <li class="gla_parent"><a href="#registry">Registry</a></li>
-                        <li class="gla_parent"><a href="#wedding-party">Wedding Party</a></li>
+                        <li class="gla_parent"><a href="#our-story">{% trans "Our Story" %}</a></li>
+                        <li class="gla_parent"><a href="#wedding-details">{% trans "Wedding Details" %}</a></li>
+                        <li class="gla_parent"><a href="#rsvp">{% trans "RSVP" %}</a></li>
+                        <li class="gla_parent"><a href="#engagement">{% trans "Engagement" %}</a></li>
+                        <li class="gla_parent"><a href="#registry">{% trans "Registry" %}</a></li>
+                        <li class="gla_parent"><a href="#wedding-party">{% trans "Wedding Party" %}</a></li>
                         <li class="gla_parent"><a href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
-                        <li class="gla_parent"><a href="/admin"><i class="fa-solid fa-gear" aria-hidden="true"></i></a></li>
+                        <li class="gla-parent">
+                            <a>
+                                <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                                    {% get_current_language as LANGUAGE_CODE %}
+                                    {% get_available_languages as LANGUAGES %}
+                                    {% if LANGUAGE_CODE == 'de' %}
+                                        <label>
+                                            <input name="language" style="display: none" value="en">
+                                            <input type="submit" value="🇺🇸" style="background: none; border: none">
+                                        </label>
+                                    {% else %}
+                                        <label>
+                                            <input name="language" style="display: none" value="de">
+                                            <input type="submit" value="🇩🇪" style="background: none; border: none">
+                                        </label>
+                                    {% endif %}
+                                </form>
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <!-- Top Menu End -->
@@ -102,7 +139,7 @@
 {#            </div>#}
 
             <div class="gla_slide_txt gla_slide_center_middle text-center">
-                <div class="gla_slide_midtitle">Kristina + Leopold<br><span>21 June 2023</span></div>
+                <div class="gla_slide_midtitle">Kristina + Leopold<br><span>{% trans "21 June 2023" %}</span></div>
             </div>
 
             <!-- Slider Texts End -->
