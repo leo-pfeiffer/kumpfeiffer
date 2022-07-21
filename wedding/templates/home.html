@@ -16,16 +16,10 @@
         <nav class="gla_light_nav gla_transp_nav">
 
             <div class="container">
-                
-                <div class="gla_logo_container clearfix">
-                    <div class="gla_logo_txt">
-                        <!-- Logo -->
-                        <a href="/" class="gla_logo">Kristina & Leo</a>
-                        
-                        <!-- Text Logo -->
-                        <div class="gla_logo_und">{% trans "June 21, 2023" %}</div>
-                    </div>
-                </div>
+
+                {% block logo %}
+                    {% include 'logo.html' %}
+                {% endblock %}
 
                 <!-- Menu -->
                 <div class="gla_main_menu gla_main_menu_mobile">

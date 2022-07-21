@@ -17,23 +17,17 @@
 
             <div class="container">
                 
-                <div class="gla_logo_container clearfix">
-                    <div class="gla_logo_txt">
-                        <!-- Logo -->
-                        <a href="/" class="gla_logo">Kristina & Leo</a>
-                        
-                        <!-- Text Logo -->
-                        <div class="gla_logo_und">June 21, 2023</div>
-                    </div>
-                </div>
+                {% block logo %}
+                    {% include 'logo.html' %}
+                {% endblock %}
 
                 <!-- Menu -->
                 <div class="gla_main_menu gla_main_menu_mobile">
                     
                     <div class="gla_main_menu_icon">
                         <i></i><i></i><i></i><i></i>
-                        <b>Menu</b>
-                        <b class="gla_main_menu_icon_b">Back</b>
+                        <b>{% trans "Menu" %}</b>
+                        <b class="gla_main_menu_icon_b">{% trans "Back" %}</b>
                     </div>
                 </div>
                 
@@ -46,8 +40,8 @@
                 <div class="gla_main_menu_content_menu gla_wht_txt text-right">
                     <div class="container">
                         <ul>
-                            <li class="gla_parent"><a href="#wedding-details">Wedding Details</a></li>
-                            <li class="gla_parent"><a href="#engagement">Engagement</a></li>
+                            <li class="gla_parent"><a href="#wedding-details">{% trans "Wedding Details" %}</a></li>
+                            <li class="gla_parent"><a href="#engagement">{% trans "Engagement" %}</a></li>
                             <li class="gla_parent"><a href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i></a></li>
                             <li class="gla-parent">
                                 <a>
@@ -77,8 +71,8 @@
                 <!-- Top Menu -->
                 <div class="gla_default_menu">
                     <ul>
-                        <li class="gla_parent"><a href="#wedding-details">Wedding Details</a></li>
-                        <li class="gla_parent"><a href="#engagement">Engagement</a></li>
+                        <li class="gla_parent"><a href="#wedding-details">{% trans "Wedding Details" %}</a></li>
+                        <li class="gla_parent"><a href="#engagement">{% trans "Engagement" %}</a></li>
                         <li class="gla_parent"><a href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i></a></li>
                         <li class="gla-parent">
                             <a>
