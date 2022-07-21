@@ -1,0 +1,260 @@
+﻿{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<!-- Page -->
+<div class="gla_page" id="gla_page">
+
+
+    <!-- To Top -->
+    <a href="#gla_page" class="gla_top ti ti-angle-up gla_go"></a>
+    
+    <!-- Header -->
+    <header>
+    
+        <nav class="gla_light_nav gla_transp_nav">
+
+            <div class="container">
+                
+                <div class="gla_logo_container clearfix">
+                    <div class="gla_logo_txt">
+                        <!-- Logo -->
+                        <a href="/" class="gla_logo">Kristina & Leo</a>
+                        
+                        <!-- Text Logo -->
+                        <div class="gla_logo_und">June 21, 2023</div>
+                    </div>
+                </div>
+
+                <!-- Menu -->
+                <div class="gla_main_menu gla_main_menu_mobile">
+                    
+                    <div class="gla_main_menu_icon">
+                        <i></i><i></i><i></i><i></i>
+                        <b>Menu</b>
+                        <b class="gla_main_menu_icon_b">Back</b>
+                    </div>
+                </div>
+                
+                <!-- Menu Content -->
+                <div class="gla_main_menu_content gla_image_bck" data-color="rgba(0,0,0,0.9)" data-image="{% static "images/proposal.jpeg" %}">
+                    <!-- Over -->
+                    <div class="gla_over" data-color="#000" data-opacity="0.7"></div>
+                </div>
+
+                <div class="gla_main_menu_content_menu gla_wht_txt text-right">
+                    <div class="container">
+                        <ul>
+                            <li class="gla_parent"><a href="#wedding-details">Wedding Details</a></li>
+                            <li class="gla_parent"><a href="#engagement">Engagement</a></li>
+                            <li class="gla_parent"><a href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
+                            <li class="gla_parent"><a href="/admin"><i class="fa-solid fa-gear" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+                    <!-- container end -->
+                </div>
+                <!-- menu content end -->
+
+                <!-- Top Menu -->
+                <div class="gla_default_menu">
+                    <ul>
+                        <li class="gla_parent"><a href="#wedding-details">Wedding Details</a></li>
+                        <li class="gla_parent"><a href="#engagement">Engagement</a></li>
+                        <li class="gla_parent"><a href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
+                        <li class="gla_parent"><a href="/admin"><i class="fa-solid fa-gear" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+                <!-- Top Menu End -->
+               
+            </div>
+            <!-- container end -->
+        </nav>
+        
+    </header>
+    <!-- Header End -->
+
+
+    <!-- Slider -->
+    <div class="gla_slider gla_image_bck  gla_wht_txt gla_fixed"  data-image="{% static "images/proposal.jpeg" %}"
+         data-stellar-background-ratio="0.8" style="background-position: 25%">
+
+        <!-- Over -->
+        <div class="gla_over" data-color="#1e1d2d" data-opacity="0.35"></div>
+
+        <div class="container">
+
+            
+            <!-- Slider Texts -->
+{#            <div class="gla_slide_txt gla_slide_center_middle text-center">#}
+{#                 <div class="gla_flower gla_flower2">#}
+{#                    <div class="gla_flower2_name_l">Kristina <b>Save The Date</b></div>#}
+{#                    <div class="gla_flower2_name_r">Leopold <b>June 21, 2023</b></div>#}
+{#                    <img src="https://via.placeholder.com/600x600" alt="">#}
+{#                </div>#}
+{#            </div>#}
+
+            <div class="gla_slide_txt gla_slide_center_middle text-center">
+                <div class="gla_slide_midtitle">Kristina + Leopold<br><span>21 June 2023</span></div>
+            </div>
+
+            <!-- Slider Texts End -->
+
+        </div>
+        <!-- container end -->
+
+        <!-- Slide Down -->
+        <a class="gla_scroll_down gla_go" href="#gla_content">
+            <b></b>
+            Scroll
+        </a>
+
+
+    </div>
+    <!-- Slider End -->
+
+    <!-- Content -->
+    <section id="gla_content" class="gla_content">
+
+
+<!-- section -->
+        <section class="gla_section" id="wedding-details">
+
+            <div class="container text-center">
+                <p><img src="{% static "images/animations/flower6.gif" %}" data-bottom-top="@src:{% static "images/animations/flower6.gif" %}; opacity:1" class="gla_animated_flower" height="110" alt=""></p>
+                <h2>Wedding Details</h2>
+                <h3 class="gla_subtitle">When & Where</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam euismod lacinia ante quis feugiat. Nunc interdum orci vitae quam dignissim, et sagittis mi viverra. Donec efficitur diam sit amet hendrerit malesuada. Proin eget ex sed risus fermentum pulvinar.</p>
+
+                <a href="https://goo.gl/maps/1NFf5PSdiy48MBu59" class="btn">View Map</a>
+
+            </div>
+            <!-- container end -->
+
+        </section>
+        <!-- section end -->
+
+
+        <!-- section -->
+        <section class="gla_section gla_image_bck gla_fixed gla_wht_txt" data-stellar-background-ratio="0.8" data-image="{% static "images/castle.jpeg" %}">
+
+            <!-- Over -->
+            <div class="gla_over" data-color="#1e1d2d" data-opacity="0.4"></div>
+
+            <div class="container text-center">
+                <p><img src="{% static "images/animations/savethedate_wh.gif" %}" data-bottom-top="@src:{% static "images/animations/savethedate_wh.gif" %}" height="150" alt=""></p>
+                <h2>June 21st, 2023</h2>
+                <h3 class="gla_subtitle">Fingask Castle,<br>Scotland</h3>
+                <div class="gla_countdown" data-year="2023" data-month="06" data-day="21"></div>
+
+            </div>
+            <!-- container end -->
+
+        </section>
+        <!-- section end -->
+
+        <!-- section -->
+        <section id="engagement" class="gla_section gla_image_bck">
+
+
+            <div class="container text-center">
+                <p><img src="{% static "images/animations/flower7.gif" %}" data-bottom-top="@src:{% static "images/animations/flower7.gif" %}; opacity:1" class="gla_animated_flower" height="110" alt=""></p>
+                <h2>The Day They Got Engaged</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam euismod lacinia ante quis feugiat. Nunc interdum orci vitae quam dignissim, et sagittis mi viverra. Donec efficitur diam sit amet hendrerit malesuada. Proin eget ex sed risus fermentum pulvinar. Sed congue, leo vitae tempus commodo, tortor ex ornare tortor, porta pharetra diam ipsum quis ipsum.</p>
+
+                <!-- grid -->
+                <div class="gla_portfolio_no_padding grid">
+
+                    <div class="col-sm-4 gla_anim_box grid-item engagement">
+                        <div class="gla_shop_item">
+                            <a href="{% static 'images/proposal.jpeg'%}" class="lightbox">
+                                <img src="{% static 'images/proposal.jpeg'%}" alt="">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 gla_anim_box grid-item engagement">
+                        <div class="gla_shop_item">
+                            <a href="{% static 'images/engagement2.jpeg'%}" class="lightbox">
+                                <img src="{% static 'images/engagement2.jpeg'%}" alt="">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 gla_anim_box grid-item engagement">
+                        <div class="gla_shop_item">
+                            <a href="{% static 'images/engagement3.jpeg'%}" class="lightbox">
+                                <img src="{% static 'images/engagement3.jpeg'%}" alt="">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 gla_anim_box grid-item engagement">
+                        <div class="gla_shop_item">
+                            <a href="{% static 'images/engagement4.jpeg'%}" class="lightbox">
+                                <img src="{% static 'images/engagement4.jpeg'%}" alt="">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 gla_anim_box grid-item engagement">
+                        <div class="gla_shop_item">
+                            <a href="{% static 'images/engagement5.jpeg'%}" class="lightbox">
+                                <img src="{% static 'images/engagement5.jpeg'%}" alt="">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 gla_anim_box grid-item engagement">
+                        <div class="gla_shop_item">
+                            <a href="{% static 'images/engagement6.jpeg'%}" class="lightbox">
+                                <img src="{% static 'images/engagement6.jpeg'%}" alt="">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 gla_anim_box grid-item engagement">
+                        <div class="gla_shop_item">
+                            <a href="{% static 'images/engagement1.jpeg'%}" class="lightbox">
+                                <img src="{% static 'images/engagement1.jpeg'%}" alt="">
+                            </a>
+                        </div>
+                    </div>
+
+
+                 </div>
+                 <!-- grid end -->
+
+
+
+            </div>
+            <!-- container end -->
+
+        </section>
+        <!-- section end -->
+
+
+        <!-- section -->
+        <section class="gla_section gla_image_bck gla_fixed gla_wht_txt" data-stellar-background-ratio="0.8" data-image="{% static 'images/perthshire.jpeg' %}">
+            
+            <!-- Over -->
+            <div class="gla_over" data-color="#1e1d2d" data-opacity="0.4"></div>
+            
+            <div class="container text-center">
+                <p><img src="{% static "images/animations/thnyou_wh.gif" %}" alt="" height="200" data-bottom-top="@src:{% static "images/animations/thnyou_wh.gif" %}"></p>
+
+                
+                
+            </div>
+            <!-- container end -->
+
+        </section>
+        <!-- section end -->
+
+
+    </section>
+    <!-- Content End -->
+
+</div>
+<!-- Page End -->
+
+{% endblock content %}
