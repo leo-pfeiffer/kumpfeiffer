@@ -7,7 +7,7 @@ from wedding.qr_codes import generate_qr_code, zip_images
 class GenerateQrCodes:
     def generate_qr_codes(self, request, queryset):
 
-        base_url = f"{request.scheme}://{request.get_host()}"
+        login_url = f"{request.scheme}://{request.get_host()}/login"
 
         data = []
 
@@ -15,7 +15,7 @@ class GenerateQrCodes:
             if obj.is_superuser:
                 continue
 
-            invite_url = f"{base_url}?{urlencode({'inviteCode': obj.username})}"
+            invite_url = f"{login_url}?{urlencode({'inviteCode': obj.username})}"
 
             qr_code = generate_qr_code(invite_url, obj.username)
 

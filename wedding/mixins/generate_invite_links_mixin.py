@@ -10,13 +10,13 @@ class GenerateInviteLinksMixin:
         response["Content-Disposition"] = "attachment; filename=invite-links.csv"
         writer = csv.writer(response)
 
-        base_url = f"{request.scheme}://{request.get_host()}"
+        login_url = f"{request.scheme}://{request.get_host()}/login"
 
         writer.writerow(["Name", "Invite Code", "URL"])
         for obj in queryset:
             if obj.is_superuser:
                 continue
-            invite_url = f"{base_url}?{urlencode({'inviteCode': obj.username})}"
+            invite_url = f"{login_url}?{urlencode({'inviteCode': obj.username})}"
             writer.writerow([obj.first_name, obj.username, invite_url])
 
         return response

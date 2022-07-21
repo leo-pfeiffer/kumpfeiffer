@@ -3,24 +3,24 @@ from django.views.generic import TemplateView
 from django.contrib.auth import login, authenticate
 
 
-class IndexView(TemplateView):
-    template_name = "index.html"
+class LoginView(TemplateView):
+    template_name = "login.html"
 
     def get(self, request, **kwargs):
         if "inviteCode" in request.GET:
-            inviteCode = request.GET['inviteCode']
+            inviteCode = request.GET["inviteCode"]
             user = authenticate(request, username=inviteCode, password=inviteCode)
             if user is not None:
                 login(request, user)
-                return redirect('/home')
+                return redirect("/home")
 
         return render(request, self.template_name)
 
     def post(self, request, **kwargs):
-        inviteCode = request.POST['invite-code']
+        inviteCode = request.POST["invite-code"]
         user = authenticate(request, username=inviteCode, password=inviteCode)
         if user is not None:
             login(request, user)
-            return redirect('/home')
+            return redirect("/home")
         else:
-            return redirect('/')
+            return redirect("/")
