@@ -128,16 +128,6 @@
 
         <div class="container">
 
-            
-            <!-- Slider Texts -->
-{#            <div class="gla_slide_txt gla_slide_center_middle text-center">#}
-{#                 <div class="gla_flower gla_flower2">#}
-{#                    <div class="gla_flower2_name_l">Kristina <b>Save The Date</b></div>#}
-{#                    <div class="gla_flower2_name_r">Leopold <b>June 21, 2023</b></div>#}
-{#                    <img src="https://via.placeholder.com/600x600" alt="">#}
-{#                </div>#}
-{#            </div>#}
-
             <div class="gla_slide_txt gla_slide_center_middle text-center">
                 <div class="gla_slide_midtitle">Kristina + Leopold<br><span>{% trans "21 June 2023" %}</span></div>
             </div>
@@ -176,27 +166,13 @@
         <!-- section end -->
 
 
-        <!-- section -->
-        <section id="wedding-details" class="gla_section gla_image_bck gla_fixed gla_wht_txt" data-stellar-background-ratio="0.8" data-image="{% static "images/castle.jpeg" %}">
-
-            <!-- Over -->
-            <div class="gla_over" data-color="#1e1d2d" data-opacity="0.4"></div>
-
-            <div class="container text-center">
-                <p><img src="{% static "images/animations/savethedate_wh.gif" %}" data-bottom-top="@src:{% static "images/animations/savethedate_wh.gif" %}" height="150" alt=""></p>
-                <h2>June 21st, 2023</h2>
-                <h3 class="gla_subtitle">Fingask Castle,<br>Scotland</h3>
-                <div class="gla_countdown" data-year="2023" data-month="06" data-day="21"></div>
-
-            </div>
-            <!-- container end -->
-
-        </section>
-        <!-- section end -->
+        {% block countdown %}
+            {% include 'countdown.html' %}
+        {% endblock %}
 
 
         <!-- section -->
-        <section class="gla_section">
+        <section class="gla_section" id="wedding-details">
 
             <div class="container text-center">
                 <p><img src="{% static "images/animations/flower6.gif" %}" data-bottom-top="@src:{% static "images/animations/flower6.gif" %}; opacity:1" class="gla_animated_flower" height="110" alt=""></p>
@@ -578,24 +554,9 @@
         <!-- section end -->
 
 
-
-
-        <!-- section -->
-        <section class="gla_section gla_image_bck gla_fixed gla_wht_txt" data-stellar-background-ratio="0.8" data-image="{% static 'images/perthshire.jpeg' %}">
-            
-            <!-- Over -->
-            <div class="gla_over" data-color="#1e1d2d" data-opacity="0.4"></div>
-            
-            <div class="container text-center">
-                <p><img src="{% static "images/animations/thnyou_wh.gif" %}" alt="" height="200" data-bottom-top="@src:{% static "images/animations/thnyou_wh.gif" %}"></p>
-
-                
-                
-            </div>
-            <!-- container end -->
-
-        </section>
-        <!-- section end -->
+        {% block thank_you_footer %}
+            {% include 'thank_you_footer.html' %}
+        {% endblock %}
 
 
     </section>
