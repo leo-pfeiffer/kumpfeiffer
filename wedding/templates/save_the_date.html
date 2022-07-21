@@ -111,33 +111,9 @@
     <!-- Header End -->
 
 
-    <!-- Slider -->
-    <div class="gla_slider gla_image_bck  gla_wht_txt gla_fixed"  data-image="{% static "images/proposal.jpeg" %}"
-         data-stellar-background-ratio="0.8" style="background-position: 25%">
-
-        <!-- Over -->
-        <div class="gla_over" data-color="#1e1d2d" data-opacity="0.35"></div>
-
-        <div class="container">
-
-            <div class="gla_slide_txt gla_slide_center_middle text-center">
-                <div class="gla_slide_midtitle">Kristina + Leopold<br><span>21 June 2023</span></div>
-            </div>
-
-            <!-- Slider Texts End -->
-
-        </div>
-        <!-- container end -->
-
-        <!-- Slide Down -->
-        <a class="gla_scroll_down gla_go" href="#gla_content">
-            <b></b>
-            Scroll
-        </a>
-
-
-    </div>
-    <!-- Slider End -->
+    {% block hero %}
+        {% include 'hero.html' %}
+    {% endblock %}
 
     <!-- Content -->
     <section id="gla_content" class="gla_content">
