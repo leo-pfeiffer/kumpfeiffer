@@ -120,16 +120,6 @@
 
         <div class="container">
 
-            
-            <!-- Slider Texts -->
-{#            <div class="gla_slide_txt gla_slide_center_middle text-center">#}
-{#                 <div class="gla_flower gla_flower2">#}
-{#                    <div class="gla_flower2_name_l">Kristina <b>Save The Date</b></div>#}
-{#                    <div class="gla_flower2_name_r">Leopold <b>June 21, 2023</b></div>#}
-{#                    <img src="https://via.placeholder.com/600x600" alt="">#}
-{#                </div>#}
-{#            </div>#}
-
             <div class="gla_slide_txt gla_slide_center_middle text-center">
                 <div class="gla_slide_midtitle">Kristina + Leopold<br><span>21 June 2023</span></div>
             </div>
@@ -190,83 +180,9 @@
         <!-- section end -->
 
         <!-- section -->
-        <section id="engagement" class="gla_section gla_image_bck">
-
-
-            <div class="container text-center">
-                <p><img src="{% static "images/animations/flower7.gif" %}" data-bottom-top="@src:{% static "images/animations/flower7.gif" %}; opacity:1" class="gla_animated_flower" height="110" alt=""></p>
-                <h2>The Day They Got Engaged</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam euismod lacinia ante quis feugiat. Nunc interdum orci vitae quam dignissim, et sagittis mi viverra. Donec efficitur diam sit amet hendrerit malesuada. Proin eget ex sed risus fermentum pulvinar. Sed congue, leo vitae tempus commodo, tortor ex ornare tortor, porta pharetra diam ipsum quis ipsum.</p>
-
-                <!-- grid -->
-                <div class="gla_portfolio_no_padding grid">
-
-                    <div class="col-sm-4 gla_anim_box grid-item engagement">
-                        <div class="gla_shop_item">
-                            <a href="{% static 'images/proposal.jpeg'%}" class="lightbox">
-                                <img src="{% static 'images/proposal.jpeg'%}" alt="">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4 gla_anim_box grid-item engagement">
-                        <div class="gla_shop_item">
-                            <a href="{% static 'images/engagement2.jpeg'%}" class="lightbox">
-                                <img src="{% static 'images/engagement2.jpeg'%}" alt="">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4 gla_anim_box grid-item engagement">
-                        <div class="gla_shop_item">
-                            <a href="{% static 'images/engagement3.jpeg'%}" class="lightbox">
-                                <img src="{% static 'images/engagement3.jpeg'%}" alt="">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4 gla_anim_box grid-item engagement">
-                        <div class="gla_shop_item">
-                            <a href="{% static 'images/engagement4.jpeg'%}" class="lightbox">
-                                <img src="{% static 'images/engagement4.jpeg'%}" alt="">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4 gla_anim_box grid-item engagement">
-                        <div class="gla_shop_item">
-                            <a href="{% static 'images/engagement5.jpeg'%}" class="lightbox">
-                                <img src="{% static 'images/engagement5.jpeg'%}" alt="">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4 gla_anim_box grid-item engagement">
-                        <div class="gla_shop_item">
-                            <a href="{% static 'images/engagement6.jpeg'%}" class="lightbox">
-                                <img src="{% static 'images/engagement6.jpeg'%}" alt="">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4 gla_anim_box grid-item engagement">
-                        <div class="gla_shop_item">
-                            <a href="{% static 'images/engagement1.jpeg'%}" class="lightbox">
-                                <img src="{% static 'images/engagement1.jpeg'%}" alt="">
-                            </a>
-                        </div>
-                    </div>
-
-
-                 </div>
-                 <!-- grid end -->
-
-
-
-            </div>
-            <!-- container end -->
-
-        </section>
+        {% block engagement %}
+            {% include 'engagement.html' %}
+        {% endblock %}
         <!-- section end -->
 
 
