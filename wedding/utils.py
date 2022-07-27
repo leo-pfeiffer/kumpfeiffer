@@ -35,8 +35,8 @@ def read_guest_csv(path: str) -> list:
         rows = []
         for row in reader:
             clean_row = [word.strip() for word in row]
-            if len(clean_row) >= 4:
-                rows.append(clean_row[:4])
+            if len(clean_row) >= 5:
+                rows.append(clean_row[:5])
     return rows
 
 
@@ -48,8 +48,9 @@ def save_guest_list_rows(rows: list[list[str]]):
         invite_code = generate_invite_code()
         user = User(username=invite_code)
         user.first_name = row[0]
-        user.email = row[1]
-        user.max_guests = row[2]
-        user.is_rehearsal_guest = row[3] == "true"
+        user.preferred_name = row[1]
+        user.email = row[2]
+        user.max_guests = row[3]
+        user.is_rehearsal_guest = row[4] == "true"
         user.password = make_password(invite_code)
         user.save()

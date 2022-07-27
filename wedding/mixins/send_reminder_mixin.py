@@ -2,18 +2,17 @@ from wedding.mailer import Mailer
 
 
 class SendReminderMixin:
-
     @staticmethod
     def _create_message(user):
         return f"""
-        Hi {user['first_name']},
+        Hi {user['preferred_name']},
         <br><br>
-        We're super excited to having you at our wedding.
+        We're super excited to have you at our wedding.
         To make sure we can plan the perfect wedding, we'd like to know if you
-        will be there. 
+        can join us. 
         <br><br>
-        Head to www.kumpfeiffer.wedding to fill out your RSVP with your invite
-        code from your invitation.
+        Head to <a href="https://kumpfeiffer.wedding/login?inviteCode={user['username']}">
+        our website</a> to fill out your RSVP.
         <br><br>
         Your invite code is: <strong>{user['username']}</strong>
         <br><br>
@@ -28,7 +27,9 @@ class SendReminderMixin:
         mailer = Mailer()
         subject = "Reminder: RSVP for Kristina's and Leo's wedding!"
 
-        for receiver in queryset.values("first_name", "username", "email"):
+        for receiver in queryset.values(
+            "first_name", "username", "email", "preferred_name"
+        ):
             message = self._create_message(receiver)
             mailer.send_mail(receiver["email"], subject, message)
 

@@ -7,16 +7,13 @@ class Mailer:
     API_KEY = os.environ.get("MAILGUN_API_KEY")
     API_BASE_URL = os.environ.get("MAILGUN_API_URL")
 
-    # todo BCC
-    # todo reply to my personal email
-
     @classmethod
     def send_simple_message(cls):
         return requests.post(
             f"{cls.API_BASE_URL}/messages",
             auth=("api", cls.API_KEY),
             data={
-                "from": "Kumpf-Pfeiffer Wedding <mailgun@kumpfeiffer.wedding>",
+                "from": "Kumpf-Pfeiffer Wedding <reply@kumpfeiffer.wedding>",
                 "to": [
                     "leopold.pfeiffer@gmx.de",
                 ],
@@ -26,17 +23,14 @@ class Mailer:
         )
 
     @classmethod
-    def send_mail(cls, receiver_email, subject, message):
+    def send_mail(cls, receiver_email, subject, html_message):
         return requests.post(
             f"{cls.API_BASE_URL}/messages",
             auth=("api", cls.API_KEY),
             data={
-                "from": "Kumpf-Pfeiffer Wedding <mailgun@kumpfeiffer.wedding>",
+                "from": "Kumpf-Pfeiffer Wedding <reply@kumpfeiffer.wedding>",
                 "to": [receiver_email],
                 "subject": subject,
-                "text": message,
+                "html": html_message,
             },
         )
-
-
-Mailer.send_simple_message()

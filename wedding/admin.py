@@ -48,6 +48,7 @@ class UserAdmin(
 ):
     list_display = (
         "name",
+        "preferred_name",
         "invite_code",
         "max_guests",
         "email",
@@ -74,6 +75,12 @@ class UserAdmin(
             return obj.username
         else:
             return obj.first_name
+
+    def preferred_name(self, obj):
+        if obj.is_superuser:
+            return ""
+        else:
+            return obj.preferred_name
 
     def invite_code(self, obj):
         if obj.is_superuser:
