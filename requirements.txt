@@ -4,6 +4,8 @@ python-dotenv==0.20.0
 psycopg2-binary==2.9.3  # need this for mac OS
 requests==2.27.1
 
+dj-database-url==0.5.0
+
 # qr code
 qrcode==7.3.1
 pillow==9.2.0
