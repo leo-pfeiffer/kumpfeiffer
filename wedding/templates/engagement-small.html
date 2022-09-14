@@ -1,0 +1,29 @@
+{% load i18n %}
+{% load static %}
+<section id="engagement" class="gla_section gla_image_bck">
+    <div class="container text-center">
+        <p><img src="{% static "images/animations/flower7.gif" %}" data-bottom-top="@src:{% static "images/animations/flower7.gif" %}; opacity:1" class="gla_animated_flower" height="110" alt=""></p>
+        <h2>{% trans "The Day They Got Engaged"%}</h2>
+        {% block engagement-text %}
+            {% include 'engagement-text.html' %}
+        {% endblock %}
+
+        <!-- grid -->
+        <div class="gla_portfolio_no_padding grid">
+
+            <div class="col-sm-12 gla_anim_box grid-item engagement">
+                <div class="gla_shop_item">
+                    <a href="{% static 'images/engagement1.jpeg' %}" class="lightbox">
+                        <img src="{% static 'images/engagement1.jpeg' %}" alt="">
+                    </a>
+                </div>
+            </div>
+
+
+         </div>
+         <!-- grid end -->
+
+    </div>
+    <!-- container end -->
+
+</section>

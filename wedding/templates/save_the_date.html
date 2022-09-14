@@ -120,7 +120,9 @@
                 <p><img src="{% static "images/animations/flower6.gif" %}" data-bottom-top="@src:{% static "images/animations/flower6.gif" %}; opacity:1" class="gla_animated_flower" height="110" alt=""></p>
                 <h2>Wedding Details</h2>
                 <h3 class="gla_subtitle">When & Where</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam euismod lacinia ante quis feugiat. Nunc interdum orci vitae quam dignissim, et sagittis mi viverra. Donec efficitur diam sit amet hendrerit malesuada. Proin eget ex sed risus fermentum pulvinar.</p>
+                {% block wedding-details-text %}
+                    {% include 'wedding-details-text.html' %}
+                {% endblock %}
 
                 <a href="https://goo.gl/maps/1NFf5PSdiy48MBu59" class="btn">View Map</a>
 
@@ -137,7 +139,7 @@
 
 
         {% block engagement %}
-            {% include 'engagement.html' %}
+            {% include 'engagement-large.html' %}
         {% endblock %}
 
 
