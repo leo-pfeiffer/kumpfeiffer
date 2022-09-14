@@ -129,7 +129,7 @@
                 <h2>Our Story</h2>
                 <h3 class="gla_subtitle">Lorem ipsum dolor</h3>
                 <p>
-                    [Story] Cute details about how we met <br>
+                    [Story:Kristina] Cute details about how we met <br>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Nam euismod lacinia ante quis feugiat.
                     Nunc interdum orci vitae quam dignissim, et sagittis mi viverra.
@@ -145,7 +145,7 @@
 
 
         {% block countdown %}
-            {% include 'countdown.html' %}
+            {% include 'countdown.html' with show_link=False %}
         {% endblock %}
 
 
@@ -164,39 +164,42 @@
                     {% if is_rehearsal_guest %}
                         <div class="col-md-4 gla_round_block">
                             <div class="gla_round_im gla_image_bck" data-image="{% static "images/castle.jpeg" %}"></div>
-                            <h3>The Rehearsal Dinner</h3>
+                            <h3>Rehearsal Dinner</h3>
                             <p>20 June 2023, 6 PM<br>
                             Fingask Long Gallery</p>
                         </div>
                         <div class="col-md-4 gla_round_block">
                             <div class="gla_round_im gla_image_bck" data-image="{% static "images/topiary1.jpeg" %}"></div>
-                            <h3>The Ceremony</h3>
+                            <h3>Ceremony</h3>
                             <p>21 June 2023, 2 PM<br>
                             Fingask Lawn</p>
                         </div>
                         <div class="col-md-4 gla_round_block">
                             <div class="gla_round_im gla_image_bck" data-image="{% static "images/pavillon.jpeg" %}"></div>
-                            <h3>The Reception</h3>
+                            <h3>Reception</h3>
                             <p>20 June 2023, 5 PM<br>
                             Fingask Pavillon</p>
                         </div>
                     {% else %}
                         <div class="col-md-6 gla_round_block">
                             <div class="gla_round_im gla_image_bck" data-image="{% static "images/topiary1.jpeg" %}"></div>
-                            <h3>The Ceremony</h3>
+                            <h3>Ceremony</h3>
                             <p>21 June 2023, 3 PM<br>
                             Fingask Lawn</p>
                         </div>
                         <div class="col-md-6 gla_round_block">
                             <div class="gla_round_im gla_image_bck" data-image="{% static "images/pavillon.jpeg" %}"></div>
-                            <h3>The Afterparty</h3>
+                            <h3>Afterparty</h3>
                             <p>20 June 2023, 5 PM<br>
                             Fingask Pavillon</p>
                         </div>
                     {% endif %}
                 </div>
 
-                <a href="https://goo.gl/maps/1NFf5PSdiy48MBu59" class="btn">View Map</a>
+                <div style="margin-top: 40px">
+                    <a href="https://goo.gl/maps/1NFf5PSdiy48MBu59" >View Map</a>&nbsp;|
+                    <a href="https://www.fingaskcastle.co.uk/" >Venue Website</a>
+                </div>
 
 
             </div>
@@ -337,64 +340,6 @@
                     commodo, tortor ex ornare tortor, porta pharetra diam ipsum
                     quis ipsum.
                 </p>
-
-                <!-- icon boxes -->
-                <div class="gla_icon_boxes gla_partners row">
-
-
-                    <!-- item -->
-                    <div class="gla_partner_box">
-                        <a href="#"><img src="https://via.placeholder.com/250x100" height="80" alt=""></a>
-                    </div>
-
-                    <!-- item -->
-                    <div class="gla_partner_box">
-                        <a href="#"><img src="https://via.placeholder.com/250x100" height="80" alt=""></a>
-                    </div>
-
-                    <!-- item -->
-                    <div class="gla_partner_box">
-                        <a href="#"><img src="https://via.placeholder.com/250x100" height="80" alt=""></a>
-                    </div>
-
-                    <!-- item -->
-                    <div class="gla_partner_box">
-                        <a href="#"><img src="https://via.placeholder.com/250x100" height="80" alt=""></a>
-                    </div>
-
-                    <!-- item -->
-                    <div class="gla_partner_box">
-                        <a href="#"><img src="https://via.placeholder.com/250x100" height="80" alt=""></a>
-                    </div>
-
-                    <!-- item -->
-                    <div class="gla_partner_box">
-                        <a href="#"><img src="https://via.placeholder.com/250x100" height="80" alt=""></a>
-                    </div>
-
-                    <!-- item -->
-                    <div class="gla_partner_box">
-                        <a href="#"><img src="https://via.placeholder.com/250x100" height="80" alt=""></a>
-                    </div>
-
-                    <!-- item -->
-                    <div class="gla_partner_box">
-                        <a href="#"><img src="https://via.placeholder.com/250x100" height="80" alt=""></a>
-                    </div>
-
-                    <!-- item -->
-                    <div class="gla_partner_box">
-                        <a href="#"><img src="https://via.placeholder.com/250x100" height="80" alt=""></a>
-                    </div>
-
-                    <!-- item -->
-                    <div class="gla_partner_box">
-                        <a href="#"><img src="https://via.placeholder.com/250x100" height="80" alt=""></a>
-                    </div>
-
-
-                </div>
-                <!-- icon boxes end -->
 
             </div>
             <!-- container end -->

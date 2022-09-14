@@ -124,7 +124,14 @@
                     {% include 'wedding-details-text.html' %}
                 {% endblock %}
 
-                <a href="https://goo.gl/maps/1NFf5PSdiy48MBu59" class="btn">View Map</a>
+                <div style="margin-top: 40px">
+                    <p>Confirm your address and accommodation <a href="https://www.google.com">→ here</a></p>
+                </div>
+
+                <div style="margin-top: 40px">
+                    <a href="https://goo.gl/maps/1NFf5PSdiy48MBu59" >View Map</a>&nbsp;|
+                    <a href="https://www.fingaskcastle.co.uk/" >Venue Website</a>
+                </div>
 
             </div>
             <!-- container end -->
@@ -134,7 +141,7 @@
 
 
         {% block countdown %}
-            {% include 'countdown.html' %}
+            {% include 'countdown.html' with show_link=True %}
         {% endblock %}
 
 
