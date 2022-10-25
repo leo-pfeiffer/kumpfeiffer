@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.humanize",
     "wedding",
+    "lockdown",
 ]
 
 MIDDLEWARE = [
@@ -54,6 +55,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "lockdown.middleware.LockdownMiddleware",
 ]
 
 ROOT_URLCONF = "kumpfeiffer.urls"
@@ -171,3 +173,12 @@ DROPBOX = {
     "app_secret": os.environ.get("DROPBOX_APP_SECRET"),
     "app_key": os.environ.get("DROPBOX_APP_KEY"),
 }
+
+LOCKDOWN_PASSWORDS = ("wedding2023",)
+
+LOCKDOWN_URL_EXCEPTIONS = (
+    r"/login",
+    r"/logout",
+    r"/thanks",
+    r"/home",
+)

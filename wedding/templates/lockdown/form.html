@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block content %}
+
+<!-- Page -->
+<div class="gla_page" id="gla_page">
+
+    <!-- To Top -->
+    <a href="#gla_page" class="gla_top ti ti-angle-up gla_go"></a>
+
+    <!-- Header -->
+    <header>
+
+        <nav class="gla_light_nav gla_transp_nav">
+
+            <div class="container">
+
+                <div class="gla_logo_container clearfix">
+                    <div class="gla_logo_txt">
+                        <!-- Logo -->
+                        <a href="/static" class="gla_logo">Kristina & Leo</a>
+
+                        <!-- Text Logo -->
+                        <div class="gla_logo_und">June 21, 2023</div>
+                    </div>
+                </div>
+
+                <!-- Menu -->
+                <div class="gla_main_menu gla_main_menu_mobile">
+
+                    <div class="gla_main_menu_icon">
+                        <i></i><i></i><i></i><i></i>
+                        <b>Menu</b>
+                        <b class="gla_main_menu_icon_b">Back</b>
+                    </div>
+                </div>
+
+                <!-- Menu Content -->
+                <div class="gla_main_menu_content gla_image_bck" data-color="rgba(0,0,0,0.9)" data-image="{% static "images/proposal.jpeg" %}">
+                    <!-- Over -->
+                    <div class="gla_over" data-color="#000" data-opacity="0.7"></div>
+                </div>
+
+                <div class="gla_main_menu_content_menu gla_wht_txt text-right">
+                    <div class="container">
+                        <ul>
+                            <li class="gla_parent"><a href="/admin"><i class="fa-solid fa-gear" aria-hidden="true"></i></a></li>
+                            <li class="gla-parent">
+                                <a>
+                                    <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                                        {% get_current_language as LANGUAGE_CODE %}
+                                        {% get_available_languages as LANGUAGES %}
+                                        {% if LANGUAGE_CODE == 'de' %}
+                                            <label>
+                                                <input name="language" style="display: none" value="en">
+                                                <input type="submit" value="🇺🇸" style="background: none; border: none">
+                                            </label>
+                                        {% else %}
+                                            <label>
+                                                <input name="language" style="display: none" value="de">
+                                                <input type="submit" value="🇩🇪" style="background: none; border: none">
+                                            </label>
+                                        {% endif %}
+                                    </form>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- container end -->
+                </div>
+                <!-- menu content end -->
+
+                <!-- Top Menu -->
+                <div class="gla_default_menu">
+                    <ul>
+                        <li class="gla_parent"><a href="/admin"><i class="fa-solid fa-gear" aria-hidden="true"></i></a></li>
+                        <li class="gla-parent">
+                            <a>
+                                <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                                    {% get_current_language as LANGUAGE_CODE %}
+                                    {% get_available_languages as LANGUAGES %}
+                                    {% if LANGUAGE_CODE == 'de' %}
+                                        <label>
+                                            <input name="language" style="display: none" value="en">
+                                            <input type="submit" value="🇺🇸" style="background: none; border: none">
+                                        </label>
+                                    {% else %}
+                                        <label>
+                                            <input name="language" style="display: none" value="de">
+                                            <input type="submit" value="🇩🇪" style="background: none; border: none">
+                                        </label>
+                                    {% endif %}
+                                </form>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Top Menu End -->
+
+            </div>
+            <!-- container end -->
+        </nav>
+
+    </header>
+    <!-- Header End -->
+
+
+    <!-- Slider -->
+    <div class="gla_slider gla_image_bck  gla_wht_txt gla_fixed"  data-image="{% static "images/proposal.jpeg" %}"
+         data-stellar-background-ratio="0.8" style="background-position: 25%">
+
+        <!-- Over -->
+        <div class="gla_over" data-color="#1e1d2d" data-opacity="0.35"></div>
+
+        <div class="container">
+
+            <div class="gla_slide_txt gla_slide_center_middle text-center">
+
+                <div class="gla_slide_midtitle">Kristina + Leopold<br><span>21 June 2023</span></div>
+
+                <hr>
+
+                {% if form %}
+                  <form action="" method="post">{% csrf_token %}
+                      <div class="row">
+                        <div class="col-md-12">
+                            <label for="password" style="display: none">Password</label>
+                            <input type="password" name="password" class="form-control form-opacity"
+                                   placeholder="Password"
+                                   style="max-width: 200px; background-color: black; opacity: 0.9; color: white"
+                            >
+                        </div>
+                        <div class="col-md-12">
+                            <input class="btn submit" type="submit" value="Login" style="background-color: black; opacity: 0.9; color: white">
+                        </div>
+                    </div>
+                  </form>
+                {% endif %}
+
+            </div>
+
+            <!-- Slider Texts End -->
+
+        </div>
+        <!-- container end -->
+
+    </div>
+    <!-- Slider End -->
+
+</div>
+<!-- Page End -->
+
+{% endblock content %}
