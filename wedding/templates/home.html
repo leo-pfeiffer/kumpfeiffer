@@ -511,6 +511,11 @@
         </section>
         <!-- section end -->
 
+        <hr>
+
+        {% block faq %}
+            {% include 'faq.html' with showRehearsal=is_rehearsal_guest %}
+        {% endblock %}
 
         {% block thank_you_footer %}
             {% include 'thank_you_footer.html' %}

@@ -112,10 +112,11 @@
                             <p>
                                 <strong>Monday</strong>: To welcome guests from far and wide, we are organizing a tour guided by Kristina and Leo in St Andrews highlighting not only the fun traditions of University of St Andrews, but also the locations that have been significant in their relationship.  We will end at 36 North Street for some light fare and libations in the garden.  Hint, make sure to pay attention during the tour because some of the information and locations could come in handy at later events!
                             </p>
-                            {# TODO only make visible for rehearsal dinner guests #}
+                            {% if showRehearsal %}
                             <p>
                                 <strong>Tuesday</strong>: The wedding party will have a rehearsal with the celebrant and Leo’s parents are hosting a rehearsal dinner for the wedding party and family in the ceremonial room of the castle.
                             </p>
+                            {% endif %}
                             <p>
                                 <strong>Wednesday</strong>: Wedding festivities!
                             </p>
