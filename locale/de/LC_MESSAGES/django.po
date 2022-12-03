@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-03 18:48+0000\n"
+"POT-Creation-Date: 2022-12-03 19:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,8 @@ msgstr ""
 msgid "Kristina and Leo's Wedding"
 msgstr "Hochzeit von Kristina und Leo"
 
-#: wedding/templates/countdown.html:10 wedding/templates/logo.html:9
+#: wedding/templates/countdown.html:10 wedding/templates/login.html:25
+#: wedding/templates/logo.html:9
 msgid "June 21, 2023"
 msgstr "21. Juni 2023"
 
@@ -671,15 +672,17 @@ msgstr ""
 "Connecticut einen transatlantischen Umzug ersparen. Die Adressdaten sind "
 "bereits auf der Website regstriert und werden automatisch eingefügt."
 
-#: wedding/templates/hero.html:11
+#: wedding/templates/hero.html:11 wedding/templates/login.html:120
 msgid "21 June 2023"
 msgstr "21. Juni 2023"
 
-#: wedding/templates/home.html:29 wedding/templates/save_the_date.html:29
+#: wedding/templates/home.html:29 wedding/templates/login.html:34
+#: wedding/templates/save_the_date.html:29
 msgid "Menu"
 msgstr "Menü"
 
-#: wedding/templates/home.html:30 wedding/templates/save_the_date.html:30
+#: wedding/templates/home.html:30 wedding/templates/login.html:35
+#: wedding/templates/save_the_date.html:30
 msgid "Back"
 msgstr "Zurück"
 
@@ -774,7 +777,7 @@ msgstr "Wenn das nicht du bist, bitte klicke"
 msgid "and re-enter your invitation code."
 msgstr "und gib deinen persönlichen Einladungscode ein."
 
-#: wedding/templates/home.html:270
+#: wedding/templates/home.html:270 wedding/templates/login.html:128
 msgid "Invite code"
 msgstr "Einladungscode"
 
@@ -789,6 +792,10 @@ msgstr "Andere Allergien / Anmerkungen"
 #: wedding/templates/home.html:371
 msgid "Show All"
 msgstr "Alle anzeigen"
+
+#: wedding/templates/login.html:140
+msgid "You can find your invite code on your invitation."
+msgstr "Deinen persönlichen Einladungscode findest du auf deiner Einladung."
 
 #: wedding/templates/thanks.html:18
 msgid "Thank you, we have received your RSVP!"

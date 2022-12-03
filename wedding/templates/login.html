@@ -22,7 +22,7 @@
                         <a href="/" class="gla_logo">Kristina & Leo</a>
 
                         <!-- Text Logo -->
-                        <div class="gla_logo_und">June 21, 2023</div>
+                        <div class="gla_logo_und">{% trans "June 21, 2023" %}</div>
                     </div>
                 </div>
 
@@ -31,8 +31,8 @@
 
                     <div class="gla_main_menu_icon">
                         <i></i><i></i><i></i><i></i>
-                        <b>Menu</b>
-                        <b class="gla_main_menu_icon_b">Back</b>
+                        <b>{% trans "Menu" %}</b>
+                        <b class="gla_main_menu_icon_b">{% trans "Back" %}</b>
                     </div>
                 </div>
 
@@ -117,7 +117,7 @@
 
             <div class="gla_slide_txt gla_slide_center_middle text-center">
 
-                <div class="gla_slide_midtitle">Kristina + Leopold<br><span>21 June 2023</span></div>
+                <div class="gla_slide_midtitle">Kristina + Leopold<br><span>{% trans "21 June 2023" %}</span></div>
 
                 <hr>
 
@@ -125,7 +125,7 @@
                     {% csrf_token %}
                     <div class="row">
                         <div class="col-md-12">
-                            <label for="invite-code" style="display: none">Invite code</label>
+                            <label for="invite-code" style="display: none">{% trans "Invite code" %}</label>
                             <input type="text" name="invite-code" class="form-control form-opacity"
                                    placeholder="Invite code"
                                    style="max-width: 300px; background-color: black; opacity: 0.9; color: white"
@@ -137,7 +137,7 @@
                     </div>
                 </form>
                 <div style="margin: 30px">
-                    <p>You can find your invite code on your invitation.</p>
+                    <p>{% trans "You can find your invite code on your invitation." %}</p>
                 </div>
             </div>
 
