@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-03 18:37+0000\n"
+"POT-Creation-Date: 2022-12-03 18:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: wedding/templates/base.html:8
+msgid "Kristina and Leo's Wedding"
+msgstr "Hochzeit von Kristina und Leo"
+
+#: wedding/templates/countdown.html:10 wedding/templates/logo.html:9
+msgid "June 21, 2023"
+msgstr "21. Juni 2023"
+
+#: wedding/templates/countdown.html:11
+msgid "Scotland"
+msgstr "Schottland"
 
 #: wedding/templates/engagement-large.html:6
 #: wedding/templates/engagement-small.html:6
@@ -422,7 +434,7 @@ msgstr ""
 "Inspirierende Bilder von Kleidung findet ihr unten (aber ignoriert alle "
 "Stilettos, da Fingask mit diesem Verbot nicht scherzt)."
 
-#: wedding/templates/faq.html:195
+#: wedding/templates/faq.html:195 wedding/templates/home.html:186
 msgid "Ceremony"
 msgstr "Zeremonie"
 
@@ -672,11 +684,12 @@ msgid "Back"
 msgstr "Zurück"
 
 #: wedding/templates/home.html:43 wedding/templates/home.html:78
+#: wedding/templates/home.html:129
 msgid "Our Story"
 msgstr "Unsere Geschichte"
 
 #: wedding/templates/home.html:44 wedding/templates/home.html:79
-#: wedding/templates/save_the_date.html:43
+#: wedding/templates/home.html:157 wedding/templates/save_the_date.html:43
 #: wedding/templates/save_the_date.html:74
 #: wedding/templates/save_the_date.html:121
 msgid "Wedding Details"
@@ -697,21 +710,85 @@ msgstr "Verlobung"
 msgid "Wedding Party"
 msgstr "Trauzeugen"
 
-#: wedding/templates/logo.html:9
-msgid "June 21, 2023"
-msgstr "21. Juni 2023"
-
-#: wedding/templates/save_the_date.html:122
+#: wedding/templates/home.html:158 wedding/templates/save_the_date.html:122
 msgid "When & Where"
 msgstr "Wann & Wo"
 
-#: wedding/templates/save_the_date.html:128
+#: wedding/templates/home.html:168
+msgid "20 June 2023, 6 PM"
+msgstr "20. Juni 2023, 18 Uhr"
+
+#: wedding/templates/home.html:174
+msgid "21 June 2023, 2 PM"
+msgstr "21. Juni 2023, 14 Uhr"
+
+#: wedding/templates/home.html:180 wedding/templates/home.html:193
+msgid "20 June 2023, 5 PM"
+msgstr "20. Juni 2023, 17 Uhr"
+
+#: wedding/templates/home.html:187
+msgid "21 June 2023, 3 PM"
+msgstr "21. Juni 2023, 15 Uhr"
+
+#: wedding/templates/home.html:200 wedding/templates/save_the_date.html:128
 msgid "View Map"
 msgstr "Karte anzeigen"
 
-#: wedding/templates/save_the_date.html:129
+#: wedding/templates/home.html:201 wedding/templates/save_the_date.html:129
 msgid "Venue Website"
 msgstr "Webseite des Schlosses"
+
+#: wedding/templates/home.html:224
+msgid "You already submitted your RSVP!"
+msgstr "Du hast deine RSVP bereits abgegeben!"
+
+#: wedding/templates/home.html:227 wedding/templates/home.html:275
+msgid "Attending?"
+msgstr "Kommt ihr?"
+
+#: wedding/templates/home.html:231
+msgid "Number of guests"
+msgstr "Anzahl der Gäste"
+
+#: wedding/templates/home.html:235 wedding/templates/home.html:293
+msgid "Allergies"
+msgstr "Allergien"
+
+#: wedding/templates/home.html:245
+msgid "Note"
+msgstr "Anmerkung"
+
+#: wedding/templates/home.html:258
+msgid "You're logged in as"
+msgstr "Du bist angemeldet als"
+
+#: wedding/templates/home.html:259
+msgid "Your invite code is"
+msgstr "Dein Einladungscode lautet"
+
+#: wedding/templates/home.html:260
+msgid "If this is not you, please"
+msgstr "Wenn das nicht du bist, bitte klicke"
+
+#: wedding/templates/home.html:261
+msgid "and re-enter your invitation code."
+msgstr "und gib deinen persönlichen Einladungscode ein."
+
+#: wedding/templates/home.html:270
+msgid "Invite code"
+msgstr "Einladungscode"
+
+#: wedding/templates/home.html:280
+msgid "Number of guests (incl. yourself, max"
+msgstr "Anzahl der Gäste (inkl. dir, max"
+
+#: wedding/templates/home.html:285
+msgid "Other allergies / notes"
+msgstr "Andere Allergien / Anmerkungen"
+
+#: wedding/templates/home.html:371
+msgid "Show All"
+msgstr "Alle anzeigen"
 
 #: wedding/templates/thanks.html:18
 msgid "Thank you, we have received your RSVP!"

@@ -126,7 +126,7 @@
 
             <div class="container text-center">
                 <p><img src="{% static "images/animations/flower5.gif" %}" data-bottom-top="@src:{% static "images/animations/flower5.gif" %}; opacity:1" class="gla_animated_flower" height="150" alt=""></p>
-                <h2>Our Story</h2>
+                <h2>{% trans "Our Story" %}</h2>
                 <h3 class="gla_subtitle">Lorem ipsum dolor</h3>
                 <p>
                     [Story:Kristina] Cute details about how we met <br>
@@ -154,8 +154,8 @@
 
             <div class="container text-center">
                 <p><img src="{% static "images/animations/flower6.gif" %}" data-bottom-top="@src:{% static "images/animations/flower6.gif" %}; opacity:1" class="gla_animated_flower" height="110" alt=""></p>
-                <h2>Wedding Details</h2>
-                <h3 class="gla_subtitle">When & Where</h3>
+                <h2>{% trans "Wedding Details" %}</h2>
+                <h3 class="gla_subtitle">{% trans "When & Where" %}</h3>
                 {% block wedding-details-text %}
                     {% include 'wedding-details-text.html' %}
                 {% endblock %}
@@ -165,40 +165,40 @@
                         <div class="col-md-4 gla_round_block">
                             <div class="gla_round_im gla_image_bck" data-image="{% static "images/castle.jpeg" %}"></div>
                             <h3>Rehearsal Dinner</h3>
-                            <p>20 June 2023, 6 PM<br>
+                            <p>{% trans "20 June 2023, 6 PM" %}<br>
                             Fingask Long Gallery</p>
                         </div>
                         <div class="col-md-4 gla_round_block">
                             <div class="gla_round_im gla_image_bck" data-image="{% static "images/topiary1.jpeg" %}"></div>
                             <h3>Ceremony</h3>
-                            <p>21 June 2023, 2 PM<br>
+                            <p>{% trans "21 June 2023, 2 PM" %}<br>
                             Fingask Lawn</p>
                         </div>
                         <div class="col-md-4 gla_round_block">
                             <div class="gla_round_im gla_image_bck" data-image="{% static "images/pavillon.jpeg" %}"></div>
                             <h3>Reception</h3>
-                            <p>20 June 2023, 5 PM<br>
+                            <p>{% trans "20 June 2023, 5 PM" %}<br>
                             Fingask Pavillon</p>
                         </div>
                     {% else %}
                         <div class="col-md-6 gla_round_block">
                             <div class="gla_round_im gla_image_bck" data-image="{% static "images/topiary1.jpeg" %}"></div>
-                            <h3>Ceremony</h3>
-                            <p>21 June 2023, 3 PM<br>
+                            <h3>{% trans "Ceremony" %}</h3>
+                            <p>{% trans "21 June 2023, 3 PM" %}<br>
                             Fingask Lawn</p>
                         </div>
                         <div class="col-md-6 gla_round_block">
                             <div class="gla_round_im gla_image_bck" data-image="{% static "images/pavillon.jpeg" %}"></div>
                             <h3>Afterparty</h3>
-                            <p>20 June 2023, 5 PM<br>
+                            <p>{% trans "20 June 2023, 5 PM" %}<br>
                             Fingask Pavillon</p>
                         </div>
                     {% endif %}
                 </div>
 
                 <div style="margin-top: 40px">
-                    <a href="https://goo.gl/maps/1NFf5PSdiy48MBu59" >View Map</a>&nbsp;|
-                    <a href="https://www.fingaskcastle.co.uk/" >Venue Website</a>
+                    <a href="https://goo.gl/maps/1NFf5PSdiy48MBu59" >{% trans "View Map" %}</a>&nbsp;|
+                    <a href="https://www.fingaskcastle.co.uk/" >{% trans "Venue Website" %}</a>
                 </div>
 
 
@@ -221,18 +221,18 @@
                 <div class="row">
                     {% if has_rsvp %}
                     <div class="col-md-8 col-md-push-2 container text-center gla_large_text">
-                        <h3 class="gla_subtitle">You already submitted your RSVP!</h3>
+                        <h3 class="gla_subtitle">{% trans "You already submitted your RSVP!" %}</h3>
                         <hr>
                         <p>
-                            <span><strong>Attending?</strong></span><br>
+                            <span><strong>{% trans "Attending?" %}</strong></span><br>
                             <span>{{ rsvp.coming }}</span>
                         </p>
                         <p>
-                            <span><strong>Number of guests</strong></span><br>
+                            <span><strong>{% trans "Number of guests" %}</strong></span><br>
                             <span>{{ rsvp.num_guests }}</span>
                         </p>
                         <p>
-                            <span><strong>Allergies</strong></span><br>
+                            <span><strong>{% trans "Allergies" %}</strong></span><br>
                             <span>
                             {% if rsvp.allergies %}
                                 {{ rsvp.allergies |join:", "}}
@@ -242,7 +242,7 @@
                             </span>
                         </p>
                         <p>
-                            <span><strong>Note</strong></span><br>
+                            <span><strong>{% trans "Note" %}</strong></span><br>
                             <span>
                             {% if rsvp.note %}
                                 {{ rsvp.note }}
@@ -255,10 +255,10 @@
                     {% else %}
                         <div class="col-md-8 col-md-push-2">
                         <div class="gla_large_text" style="margin-bottom: 30px">
-                            <span>You're logged in as <strong>{{ name }}</strong>.</span><br>
-                            <span>Your invite code is <strong>{{ invite_code }}</strong>.</span><br>
-                            <span> If this is not you, please
-                                <a href="/logout" class="underline">logout</a> and re-enter your invitation code.
+                            <span>{% trans "You're logged in as" %} <strong>{{ name }}</strong>.</span><br>
+                            <span>{% trans "Your invite code is" %} <strong>{{ invite_code }}</strong>.</span><br>
+                            <span> {% trans "If this is not you, please" %}
+                                <a href="/logout" class="underline">logout</a> {% trans "and re-enter your invitation code." %}
                             </span>
                         </div>
                         <form id="rsvp-form" method="POST">
@@ -267,22 +267,22 @@
 
                                 <div class="col-md-6">
                                     <div style="margin-bottom: 20px">
-                                        <label>Invite code</label>
+                                        <label>{% trans "Invite code" %}</label>
                                         <input type="text" name="name" class="form-control form-opacity" placeholder="{{ invite_code }}" disabled>
                                     </div>
 
                                     <div style="margin-bottom: 20px">
-                                        <label for="coming">Will you attend?</label>
+                                        <label for="coming">{% trans "Attending?" %}</label>
                                         {{ form.coming }}
                                     </div>
 
                                     <div style="margin-bottom: 20px">
-                                        <label for="num_guests">Number of guests (incl. yourself, max {{ max_guests }})</label>
+                                        <label for="num_guests">{% trans "Number of guests (incl. yourself, max" %} {{ max_guests }})</label>
                                         {{ form.num_guests }}
                                     </div>
 
                                     <div style="margin-bottom: 20px">
-                                        <label for="note"> Other allergies / notes</label>
+                                        <label for="note">{% trans "Other allergies / notes" %}</label>
                                         {{ form.note }}
                                     </div>
                                 </div>
@@ -290,7 +290,7 @@
 
                                 <div class="col-md-6"
                                      style="background: rgba(255,255,255,0.1); color: #fff; border: #fff thin solid; text-align: left; margin-bottom: 20px">
-                                    <label for="allergies">Allergies</label>
+                                    <label for="allergies">{% trans "Allergies" %}</label>
                                     {{ form.allergies }}
                                 </div>
 
@@ -368,9 +368,9 @@
 
                 <!-- filters -->
                 <div class="button-group filter-button-group">
-                    <a data-filter="*">Show All</a>
-                    <a data-filter=".groomsmen">Groomsmen</a>
-                    <a data-filter=".bridesmaids">Bridesmaids</a>
+                    <a data-filter="*">{% trans "Show All" %}</a>
+                    <a data-filter=".groomsmen">Groomspeople</a>
+                    <a data-filter=".bridesmaids">Bridespeople</a>
                 </div>
                 <!-- filters end -->
 
