@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-03 19:04+0000\n"
+"POT-Creation-Date: 2022-12-03 19:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -592,6 +592,10 @@ msgstr ""
 "Für den Abend haben wir Tartan Entertainment mit DJ Stephen Bennett gebucht. "
 "Er ist dafür bekannt, dass er jeden auf die Tanzfläche bringt. Wenn ihr uns "
 "einen bestimmten Song vorschlagen möchtet, lasst es uns bitte wissen!"
+
+#: wedding/templates/faq.html:260
+msgid "Enter your music request here!"
+msgstr "Gib deinen Musikvorschlag hier ein!"
 
 #: wedding/templates/faq.html:269
 msgid "Alcohol"
