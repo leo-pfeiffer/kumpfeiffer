@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-03 19:13+0000\n"
+"POT-Creation-Date: 2022-12-03 22:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -675,6 +675,10 @@ msgstr ""
 "den USA aufbauen werden, kann uns der Versand an Kristinas Wohnort in "
 "Connecticut einen transatlantischen Umzug ersparen. Die Adressdaten sind "
 "bereits auf der Website regstriert und werden automatisch eingefügt."
+
+#: wedding/templates/faq.html:296
+msgid "You can access our registry here:"
+msgstr "Du kannst unsere Online-Wunschliste hier einsehen:"
 
 #: wedding/templates/hero.html:11 wedding/templates/login.html:120
 msgid "21 June 2023"
