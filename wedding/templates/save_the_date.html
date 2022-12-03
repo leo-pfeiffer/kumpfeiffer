@@ -118,15 +118,15 @@
 
             <div class="container text-center">
                 <p><img src="{% static "images/animations/flower6.gif" %}" data-bottom-top="@src:{% static "images/animations/flower6.gif" %}; opacity:1" class="gla_animated_flower" height="110" alt=""></p>
-                <h2>Wedding Details</h2>
-                <h3 class="gla_subtitle">When & Where</h3>
+                <h2>{% trans "Wedding Details" %}</h2>
+                <h3 class="gla_subtitle">{% trans "When & Where" %}</h3>
                 {% block wedding-details-text %}
                     {% include 'wedding-details-text.html' %}
                 {% endblock %}
 
                 <div style="margin-top: 40px">
-                    <a href="https://goo.gl/maps/1NFf5PSdiy48MBu59" >View Map</a>&nbsp;|
-                    <a href="https://www.fingaskcastle.co.uk/" >Venue Website</a>
+                    <a href="https://goo.gl/maps/1NFf5PSdiy48MBu59" >{% trans "View Map" %}</a>&nbsp;|
+                    <a href="https://www.fingaskcastle.co.uk/" >{% trans "Venue Website" %}</a>
                 </div>
 
             </div>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-03 18:30+0000\n"
+"POT-Creation-Date: 2022-12-03 18:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -678,6 +678,7 @@ msgstr "Unsere Geschichte"
 #: wedding/templates/home.html:44 wedding/templates/home.html:79
 #: wedding/templates/save_the_date.html:43
 #: wedding/templates/save_the_date.html:74
+#: wedding/templates/save_the_date.html:121
 msgid "Wedding Details"
 msgstr "Details zur Hochzeit"
 
@@ -700,6 +701,18 @@ msgstr "Trauzeugen"
 msgid "June 21, 2023"
 msgstr "21. Juni 2023"
 
+#: wedding/templates/save_the_date.html:122
+msgid "When & Where"
+msgstr "Wann & Wo"
+
+#: wedding/templates/save_the_date.html:128
+msgid "View Map"
+msgstr "Karte anzeigen"
+
+#: wedding/templates/save_the_date.html:129
+msgid "Venue Website"
+msgstr "Webseite des Schlosses"
+
 #: wedding/templates/thanks.html:18
 msgid "Thank you, we have received your RSVP!"
 msgstr "Danke, wir haben deine RSVP erhalten!"
@@ -707,6 +720,3 @@ msgstr "Danke, wir haben deine RSVP erhalten!"
 #: wedding/templates/thanks.html:22
 msgid "Back to main page"
 msgstr "Zurück zur Hauptseite"
-
-#~ msgid "Have a good day"
-#~ msgstr "Genieß deinen Tag"
