@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-21 11:26+0000\n"
+"POT-Creation-Date: 2022-12-21 11:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -435,7 +435,7 @@ msgstr ""
 "Inspirierende Bilder von Kleidung findet ihr unten (aber ignoriert alle "
 "Stilettos, da Fingask mit diesem Verbot nicht scherzt)."
 
-#: wedding/templates/faq.html:195 wedding/templates/home.html:176
+#: wedding/templates/faq.html:195 wedding/templates/home.html:175
 msgid "Ceremony"
 msgstr "Zeremonie"
 
@@ -650,7 +650,7 @@ msgstr ""
 "die Verbindungen für die Bearbeitung von Karten manchmal unzureichend sind."
 
 #: wedding/templates/faq.html:286 wedding/templates/home.html:46
-#: wedding/templates/home.html:80 wedding/templates/home.html:321
+#: wedding/templates/home.html:80 wedding/templates/home.html:320
 msgid "Registry"
 msgstr "Hochzeitstisch"
 
@@ -676,7 +676,7 @@ msgstr ""
 "Connecticut einen transatlantischen Umzug ersparen. Die Adressdaten sind "
 "bereits auf der Website regstriert und werden automatisch eingefügt."
 
-#: wedding/templates/faq.html:296 wedding/templates/home.html:334
+#: wedding/templates/faq.html:296 wedding/templates/home.html:333
 msgid "You can access our registry here:"
 msgstr "Du kannst unsere Online-Wunschliste hier einsehen:"
 
@@ -796,7 +796,7 @@ msgstr "Verlobung"
 msgid "Our Story"
 msgstr "Unsere Geschichte"
 
-#: wedding/templates/home.html:129
+#: wedding/templates/home.html:128
 msgid ""
 "Leo and Kristina met on Wednesday, during their first week in St Andrews. "
 "Called ‘Sinners’ it is a bi-weekly night out for the various sports teams "
@@ -829,91 +829,91 @@ msgstr ""
 "können sie die Tage, an denen sie nicht miteinander gesprochen haben, an "
 "einer Hand abzählen."
 
-#: wedding/templates/home.html:147 wedding/templates/save_the_date.html:123
+#: wedding/templates/home.html:146 wedding/templates/save_the_date.html:123
 msgid "Wedding Details"
 msgstr "Details zur Hochzeit"
 
-#: wedding/templates/home.html:148 wedding/templates/save_the_date.html:124
+#: wedding/templates/home.html:147 wedding/templates/save_the_date.html:124
 msgid "When & Where"
 msgstr "Wann & Wo"
 
-#: wedding/templates/home.html:158
+#: wedding/templates/home.html:157
 msgid "20 June 2023, 6 PM"
 msgstr "20. Juni 2023, 18 Uhr"
 
-#: wedding/templates/home.html:164
+#: wedding/templates/home.html:163
 msgid "21 June 2023, 2 PM"
 msgstr "21. Juni 2023, 14 Uhr"
 
-#: wedding/templates/home.html:170 wedding/templates/home.html:183
+#: wedding/templates/home.html:169 wedding/templates/home.html:182
 msgid "20 June 2023, 5 PM"
 msgstr "20. Juni 2023, 17 Uhr"
 
-#: wedding/templates/home.html:177
+#: wedding/templates/home.html:176
 msgid "21 June 2023, 3 PM"
 msgstr "21. Juni 2023, 15 Uhr"
 
-#: wedding/templates/home.html:190 wedding/templates/save_the_date.html:130
+#: wedding/templates/home.html:189 wedding/templates/save_the_date.html:130
 msgid "View Map"
 msgstr "Karte anzeigen"
 
-#: wedding/templates/home.html:191 wedding/templates/save_the_date.html:131
+#: wedding/templates/home.html:190 wedding/templates/save_the_date.html:131
 msgid "Venue Website"
 msgstr "Webseite des Schlosses"
 
-#: wedding/templates/home.html:214
+#: wedding/templates/home.html:213
 msgid "You already submitted your RSVP!"
 msgstr "Du hast deine RSVP bereits abgegeben!"
 
-#: wedding/templates/home.html:217 wedding/templates/home.html:265
+#: wedding/templates/home.html:216 wedding/templates/home.html:264
 msgid "Attending?"
 msgstr "Kommt ihr?"
 
-#: wedding/templates/home.html:221
+#: wedding/templates/home.html:220
 msgid "Number of guests"
 msgstr "Anzahl der Gäste"
 
-#: wedding/templates/home.html:225 wedding/templates/home.html:283
+#: wedding/templates/home.html:224 wedding/templates/home.html:282
 msgid "Allergies"
 msgstr "Allergien"
 
-#: wedding/templates/home.html:235
+#: wedding/templates/home.html:234
 msgid "Note"
 msgstr "Anmerkung"
 
-#: wedding/templates/home.html:248
+#: wedding/templates/home.html:247
 msgid "You're logged in as"
 msgstr "Du bist angemeldet als"
 
-#: wedding/templates/home.html:249
+#: wedding/templates/home.html:248
 msgid "Your invite code is"
 msgstr "Dein Einladungscode lautet"
 
-#: wedding/templates/home.html:250
+#: wedding/templates/home.html:249
 msgid "If this is not you, please"
 msgstr "Wenn das nicht du bist, bitte klicke"
 
-#: wedding/templates/home.html:251
+#: wedding/templates/home.html:250
 msgid "and re-enter your invitation code."
 msgstr "und gib deinen persönlichen Einladungscode ein."
 
-#: wedding/templates/home.html:260 wedding/templates/login.html:128
+#: wedding/templates/home.html:259 wedding/templates/login.html:128
 msgid "Invite code"
 msgstr "Einladungscode"
 
-#: wedding/templates/home.html:270
+#: wedding/templates/home.html:269
 msgid "Number of guests (incl. yourself, max"
 msgstr "Anzahl der Gäste (inkl. dir, max"
 
-#: wedding/templates/home.html:275
+#: wedding/templates/home.html:274
 msgid "Other allergies / notes"
 msgstr "Andere Allergien / Anmerkungen"
 
-#: wedding/templates/home.html:350
+#: wedding/templates/home.html:349
 msgid "Wedding Party"
 msgstr "Trauzeugen"
 
-#: wedding/templates/home.html:364
+#: wedding/templates/home.html:363
 msgid "Show All"
 msgstr "Alle anzeigen"
 
@@ -928,3 +928,16 @@ msgstr "Danke, wir haben deine RSVP erhalten!"
 #: wedding/templates/thanks.html:22
 msgid "Back to main page"
 msgstr "Zurück zur Hauptseite"
+
+#: wedding/templates/wedding-details-text.html:1
+msgid ""
+"Our special day will take place on the 21st of June 2023 at the gorgeous "
+"16th century Fingask Castle in Perthshire, Scotland. We're more than excited "
+"to share this day with you! Please have a look around this website to find "
+"about more about what we've planned."
+msgstr ""
+"Unser besonderer Tag wird stattfinden am 21. Juni 2023 auf dem Gelände des "
+"wunderschönen Fingask Castle aus dem 16. Jahrhundert in Perthshire, "
+"Schottland. Wir freuen uns schon sehr darauf, diesen Tag mit euch zu teilen! "
+"Schaut euch gerne auf dieser Website um, um mehr über unsere Pläne zu "
+"erfahren."
