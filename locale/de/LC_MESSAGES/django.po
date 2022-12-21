@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-03 22:14+0000\n"
+"POT-Creation-Date: 2022-12-21 11:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -435,7 +435,7 @@ msgstr ""
 "Inspirierende Bilder von Kleidung findet ihr unten (aber ignoriert alle "
 "Stilettos, da Fingask mit diesem Verbot nicht scherzt)."
 
-#: wedding/templates/faq.html:195 wedding/templates/home.html:186
+#: wedding/templates/faq.html:195 wedding/templates/home.html:184
 msgid "Ceremony"
 msgstr "Zeremonie"
 
@@ -649,8 +649,8 @@ msgstr ""
 "für diese Getränke am späten Abend Bargeld und keine Karten mitzubringen, da "
 "die Verbindungen für die Bearbeitung von Karten manchmal unzureichend sind."
 
-#: wedding/templates/faq.html:286 wedding/templates/home.html:47
-#: wedding/templates/home.html:82 wedding/templates/home.html:331
+#: wedding/templates/faq.html:286 wedding/templates/home.html:46
+#: wedding/templates/home.html:80 wedding/templates/home.html:329
 msgid "Registry"
 msgstr "Hochzeitstisch"
 
@@ -676,9 +676,97 @@ msgstr ""
 "Connecticut einen transatlantischen Umzug ersparen. Die Adressdaten sind "
 "bereits auf der Website regstriert und werden automatisch eingefügt."
 
-#: wedding/templates/faq.html:296
+#: wedding/templates/faq.html:296 wedding/templates/home.html:342
 msgid "You can access our registry here:"
 msgstr "Du kannst unsere Online-Wunschliste hier einsehen:"
+
+#: wedding/templates/faq.html:305
+msgid "Interested in golf while you are here?"
+msgstr "Interesse an Golf?"
+
+#: wedding/templates/faq.html:310
+msgid ""
+"It is difficult to get a tee time at the Old Course, but this is the best "
+"guidance we have available."
+msgstr ""
+"Es ist schwierig, eine Abschlagzeit auf dem Old Course zu bekommen, aber "
+"dies sind die besten Tipps, die wir haben."
+
+#: wedding/templates/faq.html:312
+msgid ""
+"Win a ballot. Golfers who want a tee time at St. Andrews can play their luck "
+"and have their names drawn in a ballot that takes place 48 hours in advance. "
+"Golfers need to provide their name, home club and handicap either online, by "
+"phone or at one of the clubhouses before 2 p.m. two days before their "
+"desired tee time. There must be a minimum of two players and a maximum of "
+"four players. Since the course is closed on Sundays, there is no ballot "
+"drawn on Fridays."
+msgstr ""
+"Teilnahme an einer Ticketverlosung. Golfer, die eine Abschlagzeit in St. "
+"Andrews haben möchten, können ihr Glück versuchen und ihren Namen in einer "
+"Verlosung ziehen lassen, die 48 Stunden im Voraus stattfindet. Die Golfer "
+"müssen ihren Namen, ihren Heimatclub und ihr Handicap entweder online, "
+"telefonisch oder in einem der Clubhäuser bis 14.00 Uhr zwei Tage vor der "
+"gewünschten Abschlagszeit angeben. Die Mindestteilnehmerzahl beträgt zwei, "
+"die Höchstteilnehmerzahl vier. Da der Platz sonntags geschlossen ist, findet "
+"freitags keine Auslosung statt."
+
+#: wedding/templates/faq.html:313
+msgid ""
+"Be a single golfer who joins an existing group. This is similar to “camping "
+"out” before tickets to a concert or sporting event goes on sale. Single "
+"golfers with suitable handicaps can hang around the tee area and check in "
+"with staff at the Old Pavilion to see if there is a two or three-member "
+"playing group to join up with.  During the peak season, it’s hard to not "
+"have a group with the maximum four players. But a little patience might pay "
+"off on the right day."
+msgstr ""
+"Du bist ein einzelner Golfer, der sich einer bestehenden Gruppe anschließt. "
+"Dies ist vergleichbar mit dem 'Zelten' vor dem Verkauf von Eintrittskarten "
+"für ein Konzert oder eine Sportveranstaltung. Einzelne Golfer mit "
+"entsprechendem Handicap können sich im Abschlagbereich aufhalten und sich "
+"beim Personal des Alten Pavillons melden, um zu sehen, ob es eine zwei- oder "
+"dreiköpfige Spielgruppe gibt, der man sich anschließen kann.  In der "
+"Hochsaison ist es schwer, keine Gruppe mit maximal vier Spielern zu finden. "
+"Aber ein wenig Geduld kann sich am richtigen Tag auszahlen."
+
+#: wedding/templates/faq.html:314
+msgid ""
+"Apply for general tee times. This doesn’t guarantee you get a tee time, but "
+"applying far enough in advance could get you an opening at a certain time "
+"slot. These book ahead but if you apply now for June, there could be a "
+"chance."
+msgstr ""
+"Bewerbung für allgemeine Abschlagzeiten. Dies bietet zwar keine Garantie für "
+"eine Abschlagzeit, aber wenn du dich früh genug bewerbist, kannst du einen "
+"Platz zu einer bestimmten Zeit bekommen. Diese sind zwar schnell ausgebucht, "
+"aber wenn du dich jetzt bereits für Juni bewirbst, stehen die Chancen besser."
+
+#: wedding/templates/faq.html:315
+msgid ""
+"Book a package during peak season with an ‘Authorised Provider.’ During peak "
+"season, it’s incredibly difficult to get on the Old Course without getting "
+"some luck in a ballot, finding a two or three-person group to pair up with, "
+"or somehow being awarded tee times. The best way to guarantee getting on the "
+"Old Course is to book a travel package with what’s called an “Authorised "
+"Provider.” Of course, this will be costly because you have to buy a package "
+"that includes items such as rounds at other courses, meals and hotel stays. "
+"But if you feel it’s worth it all to guarantee yourself a round at the Old "
+"Course, it might be the best way to go. To know a provider is legit, look "
+"for an “Authorised Provider” logo displayed on their websites or social "
+"media platforms."
+msgstr ""
+"Buchung über ein Paket eines 'autorisierten Anbieters'. In der Hochsaison "
+"ist es unglaublich schwierig, auf den Old Course zu kommen, wenn die drei "
+"oben genannten Optionen nicht ausreichen. Der beste Weg, sich einen Platz "
+"auf dem Old Course zu sichern, ist die Buchung eines Reisepakets bei einem "
+"so genannten 'autorisierten Anbieter'. Das ist natürlich kostspielig, denn "
+"die Pakete beinhalten in der Regel auch Leistungen wie Runden auf anderen "
+"Plätzen, Mahlzeiten und Hotelaufenthalte. Aber wenn du der Meinung bist, "
+"dass es das alles wert ist, um sich eine Runde auf dem Old Course zu "
+"sichern, ist das vielleicht die beste Lösung. Um zu wissen, ob ein Anbieter "
+"seriös ist, achte bitte auf das Logo 'Authorised Provider' auf der Website "
+"oder den sozialen Medien."
 
 #: wedding/templates/hero.html:11 wedding/templates/login.html:120
 msgid "21 June 2023"
@@ -694,110 +782,105 @@ msgstr "Menü"
 msgid "Back"
 msgstr "Zurück"
 
-#: wedding/templates/home.html:43 wedding/templates/home.html:78
-#: wedding/templates/home.html:129
-msgid "Our Story"
-msgstr "Unsere Geschichte"
-
-#: wedding/templates/home.html:44 wedding/templates/home.html:79
-#: wedding/templates/home.html:157 wedding/templates/save_the_date.html:43
-#: wedding/templates/save_the_date.html:74
-#: wedding/templates/save_the_date.html:121
-msgid "Wedding Details"
-msgstr "Details zur Hochzeit"
-
-#: wedding/templates/home.html:45 wedding/templates/home.html:80
+#: wedding/templates/home.html:44 wedding/templates/home.html:78
 msgid "RSVP"
 msgstr ""
 
-#: wedding/templates/home.html:46 wedding/templates/home.html:81
+#: wedding/templates/home.html:45 wedding/templates/home.html:79
 #: wedding/templates/save_the_date.html:44
-#: wedding/templates/save_the_date.html:75
+#: wedding/templates/save_the_date.html:76
 msgid "Engagement"
 msgstr "Verlobung"
 
-#: wedding/templates/home.html:48 wedding/templates/home.html:83
-#: wedding/templates/home.html:357
-msgid "Wedding Party"
-msgstr "Trauzeugen"
+#: wedding/templates/home.html:127
+msgid "Our Story"
+msgstr "Unsere Geschichte"
 
-#: wedding/templates/home.html:158 wedding/templates/save_the_date.html:122
+#: wedding/templates/home.html:155 wedding/templates/save_the_date.html:123
+msgid "Wedding Details"
+msgstr "Details zur Hochzeit"
+
+#: wedding/templates/home.html:156 wedding/templates/save_the_date.html:124
 msgid "When & Where"
 msgstr "Wann & Wo"
 
-#: wedding/templates/home.html:168
+#: wedding/templates/home.html:166
 msgid "20 June 2023, 6 PM"
 msgstr "20. Juni 2023, 18 Uhr"
 
-#: wedding/templates/home.html:174
+#: wedding/templates/home.html:172
 msgid "21 June 2023, 2 PM"
 msgstr "21. Juni 2023, 14 Uhr"
 
-#: wedding/templates/home.html:180 wedding/templates/home.html:193
+#: wedding/templates/home.html:178 wedding/templates/home.html:191
 msgid "20 June 2023, 5 PM"
 msgstr "20. Juni 2023, 17 Uhr"
 
-#: wedding/templates/home.html:187
+#: wedding/templates/home.html:185
 msgid "21 June 2023, 3 PM"
 msgstr "21. Juni 2023, 15 Uhr"
 
-#: wedding/templates/home.html:200 wedding/templates/save_the_date.html:128
+#: wedding/templates/home.html:198 wedding/templates/save_the_date.html:130
 msgid "View Map"
 msgstr "Karte anzeigen"
 
-#: wedding/templates/home.html:201 wedding/templates/save_the_date.html:129
+#: wedding/templates/home.html:199 wedding/templates/save_the_date.html:131
 msgid "Venue Website"
 msgstr "Webseite des Schlosses"
 
-#: wedding/templates/home.html:224
+#: wedding/templates/home.html:222
 msgid "You already submitted your RSVP!"
 msgstr "Du hast deine RSVP bereits abgegeben!"
 
-#: wedding/templates/home.html:227 wedding/templates/home.html:275
+#: wedding/templates/home.html:225 wedding/templates/home.html:273
 msgid "Attending?"
 msgstr "Kommt ihr?"
 
-#: wedding/templates/home.html:231
+#: wedding/templates/home.html:229
 msgid "Number of guests"
 msgstr "Anzahl der Gäste"
 
-#: wedding/templates/home.html:235 wedding/templates/home.html:293
+#: wedding/templates/home.html:233 wedding/templates/home.html:291
 msgid "Allergies"
 msgstr "Allergien"
 
-#: wedding/templates/home.html:245
+#: wedding/templates/home.html:243
 msgid "Note"
 msgstr "Anmerkung"
 
-#: wedding/templates/home.html:258
+#: wedding/templates/home.html:256
 msgid "You're logged in as"
 msgstr "Du bist angemeldet als"
 
-#: wedding/templates/home.html:259
+#: wedding/templates/home.html:257
 msgid "Your invite code is"
 msgstr "Dein Einladungscode lautet"
 
-#: wedding/templates/home.html:260
+#: wedding/templates/home.html:258
 msgid "If this is not you, please"
 msgstr "Wenn das nicht du bist, bitte klicke"
 
-#: wedding/templates/home.html:261
+#: wedding/templates/home.html:259
 msgid "and re-enter your invitation code."
 msgstr "und gib deinen persönlichen Einladungscode ein."
 
-#: wedding/templates/home.html:270 wedding/templates/login.html:128
+#: wedding/templates/home.html:268 wedding/templates/login.html:128
 msgid "Invite code"
 msgstr "Einladungscode"
 
-#: wedding/templates/home.html:280
+#: wedding/templates/home.html:278
 msgid "Number of guests (incl. yourself, max"
 msgstr "Anzahl der Gäste (inkl. dir, max"
 
-#: wedding/templates/home.html:285
+#: wedding/templates/home.html:283
 msgid "Other allergies / notes"
 msgstr "Andere Allergien / Anmerkungen"
 
-#: wedding/templates/home.html:371
+#: wedding/templates/home.html:358
+msgid "Wedding Party"
+msgstr "Trauzeugen"
+
+#: wedding/templates/home.html:372
 msgid "Show All"
 msgstr "Alle anzeigen"
 
