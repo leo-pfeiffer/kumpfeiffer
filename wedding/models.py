@@ -5,7 +5,14 @@ from django.db import models
 
 
 class User(AbstractUser):
+    """
+    This model represents both a user of the application and a single invite
+    sent out. Each invite has at least one actual "Guest" associated with it, or more
+    if the invite is for more than one person.
+    """
+
     preferred_name = models.CharField(max_length=50, blank=False, null=False)
+    # todo can remove this and deduce from Guest
     max_guests = models.IntegerField(
         blank=False,
         null=False,
@@ -15,7 +22,24 @@ class User(AbstractUser):
     is_rehearsal_guest = models.BooleanField(blank=False, null=False, default=False)
 
 
+class Guest(models.Model):
+    """
+    This represents and actual "Guest" that is invited. Each guest is associated with
+    a single "User" (invite) and has a single "RSVP" associated with it.
+    """
+
+    primary_guest = models.ForeignKey(
+        get_user_model(), on_delete=models.CASCADE, blank=False, null=False
+    )
+    preferred_name = models.CharField(max_length=50, blank=False, null=False)
+
+
 class Rsvp(models.Model):
+    """
+    This represents the "RSVP" for a single "Guest". Each "Guest" has a single "RSVP"
+    associated with it.
+    """
+
     class Meta:
         verbose_name = "RSVP"
         verbose_name_plural = "RSVPs"
