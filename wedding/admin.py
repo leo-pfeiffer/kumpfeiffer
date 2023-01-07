@@ -10,8 +10,7 @@ from wedding.mixins.export_csv_mixin import ExportCsvMixin
 from wedding.mixins.generate_invite_links_mixin import GenerateInviteLinksMixin
 from wedding.mixins.generate_qr_codes import GenerateQrCodes
 from wedding.mixins.send_reminder_mixin import SendReminderMixin
-from wedding.models import Allergy, Rsvp, User, AllergySummary, RsvpSummary
-
+from wedding.models import Allergy, Rsvp, User, AllergySummary, RsvpSummary, Guest
 
 from wedding.utils import save_guest_list_rows
 
@@ -54,7 +53,6 @@ class UserAdmin(
         "email",
         "is_rehearsal_guest",
         "has_rsvp",
-        "rsvp",
     )
     list_filter = (
         HasRsvpFilter,
@@ -94,20 +92,7 @@ class UserAdmin(
     def has_rsvp(self, obj):
         if obj.is_superuser:
             return None
-        return Rsvp.objects.filter(guest=obj).exists()
-
-    def rsvp(self, obj):
-        if obj.is_superuser:
-            return ""
-        else:
-            rsvp_obj = Rsvp.objects.filter(guest=obj).first()
-            has_rsvp = rsvp_obj is not None
-
-            if has_rsvp:
-                url = reverse("admin:wedding_rsvp_changelist") + str(rsvp_obj.id)
-                return format_html('<a href="{}">View</a>', url)
-            else:
-                return ""
+        return Rsvp.objects.filter(guest__primary_guest=obj).exists()
 
     has_rsvp.boolean = True
 
@@ -134,6 +119,27 @@ class UserAdmin(
         form = CsvImportForm()
         payload = {"form": form}
         return render(request, "admin/csv_form.html", payload)
+
+
+@admin.register(Guest)
+class GuestAdmin(admin.ModelAdmin):
+    list_display = ("primary_guest", "name", "rsvp")
+
+    def primary_guest(self, obj):
+        return obj.primary_guest.first_name
+
+    def name(self, obj):
+        return obj.preferred_name
+
+    def rsvp(self, obj):
+        rsvp_obj = Rsvp.objects.filter(guest=obj).first()
+        has_rsvp = rsvp_obj is not None
+
+        if has_rsvp:
+            url = reverse("admin:wedding_rsvp_changelist") + str(rsvp_obj.id)
+            return format_html('<a href="{}">View</a>', url)
+        else:
+            return ""
 
 
 @admin.register(Allergy)
@@ -180,7 +186,7 @@ class AllergySummaryAdmin(admin.ModelAdmin):
 
 @admin.register(Rsvp)
 class RsvpAdmin(admin.ModelAdmin):
-    list_display = ("name", "invite_code", "num_guests", "coming", "note")
+    list_display = ("name", "invite_code", "coming", "note")
 
     def invite_code(self, obj):
         return obj.guest.username

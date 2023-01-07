@@ -44,14 +44,9 @@ class Rsvp(models.Model):
         verbose_name = "RSVP"
         verbose_name_plural = "RSVPs"
 
-    guest = models.ForeignKey(
-        get_user_model(), on_delete=models.CASCADE, blank=False, null=False
-    )
+    guest = models.ForeignKey(Guest, on_delete=models.CASCADE, blank=False, null=False)
 
     coming = models.BooleanField(blank=False, null=False)
-
-    # todo min, max
-    num_guests = models.IntegerField(blank=False, null=False)
 
     note = models.CharField(max_length=200, null=True, blank=True)
 
@@ -87,9 +82,7 @@ class Allergy(models.Model):
         ("nuts", "Tree nuts / Schalenfrüchte (Nüsse)"),
     )
 
-    guest = models.ForeignKey(
-        get_user_model(), on_delete=models.CASCADE, blank=False, null=False
-    )
+    guest = models.ForeignKey(Guest, on_delete=models.CASCADE, blank=False, null=False)
 
     allergy = models.CharField(
         choices=ALLERGY_CHOICES, max_length=30, null=True, blank=True
