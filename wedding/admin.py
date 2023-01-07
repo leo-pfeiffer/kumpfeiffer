@@ -10,8 +10,7 @@ from wedding.mixins.export_csv_mixin import ExportCsvMixin
 from wedding.mixins.generate_invite_links_mixin import GenerateInviteLinksMixin
 from wedding.mixins.generate_qr_codes import GenerateQrCodes
 from wedding.mixins.send_reminder_mixin import SendReminderMixin
-from wedding.models import Allergy, Rsvp, User, AllergySummary, RsvpSummary
-
+from wedding.models import Rsvp, User, RsvpSummary, Guest
 
 from wedding.utils import save_guest_list_rows
 
@@ -48,13 +47,10 @@ class UserAdmin(
 ):
     list_display = (
         "name",
-        "preferred_name",
         "invite_code",
-        "max_guests",
         "email",
         "is_rehearsal_guest",
         "has_rsvp",
-        "rsvp",
     )
     list_filter = (
         HasRsvpFilter,
@@ -76,12 +72,6 @@ class UserAdmin(
         else:
             return obj.first_name
 
-    def preferred_name(self, obj):
-        if obj.is_superuser:
-            return ""
-        else:
-            return obj.preferred_name
-
     def invite_code(self, obj):
         if obj.is_superuser:
             return ""
@@ -94,20 +84,7 @@ class UserAdmin(
     def has_rsvp(self, obj):
         if obj.is_superuser:
             return None
-        return Rsvp.objects.filter(guest=obj).exists()
-
-    def rsvp(self, obj):
-        if obj.is_superuser:
-            return ""
-        else:
-            rsvp_obj = Rsvp.objects.filter(guest=obj).first()
-            has_rsvp = rsvp_obj is not None
-
-            if has_rsvp:
-                url = reverse("admin:wedding_rsvp_changelist") + str(rsvp_obj.id)
-                return format_html('<a href="{}">View</a>', url)
-            else:
-                return ""
+        return Rsvp.objects.filter(guest__primary_guest=obj).exists()
 
     has_rsvp.boolean = True
 
@@ -125,6 +102,7 @@ class UserAdmin(
 
             rows = file_data.split("\n")
             rows = [row.split(",") for row in rows]
+            rows = [[word.strip() for word in row] for row in rows]
 
             # create users
             save_guest_list_rows(rows)
@@ -136,87 +114,49 @@ class UserAdmin(
         return render(request, "admin/csv_form.html", payload)
 
 
-@admin.register(Allergy)
-class AllergyAdmin(admin.ModelAdmin):
-    list_display = ("name", "allergy")
+@admin.register(Guest)
+class GuestAdmin(admin.ModelAdmin):
+    list_display = ("name", "primary_guest_name", "rsvp", "has_rsvp")
 
     def name(self, obj):
-        return obj.guest.first_name
+        return obj.name
 
+    def primary_guest_name(self, obj):
+        return obj.primary_guest.first_name
 
-@admin.register(AllergySummary)
-class AllergySummaryAdmin(admin.ModelAdmin):
-    change_list_template = "admin/allergy_summary_change_list.html"
+    def rsvp(self, obj):
+        rsvp_obj = Rsvp.objects.filter(guest=obj).first()
+        has_rsvp = rsvp_obj is not None
 
-    def changelist_view(self, request, extra_context=None):
-        response = super().changelist_view(
-            request,
-            extra_context=extra_context,
-        )
+        if has_rsvp:
+            url = reverse("admin:wedding_rsvp_changelist") + str(rsvp_obj.id)
+            return format_html('<a href="{}">View</a>', url)
+        else:
+            return ""
 
-        try:
-            qs = response.context_data["cl"].queryset
-        except (AttributeError, KeyError):
-            return response
-
-        metrics = {
-            "total": Count("id"),
-        }
-
-        summary = (
-            qs.filter(allergy__isnull=False)
-            .values("allergy")
-            .annotate(**metrics)
-            .order_by("-total")
-        )
-
-        response.context_data["summary"] = list(summary)
-        response.context_data["total_allergies"] = summary.aggregate(Sum("total"))[
-            "total__sum"
-        ]
-
-        return response
+    def has_rsvp(self, obj):
+        return Rsvp.objects.filter(guest=obj).exists()
 
 
 @admin.register(Rsvp)
 class RsvpAdmin(admin.ModelAdmin):
-    list_display = ("name", "invite_code", "num_guests", "coming", "note")
+    list_display = (
+        "name",
+        "invite_code",
+        "coming",
+        "first_course",
+        "second_course",
+        "note",
+    )
 
     def invite_code(self, obj):
-        return obj.guest.username
+        return obj.guest.primary_guest.username
 
     def name(self, obj):
-        return obj.guest.first_name
+        return obj.guest.name
 
+    def first_course(self, obj):
+        return obj.first_course
 
-@admin.register(RsvpSummary)
-class RsvpSummaryAdmin(admin.ModelAdmin):
-    change_list_template = "admin/rsvp_summary_change_list.html"
-
-    def changelist_view(self, request, extra_context=None):
-        response = super().changelist_view(
-            request,
-            extra_context=extra_context,
-        )
-
-        try:
-            qs = response.context_data["cl"].queryset
-        except (AttributeError, KeyError):
-            return response
-
-        rsvp_users = Rsvp.objects.values_list("guest_id")
-        num_rsvp = User.objects.filter(id__in=rsvp_users).count()
-        num_not_rsvp = (
-            User.objects.filter(is_superuser=False)
-            .filter(~Q(id__in=rsvp_users))
-            .count()
-        )
-        guest_count = Rsvp.objects.all().aggregate(Sum("num_guests"))
-
-        response.context_data["summary"] = {
-            "Has RSVP'd": num_rsvp,
-            "Has not RSVP'd": num_not_rsvp,
-            "Guest Count (so far)": guest_count["num_guests__sum"],
-        }
-
-        return response
+    def second_course(self, obj):
+        return obj.second_course

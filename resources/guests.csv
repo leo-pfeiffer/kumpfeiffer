@@ -1,7 +1,10 @@
-Katharina Heisch,Katharina,katharina@heisch.com,2,true
-Emanuel Morhard,Emanuel,emanuel@morhard.com,2,true
-Nikolas Heinloth,Nikolas,nikolas@heinloth.com,1,true
-Patrick Schnyder,Patrick,patrick@schnyder.com,1,true
-Stefan Edenharder,Stefan,stefan@edenharder.com,1,true
-Antonia Pfeiffer,Antonia,antonia@pfeiffer.com,1,false
-Hannes Spindler,Hannes,hannes@spindler.com,4,false
+﻿Katharina,Katharina Heisch,katharina@heisch.com,TRUE
+Emanuel,Emanuel Morhard,emanuel@morhard.com,TRUE
+Elisa,Emanuel Morhard,emanuel@morhard.com,TRUE
+Nikolas,Nikolas Heinloth,nikolas@heinloth.com,TRUE
+Patrick,Patrick Schnyder,patrick@schnyder.com,FALSE
+Stefan,Stefan Edenharder,stefan@edenharder.com,FALSE
+Antonia,Antonia Pfeiffer,antonia@pfeiffer.com,TRUE
+David,Antonia Pfeiffer,antonia@pfeiffer.com,TRUE
+Hannes,Hannes & Susi Spindler,hannes@spindler.com,FALSE
+Susi,Hannes & Susi Spindler,hannes@spindler.com,FALSE

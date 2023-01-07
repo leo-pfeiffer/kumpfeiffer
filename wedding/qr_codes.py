@@ -19,7 +19,7 @@ def generate_qr_code(url: str, invite_code: str):
     draw = ImageDraw.Draw(img)
     font = ImageFont.truetype("Monaco", 64)
 
-    draw.text((200, 500), invite_code, (0, 0, 0), font=font)
+    draw.text((200, 550), invite_code, (0, 0, 0), font=font)
 
     return img
 
