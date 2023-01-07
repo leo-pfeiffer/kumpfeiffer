@@ -10,7 +10,7 @@ from wedding.mixins.export_csv_mixin import ExportCsvMixin
 from wedding.mixins.generate_invite_links_mixin import GenerateInviteLinksMixin
 from wedding.mixins.generate_qr_codes import GenerateQrCodes
 from wedding.mixins.send_reminder_mixin import SendReminderMixin
-from wedding.models import Allergy, Rsvp, User, AllergySummary, RsvpSummary, Guest
+from wedding.models import Rsvp, User, RsvpSummary, Guest
 
 from wedding.utils import save_guest_list_rows
 
@@ -142,46 +142,38 @@ class GuestAdmin(admin.ModelAdmin):
             return ""
 
 
-@admin.register(Allergy)
-class AllergyAdmin(admin.ModelAdmin):
-    list_display = ("name", "allergy")
-
-    def name(self, obj):
-        return obj.guest.first_name
-
-
-@admin.register(AllergySummary)
-class AllergySummaryAdmin(admin.ModelAdmin):
-    change_list_template = "admin/allergy_summary_change_list.html"
-
-    def changelist_view(self, request, extra_context=None):
-        response = super().changelist_view(
-            request,
-            extra_context=extra_context,
-        )
-
-        try:
-            qs = response.context_data["cl"].queryset
-        except (AttributeError, KeyError):
-            return response
-
-        metrics = {
-            "total": Count("id"),
-        }
-
-        summary = (
-            qs.filter(allergy__isnull=False)
-            .values("allergy")
-            .annotate(**metrics)
-            .order_by("-total")
-        )
-
-        response.context_data["summary"] = list(summary)
-        response.context_data["total_allergies"] = summary.aggregate(Sum("total"))[
-            "total__sum"
-        ]
-
-        return response
+# @admin.register(AllergySummary)
+# class AllergySummaryAdmin(admin.ModelAdmin):
+#     change_list_template = "admin/allergy_summary_change_list.html"
+#
+#     def changelist_view(self, request, extra_context=None):
+#         response = super().changelist_view(
+#             request,
+#             extra_context=extra_context,
+#         )
+#
+#         try:
+#             qs = response.context_data["cl"].queryset
+#         except (AttributeError, KeyError):
+#             return response
+#
+#         metrics = {
+#             "total": Count("id"),
+#         }
+#
+#         summary = (
+#             qs.filter(allergy__isnull=False)
+#             .values("allergy")
+#             .annotate(**metrics)
+#             .order_by("-total")
+#         )
+#
+#         response.context_data["summary"] = list(summary)
+#         response.context_data["total_allergies"] = summary.aggregate(Sum("total"))[
+#             "total__sum"
+#         ]
+#
+#         return response
 
 
 @admin.register(Rsvp)

@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 
 from wedding.forms import RsvpForm
-from wedding.models import Rsvp, Allergy
+from wedding.models import Rsvp, Guest
 
 
 class HomeView(LoginRequiredMixin, TemplateView):
@@ -13,30 +13,37 @@ class HomeView(LoginRequiredMixin, TemplateView):
     def render_default(self, request):
 
         user = request.user
-        has_rsvp = Rsvp.objects.filter(guest=user).exists()
+        has_rsvp = Rsvp.objects.filter(guest__primary_guest=user).exists()
         rsvp = {}
+        note = None
         if has_rsvp:
-            rsvp_obj = Rsvp.objects.filter(guest=user).first()
-            rsvp = {
-                "num_guests": rsvp_obj.num_guests,
-                "note": rsvp_obj.note,
-                "coming": "Yes" if rsvp_obj.coming else "No",
-                "allergies": Allergy.objects.filter(guest=user).values_list(
-                    "allergy", flat=True
-                ),
-            }
+            rsvp_objs = Rsvp.objects.filter(guest__primary_guest=user).all()
+            rsvp = []
+            for rsvp_obj in rsvp_objs:
+                rsvp.append(
+                    {
+                        "name": rsvp_obj.guest.preferred_name,
+                        "coming": "Yes" if rsvp_obj.coming else "No",
+                        "first_course": rsvp_obj.first_course,
+                        "second_course": rsvp_obj.second_course,
+                    }
+                )
+            note = rsvp_objs[0].note
 
         return render(
             request,
             self.template_name,
             {
-                "form": RsvpForm(max_guests=user.max_guests),
+                "form": RsvpForm(guests=self.create_guest_list(user)),
                 "invite_code": user.username,
                 "name": user.first_name,
-                "max_guests": user.max_guests,
-                "has_rsvp": Rsvp.objects.filter(guest=request.user).exists(),
+                "has_rsvp": Rsvp.objects.filter(
+                    guest__primary_guest=request.user
+                ).exists(),
                 "rsvp": rsvp,
+                "note": note,
                 "is_rehearsal_guest": user.is_rehearsal_guest,
+                "guests": self.create_guest_list(user),
             },
         )
 
@@ -44,35 +51,45 @@ class HomeView(LoginRequiredMixin, TemplateView):
         return self.render_default(request)
 
     def post(self, request, *args, **kwargs):
-        form = RsvpForm(request.POST, max_guests=request.user.max_guests)
+        form = RsvpForm(
+            request.POST,
+            guests=self.create_guest_list(request.user),
+        )
         if form.is_valid():
 
             # user has already RSVP'd -> shouldn't even get here
-            if Rsvp.objects.filter(guest=request.user).exists():
+            if Rsvp.objects.filter(guest__primary_guest=request.user).exists():
                 print("user already has rsvp")
                 return render(
                     request,
                     self.template_name,
                     {
-                        "form": RsvpForm(max_guests=request.user.max_guests),
+                        "form": RsvpForm(guests=self.create_guest_list(request.user)),
                         "invite_code": request.user.username,
                         "name": request.user.first_name,
                     },
                 )
 
-            rsvp = Rsvp(
-                guest=request.user,
-                num_guests=form.cleaned_data["num_guests"],
-                coming=form.cleaned_data["coming"],
-                note=form.cleaned_data["note"],
-            )
+            for guest in form.guests:
+                rsvp = Rsvp(
+                    guest=Guest.objects.get(pk=guest["id"]),
+                    coming=form.cleaned_data[guest["attending"]],
+                    note=form.cleaned_data["note"],
+                    first_course=form.cleaned_data[guest["menu_first"]],
+                    second_course=form.cleaned_data[guest["menu_second"]],
+                )
 
-            rsvp.save()
-
-            for allergy in form.cleaned_data["allergies"]:
-                a = Allergy(guest=request.user, allergy=allergy)
-                a.save()
+                rsvp.save()
 
             return HttpResponseRedirect("/thanks")
 
         return self.render_default(request)
+
+    @staticmethod
+    def create_guest_list(user):
+        guests = list(Guest.objects.filter(primary_guest=user).values())
+        for guest in guests:
+            guest["attending"] = f"attending_{guest['id']}"
+            guest["menu_first"] = f"menu_first_{guest['id']}"
+            guest["menu_second"] = f"menu_second_{guest['id']}"
+        return guests

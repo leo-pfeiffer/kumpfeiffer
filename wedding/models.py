@@ -44,11 +44,31 @@ class Rsvp(models.Model):
         verbose_name = "RSVP"
         verbose_name_plural = "RSVPs"
 
+    # todo update choices
+    FIRST_COURSE_CHOICES = [
+        ("chicken", "Chicken"),
+        ("fish", "Fish"),
+    ]
+
+    # todo update choices
+    SECOND_COURSE_CHOICES = [
+        ("chicken", "Chicken"),
+        ("fish", "Fish"),
+    ]
+
     guest = models.ForeignKey(Guest, on_delete=models.CASCADE, blank=False, null=False)
 
     coming = models.BooleanField(blank=False, null=False)
 
     note = models.CharField(max_length=200, null=True, blank=True)
+
+    first_course = models.CharField(
+        max_length=50, choices=FIRST_COURSE_CHOICES, blank=False, null=False
+    )
+
+    second_course = models.CharField(
+        max_length=50, choices=SECOND_COURSE_CHOICES, blank=False, null=False
+    )
 
     def __str__(self):
         return f"{self.guest.first_name}"
@@ -59,38 +79,3 @@ class RsvpSummary(Rsvp):
         proxy = True
         verbose_name = "RSVP Summary"
         verbose_name_plural = "RSVPs Summary"
-
-
-class Allergy(models.Model):
-    class Meta:
-        verbose_name_plural = "Allergies"
-
-    ALLERGY_CHOICES = (
-        ("celery", "Celery / Sellerie"),
-        ("gluten", "Gluten"),
-        ("crustaceans", "Crustaceans / Krebstiere"),
-        ("eggs", "Eggs / Eier"),
-        ("fish", "Fish / Fisch"),
-        ("lupin", "Lupin / Lupine"),
-        ("milk", "Milk / Milch"),
-        ("molluscs", "Molluscs / Weichtiere"),
-        ("mustard", "Mustard / Senf"),
-        ("peanuts", "Peanuts / Erdnüsse"),
-        ("sesame", "Sesame / Sesam"),
-        ("soybeans", "Soy beans / Soja"),
-        ("sulphur", "Sulphur dioxide / Schwefeldioxid"),
-        ("nuts", "Tree nuts / Schalenfrüchte (Nüsse)"),
-    )
-
-    guest = models.ForeignKey(Guest, on_delete=models.CASCADE, blank=False, null=False)
-
-    allergy = models.CharField(
-        choices=ALLERGY_CHOICES, max_length=30, null=True, blank=True
-    )
-
-
-class AllergySummary(Allergy):
-    class Meta:
-        proxy = True
-        verbose_name = "Allergy Summary"
-        verbose_name_plural = "Allergies Summary"
