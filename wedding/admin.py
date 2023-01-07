@@ -47,9 +47,7 @@ class UserAdmin(
 ):
     list_display = (
         "name",
-        "preferred_name",
         "invite_code",
-        "max_guests",
         "email",
         "is_rehearsal_guest",
         "has_rsvp",
@@ -73,12 +71,6 @@ class UserAdmin(
             return obj.username
         else:
             return obj.first_name
-
-    def preferred_name(self, obj):
-        if obj.is_superuser:
-            return ""
-        else:
-            return obj.preferred_name
 
     def invite_code(self, obj):
         if obj.is_superuser:
@@ -123,13 +115,13 @@ class UserAdmin(
 
 @admin.register(Guest)
 class GuestAdmin(admin.ModelAdmin):
-    list_display = ("primary_guest", "name", "rsvp")
+    list_display = ("name", "primary_guest", "rsvp", "has_rsvp")
 
     def primary_guest(self, obj):
         return obj.primary_guest.first_name
 
     def name(self, obj):
-        return obj.preferred_name
+        return obj.name
 
     def rsvp(self, obj):
         rsvp_obj = Rsvp.objects.filter(guest=obj).first()
@@ -141,80 +133,29 @@ class GuestAdmin(admin.ModelAdmin):
         else:
             return ""
 
-
-# @admin.register(AllergySummary)
-# class AllergySummaryAdmin(admin.ModelAdmin):
-#     change_list_template = "admin/allergy_summary_change_list.html"
-#
-#     def changelist_view(self, request, extra_context=None):
-#         response = super().changelist_view(
-#             request,
-#             extra_context=extra_context,
-#         )
-#
-#         try:
-#             qs = response.context_data["cl"].queryset
-#         except (AttributeError, KeyError):
-#             return response
-#
-#         metrics = {
-#             "total": Count("id"),
-#         }
-#
-#         summary = (
-#             qs.filter(allergy__isnull=False)
-#             .values("allergy")
-#             .annotate(**metrics)
-#             .order_by("-total")
-#         )
-#
-#         response.context_data["summary"] = list(summary)
-#         response.context_data["total_allergies"] = summary.aggregate(Sum("total"))[
-#             "total__sum"
-#         ]
-#
-#         return response
+    def has_rsvp(self, obj):
+        return Rsvp.objects.filter(guest=obj).exists()
 
 
 @admin.register(Rsvp)
 class RsvpAdmin(admin.ModelAdmin):
-    list_display = ("name", "invite_code", "coming", "note")
+    list_display = (
+        "name",
+        "invite_code",
+        "coming",
+        "first_course",
+        "second_course",
+        "note",
+    )
 
     def invite_code(self, obj):
-        return obj.guest.username
+        return obj.guest.primary_guest.username
 
     def name(self, obj):
-        return obj.guest.first_name
+        return obj.guest.name
 
+    def first_course(self, obj):
+        return obj.first_course
 
-@admin.register(RsvpSummary)
-class RsvpSummaryAdmin(admin.ModelAdmin):
-    change_list_template = "admin/rsvp_summary_change_list.html"
-
-    def changelist_view(self, request, extra_context=None):
-        response = super().changelist_view(
-            request,
-            extra_context=extra_context,
-        )
-
-        try:
-            qs = response.context_data["cl"].queryset
-        except (AttributeError, KeyError):
-            return response
-
-        rsvp_users = Rsvp.objects.values_list("guest_id")
-        num_rsvp = User.objects.filter(id__in=rsvp_users).count()
-        num_not_rsvp = (
-            User.objects.filter(is_superuser=False)
-            .filter(~Q(id__in=rsvp_users))
-            .count()
-        )
-        guest_count = Rsvp.objects.all().aggregate(Sum("num_guests"))
-
-        response.context_data["summary"] = {
-            "Has RSVP'd": num_rsvp,
-            "Has not RSVP'd": num_not_rsvp,
-            "Guest Count (so far)": guest_count["num_guests__sum"],
-        }
-
-        return response
+    def second_course(self, obj):
+        return obj.second_course

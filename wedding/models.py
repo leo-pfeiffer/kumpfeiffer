@@ -11,14 +11,6 @@ class User(AbstractUser):
     if the invite is for more than one person.
     """
 
-    preferred_name = models.CharField(max_length=50, blank=False, null=False)
-    # todo can remove this and deduce from Guest
-    max_guests = models.IntegerField(
-        blank=False,
-        null=False,
-        default=1,
-        validators=[MaxValueValidator(10), MinValueValidator(1)],
-    )
     is_rehearsal_guest = models.BooleanField(blank=False, null=False, default=False)
 
 
@@ -31,7 +23,7 @@ class Guest(models.Model):
     primary_guest = models.ForeignKey(
         get_user_model(), on_delete=models.CASCADE, blank=False, null=False
     )
-    preferred_name = models.CharField(max_length=50, blank=False, null=False)
+    name = models.CharField(max_length=50, blank=False, null=False)
 
 
 class Rsvp(models.Model):

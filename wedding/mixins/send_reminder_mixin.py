@@ -5,7 +5,7 @@ class SendReminderMixin:
     @staticmethod
     def _create_message(user):
         return f"""
-        Hi {user['preferred_name']},
+        Hi {user['first_name']},
         <br><br>
         We're super excited to have you at our wedding.
         To make sure we can plan the perfect wedding, we'd like to know if you
@@ -27,9 +27,7 @@ class SendReminderMixin:
         mailer = Mailer()
         subject = "Reminder: RSVP for Kristina's and Leo's wedding!"
 
-        for receiver in queryset.values(
-            "first_name", "username", "email", "preferred_name"
-        ):
+        for receiver in queryset.values("first_name", "username", "email"):
             message = self._create_message(receiver)
             mailer.send_mail(receiver["email"], subject, message)
 

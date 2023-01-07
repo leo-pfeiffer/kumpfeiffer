@@ -11,7 +11,7 @@ class RsvpForm(forms.Form):
 
         for guest in self.guests:
             self.fields[guest["attending"]] = forms.ChoiceField(
-                label=f"Is {guest['preferred_name']} attending?",
+                label=f"Is {guest['name']} attending?",
                 choices=((True, "Yes"), (False, "No")),
                 widget=forms.Select(attrs={"class": css_class}),
                 required=True,

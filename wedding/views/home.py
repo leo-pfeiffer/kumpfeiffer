@@ -22,7 +22,7 @@ class HomeView(LoginRequiredMixin, TemplateView):
             for rsvp_obj in rsvp_objs:
                 rsvp.append(
                     {
-                        "name": rsvp_obj.guest.preferred_name,
+                        "name": rsvp_obj.guest.name,
                         "coming": "Yes" if rsvp_obj.coming else "No",
                         "first_course": rsvp_obj.first_course,
                         "second_course": rsvp_obj.second_course,
