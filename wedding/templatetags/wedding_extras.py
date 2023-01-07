@@ -21,6 +21,16 @@ def multiply(n1, n2):
 @register.filter()
 def percentof(amount, total):
     try:
-        return '{:.1f}%'.format(amount / total * 100)
+        return "{:.1f}%".format(amount / total * 100)
     except ZeroDivisionError:
         return None
+
+
+@register.filter()
+def dict_key(d, k):
+    return d.get(k)
+
+
+@register.filter()
+def form_field(f, k):
+    return f.__getitem__(k)

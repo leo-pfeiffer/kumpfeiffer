@@ -2,6 +2,7 @@
 {% load i18n %}
 {% load static %}
 {% block content %}
+{% load wedding_extras %}
 
 <!-- Page -->
 <div class="gla_page" id="gla_page">
@@ -45,7 +46,7 @@
                             <li class="gla_parent"><a href="#engagement">{% trans "Engagement" %}</a></li>
                             <li class="gla_parent"><a href="#registry">{% trans "Registry" %}</a></li>
                             <li class="gla_parent"><a href="#faq">FAQ</a></li>
-                            <li class="gla_parent"><a href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
+                            <li class="gla_parent"><a href="/logout">Logout</a></li>
                             <li class="gla-parent">
                                 <a>
                                     <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
@@ -79,7 +80,7 @@
                         <li class="gla_parent"><a href="#engagement">{% trans "Engagement" %}</a></li>
                         <li class="gla_parent"><a href="#registry">{% trans "Registry" %}</a></li>
                         <li class="gla_parent"><a href="#faq">FAQ</a></li>
-                        <li class="gla_parent"><a href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
+                        <li class="gla_parent"><a href="/logout">Logout</a></li>
                         <li class="gla-parent">
                             <a>
                                 <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
@@ -210,36 +211,30 @@
                 <div class="row">
                     {% if has_rsvp %}
                     <div class="col-md-8 col-md-push-2 container text-center gla_large_text">
-                        <h3 class="gla_subtitle">{% trans "You already submitted your RSVP!" %}</h3>
-                        <hr>
-                        <p>
-                            <span><strong>{% trans "Attending?" %}</strong></span><br>
-                            <span>{{ rsvp.coming }}</span>
-                        </p>
-                        <p>
-                            <span><strong>{% trans "Number of guests" %}</strong></span><br>
-                            <span>{{ rsvp.num_guests }}</span>
-                        </p>
-                        <p>
-                            <span><strong>{% trans "Allergies" %}</strong></span><br>
-                            <span>
-                            {% if rsvp.allergies %}
-                                {{ rsvp.allergies |join:", "}}
-                            {% else %}
-                                n/a
-                            {% endif %}
-                            </span>
-                        </p>
-                        <p>
-                            <span><strong>{% trans "Note" %}</strong></span><br>
-                            <span>
-                            {% if rsvp.note %}
-                                {{ rsvp.note }}
-                            {% else %}
-                                n/a
-                            {% endif %}
-                            </span>
-                        </p>
+                        <h3 class="gla_subtitle">{% trans "You already submitted your RSVP!" %}</h3><hr>
+                        <table style="width: 100%; text-align: left;">
+                            <tr>
+                                <th>Name</th>
+                                <th>Attending?</th>
+                                <th>1st Course</th>
+                                <th>2nd Course</th>
+                            </tr>
+                            {% for guest in rsvp %}
+                                <tr>
+                                    <td>{{ guest.name }}</td>
+                                    <td>{{ guest.coming }}</td>
+                                    <td>{{ guest.first_course }}</td>
+                                    <td>{{ guest.second_course }}</td>
+                                </tr>
+                        {% endfor %}
+                        </table><hr>
+                        {% if note %}
+                        <div>
+                            <strong>{% trans "Your note" %}</strong>
+                            <br>
+                            {{ note }}
+                        </div>
+                    {% endif %}
                     </div>
                     {% else %}
                         <div class="col-md-8 col-md-push-2">
@@ -252,35 +247,32 @@
                         </div>
                         <form id="rsvp-form" method="POST">
                             {% csrf_token %}
-                            <div class="row">
 
-                                <div class="col-md-6">
-                                    <div style="margin-bottom: 20px">
-                                        <label>{% trans "Invite code" %}</label>
-                                        <input type="text" name="name" class="form-control form-opacity" placeholder="{{ invite_code }}" disabled>
+                            {% for guest in guests %}
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div style="margin-bottom: 20px">
+                                            <label for="attending_guest_{{ guest.id }}">Is {{ guest.name }} attending?</label>
+                                            {{ form|form_field:guest.attending }}
+                                        </div>
                                     </div>
-
-                                    <div style="margin-bottom: 20px">
-                                        <label for="coming">{% trans "Attending?" %}</label>
-                                        {{ form.coming }}
-                                    </div>
-
-                                    <div style="margin-bottom: 20px">
-                                        <label for="num_guests">{% trans "Number of guests (incl. yourself, max" %} {{ max_guests }})</label>
-                                        {{ form.num_guests }}
-                                    </div>
-
-                                    <div style="margin-bottom: 20px">
-                                        <label for="note">{% trans "Other allergies / notes" %}</label>
-                                        {{ form.note }}
+                                    <div class="col-md-6">
+                                        <label for="menu_{{ guest.id }}">First course</label>
+                                        {{ form|form_field:guest.menu_first }}
+                                        <label for="menu_{{ guest.id }}">Second course</label>
+                                        {{ form|form_field:guest.menu_second }}
                                     </div>
                                 </div>
+                                {% if not forloop.last %}
+                                    <hr>
+                                {% endif %}
+                            {% endfor %}
 
+                            <div class="row">
 
-                                <div class="col-md-6"
-                                     style="background: rgba(255,255,255,0.1); color: #fff; border: #fff thin solid; text-align: left; margin-bottom: 20px">
-                                    <label for="allergies">{% trans "Allergies" %}</label>
-                                    {{ form.allergies }}
+                                <div style="margin-bottom: 20px">
+                                    <label for="note">{% trans "Notes" %}</label>
+                                    {{ form.note }}
                                 </div>
 
                                 <div class="col-md-12">
