@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-07 22:18+0000\n"
+"POT-Creation-Date: 2023-01-07 23:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -918,6 +918,16 @@ msgstr "Trauzeugen"
 #: wedding/templates/home.html:355
 msgid "Show All"
 msgstr "Alle anzeigen"
+
+#: wedding/templates/lockdown/form.html:140
+msgid "Please use the password provided to you in your save-the-date email."
+msgstr ""
+"Bitte benutze das Passwort, das du in deiner Save-the-Date E-Mail erhalten "
+"hast."
+
+#: wedding/templates/lockdown/form.html:141
+msgid "To RSVP please click here:"
+msgstr "Um deine RSVP abzugeben, klicke bitte hier:"
 
 #: wedding/templates/login.html:128
 msgid "Invite code"
