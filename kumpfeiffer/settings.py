@@ -181,5 +181,6 @@ LOCKDOWN_URL_EXCEPTIONS = (
     r"/logout",
     r"/thanks",
     r"/home",
+    r"/admin",
     r"/i18n/setlang",
 )
