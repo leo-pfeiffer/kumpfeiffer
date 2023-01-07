@@ -102,6 +102,7 @@ class UserAdmin(
 
             rows = file_data.split("\n")
             rows = [row.split(",") for row in rows]
+            rows = [[word.strip() for word in row] for row in rows]
 
             # create users
             save_guest_list_rows(rows)
@@ -115,13 +116,13 @@ class UserAdmin(
 
 @admin.register(Guest)
 class GuestAdmin(admin.ModelAdmin):
-    list_display = ("name", "primary_guest", "rsvp", "has_rsvp")
-
-    def primary_guest(self, obj):
-        return obj.primary_guest.first_name
+    list_display = ("name", "primary_guest_name", "rsvp", "has_rsvp")
 
     def name(self, obj):
         return obj.name
+
+    def primary_guest_name(self, obj):
+        return obj.primary_guest.first_name
 
     def rsvp(self, obj):
         rsvp_obj = Rsvp.objects.filter(guest=obj).first()
