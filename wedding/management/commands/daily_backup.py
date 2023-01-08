@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from django.core import serializers
 
 from wedding.dropbox_backup import backup_files
-from wedding.models import Rsvp
+from wedding.models import Rsvp, Guest
 
 
 class Command(BaseCommand):
@@ -11,6 +11,7 @@ class Command(BaseCommand):
 
         models = [
             {"model": get_user_model(), "name": "users.json"},
+            {"model": Guest, "name": "guests.json"},
             {"model": Rsvp, "name": "rsvp.json"},
         ]
 

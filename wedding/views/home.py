@@ -2,6 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views.generic import TemplateView
+import requests
 
 from wedding.forms import RsvpForm
 from wedding.models import Rsvp, Guest
@@ -70,6 +71,7 @@ class HomeView(LoginRequiredMixin, TemplateView):
                     },
                 )
 
+            ntfy_msg = ""
             for guest in form.guests:
                 rsvp = Rsvp(
                     guest=Guest.objects.get(pk=guest["id"]),
@@ -79,8 +81,12 @@ class HomeView(LoginRequiredMixin, TemplateView):
                     second_course=form.cleaned_data[guest["menu_second"]],
                 )
 
+                ntfy_msg += f"{rsvp.guest.name} is coming: {rsvp.coming}\n"
+
                 rsvp.save()
 
+            # send notification to ntfy channel
+            requests.post("https://ntfy.sh/kumpfeiffer-rsvp", data=ntfy_msg)
             return HttpResponseRedirect("/thanks")
 
         return self.render_default(request)
