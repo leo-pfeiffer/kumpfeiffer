@@ -36,16 +36,15 @@ class Rsvp(models.Model):
         verbose_name = "RSVP"
         verbose_name_plural = "RSVPs"
 
-    # todo update choices
     FIRST_COURSE_CHOICES = [
-        ("chicken", "Chicken"),
-        ("fish", "Fish"),
+        ("cheese-salad", "Summer salad with berries and goat cheese / Sommersalat mit Beeren und Ziegenkäse"),
+        ("salmon-salad", "Salad with Loch Fyne Braden smoked salmon / Salat mit Loch Fyne Braden Räucherlachs"),
     ]
 
-    # todo update choices
     SECOND_COURSE_CHOICES = [
-        ("chicken", "Chicken"),
-        ("fish", "Fish"),
+        ("beef", "Slow Braised Feather Blade of Beef / Langsam geschmorte Federklinge vom Rind"),
+        ("salmon", "Poached Fillet of Tay Salmon / Pochiertes Filet vom Tay-Lachs"),
+        ("risotto", "Asparagus and Mushroom Risotto / Risotto mit Spargel und Pilzen"),
     ]
 
     guest = models.ForeignKey(Guest, on_delete=models.CASCADE, blank=False, null=False)
