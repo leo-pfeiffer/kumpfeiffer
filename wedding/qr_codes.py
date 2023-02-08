@@ -5,7 +5,7 @@ import io
 import zipfile
 
 
-def generate_qr_code(url: str, invite_code: str):
+def generate_qr_code(url: str, invite_code: str, name: str):
     qr = qrcode.QRCode(
         version=4,
         error_correction=qrcode.constants.ERROR_CORRECT_H,
@@ -17,9 +17,11 @@ def generate_qr_code(url: str, invite_code: str):
     img = qr.make_image(fill_color="black", back_color="white").convert("RGB")
 
     draw = ImageDraw.Draw(img)
-    font = ImageFont.truetype("Monaco", 64)
+    font_large = ImageFont.truetype("Monaco", 64)
+    font_small = ImageFont.truetype("Monaco", 12)
 
-    draw.text((200, 550), invite_code, (0, 0, 0), font=font)
+    draw.text((230, 500), invite_code, (0, 0, 0), font=font_large)
+    draw.text((5, 590), name, (0, 0, 0), font=font_small)
 
     return img
 

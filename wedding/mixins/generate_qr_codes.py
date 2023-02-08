@@ -17,7 +17,7 @@ class GenerateQrCodes:
 
             invite_url = f"{login_url}?{urlencode({'inviteCode': obj.username})}"
 
-            qr_code = generate_qr_code(invite_url, obj.username)
+            qr_code = generate_qr_code(invite_url, obj.username, obj.first_name)
 
             data.append(
                 {

@@ -16,9 +16,9 @@ def generate_invite_code() -> str:
     Generate an alphanumeric invite code of length 6
     :return: invite code
     """
-    alphabet = string.ascii_letters + string.digits
+    alphabet = string.ascii_uppercase
     code = []
-    for i in range(6):
+    for i in range(4):
         code.append(random.choice(alphabet))
     return "".join(code)
 
