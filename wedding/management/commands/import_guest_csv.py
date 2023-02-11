@@ -1,6 +1,11 @@
+import logging
+
 from django.core.management.base import BaseCommand
 
 from wedding.utils import read_guest_csv, save_guest_list_rows
+
+
+logger = logging.getLogger(__name__)
 
 
 class Command(BaseCommand):
@@ -18,7 +23,8 @@ class Command(BaseCommand):
 
     @staticmethod
     def import_guest_csv(path):
-        rows = read_guest_csv(path)
-
-        # create users
-        save_guest_list_rows(rows)
+        try:
+            rows = read_guest_csv(path)
+            save_guest_list_rows(rows)
+        except Exception as e:
+            logger.error(e)

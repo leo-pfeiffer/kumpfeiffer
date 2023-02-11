@@ -12,6 +12,9 @@ class User(AbstractUser):
 
     is_rehearsal_guest = models.BooleanField(blank=False, null=False, default=False)
 
+    class Meta:
+        unique_together = ('first_name', 'email')
+
 
 class Guest(models.Model):
     """
@@ -23,6 +26,9 @@ class Guest(models.Model):
         get_user_model(), on_delete=models.CASCADE, blank=False, null=False
     )
     name = models.CharField(max_length=50, blank=False, null=False)
+
+    class Meta:
+        unique_together = ('primary_guest', 'name')
 
 
 class Rsvp(models.Model):

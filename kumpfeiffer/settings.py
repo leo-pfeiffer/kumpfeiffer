@@ -184,3 +184,29 @@ LOCKDOWN_URL_EXCEPTIONS = (
     r"/admin",
     r"/i18n/setlang",
 )
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'standard': {
+            'format': '{asctime} {levelname} in {module} : {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'standard'
+        },
+        'file': {
+            'class': 'logging.FileHandler',
+            'formatter': 'standard',
+            'filename': BASE_DIR / 'kumpfeiffer.log',
+        },
+    },
+    'root': {
+        'handlers': ['console', 'file'],
+        'level': 'INFO',
+    },
+}
