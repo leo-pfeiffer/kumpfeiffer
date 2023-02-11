@@ -1,13 +1,11 @@
+# core
 Django==4.0.4
 gunicorn==20.1.0
 python-dotenv==0.20.0
 psycopg2-binary==2.9.3  # need this for mac OS
 requests==2.27.1
-
 dj-database-url==0.5.0
-
 django-lockdown==4.0.0
-
 
 # qr code
 qrcode==7.3.1
@@ -15,3 +13,8 @@ pillow==9.2.0
 
 # dropbox
 dropbox==11.33.0
+
+# testing
+pytest==7.2.1
+pytest-django==4.5.2
+pytest-mock==3.10.0
