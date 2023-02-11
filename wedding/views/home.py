@@ -1,3 +1,5 @@
+import logging
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
@@ -7,12 +9,14 @@ import requests
 from wedding.forms import RsvpForm
 from wedding.models import Rsvp, Guest
 
+logger = logging.getLogger(__name__)
+
 
 class HomeView(LoginRequiredMixin, TemplateView):
     template_name = "home.html"
 
     def render_default(self, request):
-
+        logger.info(f"User {request.user} is rendering {self.template_name}")
         user = request.user
         has_rsvp = Rsvp.objects.filter(guest__primary_guest=user).exists()
         rsvp = {}
@@ -52,15 +56,20 @@ class HomeView(LoginRequiredMixin, TemplateView):
         return self.render_default(request)
 
     def post(self, request, *args, **kwargs):
+        logger.info(f"User {request.user} posted their RSVP form.")
+
         form = RsvpForm(
             request.POST,
             guests=self.create_guest_list(request.user),
         )
+
         if form.is_valid():
 
             # user has already RSVP'd -> shouldn't even get here
             if Rsvp.objects.filter(guest__primary_guest=request.user).exists():
-                print("user already has rsvp")
+                logger.warning(f"User {request.user} has already RSVP'd but still reposted the form. "
+                               f"This shouldn't happen.")
+
                 return render(
                     request,
                     self.template_name,
@@ -80,15 +89,16 @@ class HomeView(LoginRequiredMixin, TemplateView):
                     first_course=form.cleaned_data[guest["menu_first"]],
                     second_course=form.cleaned_data[guest["menu_second"]],
                 )
-
                 ntfy_msg += f"{rsvp.guest.name} is coming: {rsvp.coming}\n"
-
                 rsvp.save()
+
+            logger.info(f"Saved RSVP form of {request.user}.")
 
             # send notification to ntfy channel
             requests.post("https://ntfy.sh/kumpfeiffer-rsvp", data=ntfy_msg)
             return HttpResponseRedirect("/thanks")
 
+        logger.info(f"RSVP form of {request.user} was invalid.")
         return self.render_default(request)
 
     @staticmethod
