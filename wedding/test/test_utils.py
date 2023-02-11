@@ -44,6 +44,23 @@ def test_validate_guest_list_rows_throws_exception_for_duplicate_guest_entries()
         validate_guest_list_rows(rows)
 
 
+def test_validate_guest_list_rows_throws_exception_for_different_rehearsal_guest_flags():
+    rows_ok = [
+        ["1", "2", "3", "true"],
+        ["1", "2", "3", "TRUE"]
+    ]
+    # should be ok with same capitalisation
+    validate_guest_list_rows(rows_ok)
+
+    # should throw for different values
+    rows_diff = [
+        ["1", "2", "3", "true"],
+        ["1", "2", "3", "false"]
+    ]
+    with pytest.raises(ValueError):
+        validate_guest_list_rows(rows_diff)
+
+
 def test_create_user_from_row_creates_user():
     user = create_user_from_row(["not_used", "first_name", "email", "true"])
     assert user.first_name == "first_name"

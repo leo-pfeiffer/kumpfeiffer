@@ -6,7 +6,6 @@ import logging
 
 from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import make_password
-from django.db.utils import IntegrityError
 from django.db import transaction
 from django.db.models import Q
 
@@ -54,15 +53,22 @@ def read_guest_csv(path: str) -> list:
 
 def validate_guest_list_rows(rows: list[list[str]]):
     guest_objects = {}
+    user_to_rehearsal_flag = {}
     for row in rows:
         if len(row) != 4:
             raise ValueError(f"Expected row to have 4 element but got {len(row)}.")
-        if row[3].lower() not in ("true", "false"):
+        guest_name = row[0]
+        email = row[2]
+        rehearsal_flag = row[3]
+        if rehearsal_flag.lower() not in ("true", "false"):
             raise ValueError(f"Rehearsal element must be true or false, got {row[3]}.")
-        guest_id = "".join(row[:3])
-        if guest_id in guest_objects:
-            raise ValueError(f"Duplicate guest entry for guest {row[0]} of user {row[2]}")
-
+        guest_key = "".join(row[:3])
+        if guest_key in guest_objects:
+            raise ValueError(f"Duplicate guest entry for guest {guest_name} of user {email}")
+        user_key = get_user_key_from_row(row)
+        if user_key in user_to_rehearsal_flag and user_to_rehearsal_flag[user_key] != rehearsal_flag.lower():
+            raise ValueError(f"Got two different values for rehearsal flag for user {email}")
+        user_to_rehearsal_flag[user_key] = rehearsal_flag.lower()
 
 def create_user_from_row(row: list[str]):
     invite_code = generate_invite_code()
