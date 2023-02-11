@@ -16,7 +16,6 @@ class HomeView(LoginRequiredMixin, TemplateView):
     template_name = "home.html"
 
     def render_default(self, request):
-        logger.info(f"User {request.user} is rendering {self.template_name}")
         user = request.user
         has_rsvp = Rsvp.objects.filter(guest__primary_guest=user).exists()
         rsvp = {}
