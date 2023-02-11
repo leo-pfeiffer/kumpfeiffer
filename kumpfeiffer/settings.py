@@ -182,6 +182,7 @@ LOCKDOWN_URL_EXCEPTIONS = (
     r"/thanks",
     r"/home",
     r"/admin",
+    r"/ntfy_update"
     r"/i18n/setlang",
 )
 

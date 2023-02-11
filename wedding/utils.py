@@ -5,12 +5,13 @@ import csv
 import re
 import logging
 
+import requests
 from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import make_password
 from django.db import transaction
 from django.db.models import Q
 
-from wedding.models import Guest
+from wedding.models import Guest, Rsvp
 
 logger = logging.getLogger(__name__)
 
@@ -167,3 +168,20 @@ def save_guest_list_rows(rows: list[list[str]]):
 
     logger.info(f"Inserted {len(all_users)} User objects.")
     logger.info(f"Inserted {len(new_guests)} Guest objects.")
+
+
+def get_status_update_msg():
+    total_users = get_user_model().objects.filter(~Q(username="admin")).count()
+    total_guests = Guest.objects.count()
+    total_rsvp = Rsvp.objects.count()
+    rsvp_coming = Rsvp.objects.filter(coming=False).count()
+    return f"Here's your update:\n" \
+           f"Total users: {total_users}\n" \
+           f"Total guests: {total_guests}\n" \
+           f"Total RSVPs: {total_rsvp}\n" \
+           f"    Coming: {rsvp_coming}\n" \
+           f"    Not coming: {total_rsvp - rsvp_coming}"
+
+
+def notify_with_ntfy(data: str):
+    requests.post("https://ntfy.sh/kumpfeiffer-rsvp", data=data)
