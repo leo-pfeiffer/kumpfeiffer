@@ -22,17 +22,31 @@ def test_read_guest_csv(guests_csv):
         assert len(row) == 4
 
 
-def test_validate_guest_list_rows_throws_exception_for_row_with_length_not_4():
+def test_validate_guest_list_rows_throws_exception_for_row_with_length_not_4_or_5():
     with pytest.raises(ValueError):
         validate_guest_list_rows([["1", "2", "3"]])
 
     with pytest.raises(ValueError):
-        validate_guest_list_rows([["1", "2", "3", "4", "5"]])
+        validate_guest_list_rows([["1", "2", "3", "4", "5", "6"]])
 
 
-def test_validate_guest_list_rows_throws_exception_for_non_boolean_last_element():
+def test_validate_guest_list_rows_throws_exception_for_non_boolean_rehearsal_flat():
     with pytest.raises(ValueError):
         validate_guest_list_rows([["1", "2", "3", "xxx"]])
+
+
+def test_validate_guest_list_rows_throws_exception_for_wrong_format_of_invite_code():
+    with pytest.raises(ValueError):
+        validate_guest_list_rows([["1", "2", "3", "true", "XXX"]])
+
+
+def test_validate_guest_list_rows_throws_exception_for_two_invite_codes_for_same_user():
+    rows = [
+        ["1", "2", "3", "true", "AAAA"],
+        ["1", "2", "3", "true", "BBBB"]
+    ]
+    with pytest.raises(ValueError):
+        validate_guest_list_rows(rows)
 
 
 def test_validate_guest_list_rows_throws_exception_for_duplicate_guest_entries():
@@ -88,6 +102,19 @@ def test_save_guest_list_rows_saves_users():
 
 
 @pytest.mark.django_db
+def test_save_guest_list_rows_saves_users_with_invite_code():
+    rows = [
+        ["jon", "jon", "jon@mail.com", "true", "XXXX"],
+        ["jane", "jon", "jon@mail.com", "true", "XXXX"]
+    ]
+    save_guest_list_rows(rows)
+    assert User.objects.count() == 1
+    assert User.objects \
+        .filter(username="XXXX", first_name="jon", email="jon@mail.com", is_rehearsal_guest=True) \
+        .exists()
+
+
+@pytest.mark.django_db
 def test_save_guest_list_rows_saves_guests():
     rows = [
         ["jon", "jon", "jon@mail.com", "true"],
@@ -100,6 +127,22 @@ def test_save_guest_list_rows_saves_guests():
         .exists()
     assert Guest.objects \
         .filter(primary_guest__first_name="jon", name="jane") \
+        .exists()
+
+
+@pytest.mark.django_db
+def test_save_guest_list_rows_saves_guests_with_invite_code():
+    rows = [
+        ["jon", "jon", "jon@mail.com", "true", "XXXX"],
+        ["jane", "jon", "jon@mail.com", "true", "XXXX"]
+    ]
+    save_guest_list_rows(rows)
+    assert Guest.objects.count() == 2
+    assert Guest.objects \
+        .filter(primary_guest__first_name="jon", name="jon", primary_guest__username="XXXX") \
+        .exists()
+    assert Guest.objects \
+        .filter(primary_guest__first_name="jon", name="jane", primary_guest__username="XXXX") \
         .exists()
 
 

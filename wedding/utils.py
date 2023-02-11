@@ -2,6 +2,7 @@ import os
 import string
 import random
 import csv
+import re
 import logging
 
 from django.contrib.auth import get_user_model
@@ -14,6 +15,8 @@ from wedding.models import Guest
 logger = logging.getLogger(__name__)
 
 User = get_user_model()
+
+INVITE_CODE_PATTERN = re.compile(r"[A-Z]{4}")
 
 
 def generate_invite_code() -> str:
@@ -31,7 +34,7 @@ def generate_invite_code() -> str:
 def read_guest_csv(path: str) -> list:
     """
     Read guest list from a csv file.
-    First four columns must be: guest, primary guest, email, is rehearsal guest
+    First four columns must be: guest, primary guest, email, is rehearsal guest, optional: invite_code
     Header: None
     :param path: path to the csv file
     :return: list containing a list of two elements for each row
@@ -44,9 +47,9 @@ def read_guest_csv(path: str) -> list:
         rows = []
         for row in reader:
             clean_row = [word.strip() for word in row]
-            if len(clean_row) != 4:
-                raise ValueError(f"Expected row length 4 but got {len(clean_row)}")
-            rows.append(clean_row[:4])
+            if len(clean_row) != 4 and len(clean_row) != 5:
+                raise ValueError(f"Expected row length 4 or 5 but got {len(clean_row)}")
+            rows.append(clean_row)
 
     return rows
 
@@ -54,9 +57,10 @@ def read_guest_csv(path: str) -> list:
 def validate_guest_list_rows(rows: list[list[str]]):
     guest_objects = {}
     user_to_rehearsal_flag = {}
+    user_key_to_invite_code = {}
     for row in rows:
-        if len(row) != 4:
-            raise ValueError(f"Expected row to have 4 element but got {len(row)}.")
+        if len(row) != 4 and len(row) != 5:
+            raise ValueError(f"Expected row to have 4 or 5 elements but got {len(row)}.")
         guest_name = row[0]
         email = row[2]
         rehearsal_flag = row[3]
@@ -69,9 +73,20 @@ def validate_guest_list_rows(rows: list[list[str]]):
         if user_key in user_to_rehearsal_flag and user_to_rehearsal_flag[user_key] != rehearsal_flag.lower():
             raise ValueError(f"Got two different values for rehearsal flag for user {email}")
         user_to_rehearsal_flag[user_key] = rehearsal_flag.lower()
+        if len(row) == 5:
+            if not re.fullmatch(INVITE_CODE_PATTERN, row[4]):
+                raise ValueError(f"Invite code has wrong format: {row[4]}.")
+            if user_key in user_key_to_invite_code:
+                if user_key_to_invite_code[user_key] != row[4]:
+                    raise ValueError(f"Got two different invite codes for user {email}")
+            user_key_to_invite_code[user_key] = row[4]
+
 
 def create_user_from_row(row: list[str]):
-    invite_code = generate_invite_code()
+    if len(row) == 5:
+        invite_code = row[4]
+    else:
+        invite_code = generate_invite_code()
     user = User(username=invite_code)
     user.first_name = row[1]
     user.email = row[2]
