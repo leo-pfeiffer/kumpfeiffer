@@ -13,7 +13,7 @@ class User(AbstractUser):
     is_rehearsal_guest = models.BooleanField(blank=False, null=False, default=False)
 
     class Meta:
-        unique_together = ('first_name', 'email')
+        unique_together = ("first_name", "email")
 
 
 class Guest(models.Model):
@@ -28,7 +28,7 @@ class Guest(models.Model):
     name = models.CharField(max_length=50, blank=False, null=False)
 
     class Meta:
-        unique_together = ('primary_guest', 'name')
+        unique_together = ("primary_guest", "name")
 
 
 class Rsvp(models.Model):
@@ -42,12 +42,21 @@ class Rsvp(models.Model):
         verbose_name_plural = "RSVPs"
 
     FIRST_COURSE_CHOICES = [
-        ("cheese-salad", "Summer salad with berries and goat cheese / Sommersalat mit Beeren und Ziegenkäse"),
-        ("salmon-salad", "Salad with Loch Fyne Braden smoked salmon / Salat mit Loch Fyne Braden Räucherlachs"),
+        (
+            "cheese-salad",
+            "Butternut Squash and Sweet Potato Soup / Butternusskürbis- und Süßkartoffelsuppe",
+        ),
+        (
+            "salmon-salad",
+            "Salad with Loch Fyne Braden smoked salmon / Salat mit Loch Fyne Braden Räucherlachs",
+        ),
     ]
 
     SECOND_COURSE_CHOICES = [
-        ("beef", "Slow Braised Feather Blade of Beef / Langsam geschmorte Federklinge vom Rind"),
+        (
+            "beef",
+            "Slow Braised Feather Blade of Beef / Langsam geschmorte Federklinge vom Rind",
+        ),
         ("salmon", "Poached Fillet of Tay Salmon / Pochiertes Filet vom Tay-Lachs"),
         ("risotto", "Asparagus and Mushroom Risotto / Risotto mit Spargel und Pilzen"),
     ]
