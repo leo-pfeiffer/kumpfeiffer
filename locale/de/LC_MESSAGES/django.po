@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-15 01:14+0000\n"
+"POT-Creation-Date: 2023-03-18 11:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -90,13 +90,13 @@ msgstr ""
 msgid "Registry"
 msgstr "Hochzeitstisch"
 
-#: wedding/templates/faq.html:38
+#: wedding/templates/faq.html:38 wedding/templates/home.html:314
 msgid "We have registered at"
 msgstr ""
 "Um das Thema Geschenke für alle etwas leichter zu gestalten, haben wir uns "
 "bei für einen digitalen Hochzeitstisch registriert:"
 
-#: wedding/templates/faq.html:39
+#: wedding/templates/faq.html:39 wedding/templates/home.html:315
 msgid ""
 "This is a website that includes multiple vendors to provide flexibility and "
 "ease to review many options in a consolidated framework. It also includes a "
@@ -112,7 +112,7 @@ msgstr ""
 "Connecticut einen transatlantischen Umzug ersparen. Die Adressdaten sind "
 "bereits auf der Website regstriert und werden automatisch eingefügt."
 
-#: wedding/templates/faq.html:42 wedding/templates/home.html:325
+#: wedding/templates/faq.html:42 wedding/templates/home.html:318
 msgid "You can access our registry here:"
 msgstr "Du kannst unsere Online-Wunschliste hier einsehen:"
 
@@ -874,11 +874,23 @@ msgstr "und gib deinen persönlichen Einladungscode ein."
 msgid "Notes"
 msgstr "Anmerkungen"
 
-#: wedding/templates/home.html:341
+#: wedding/templates/home.html:334
 msgid "Wedding Party"
 msgstr "Trauzeugen"
 
-#: wedding/templates/home.html:355
+#: wedding/templates/home.html:336
+msgid ""
+"Meet our wonderful wedding party! These are the amazing people who will "
+"stand by our side on our special day as bridespeople, groomspeople, and "
+"readers. Each of them has played an important role in our lives, and we are "
+"grateful to have them as our closest friends and family."
+msgstr ""
+"Lerne unsere wundervolle Hochzeitsgesellschaft kennen! Diese fantastischen "
+"Menschen werden an unserem besonderen Tag an unserer Seite stehen. Jeder von "
+"ihnen hat eine wichtige Rolle in unserem Leben gespielt, und wir sind "
+"dankbar, sie als unsere engsten Freunde und Familie zu haben."
+
+#: wedding/templates/home.html:341
 msgid "Show All"
 msgstr "Alle anzeigen"
 
