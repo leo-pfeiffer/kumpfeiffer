@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-18 11:41+0000\n"
+"POT-Creation-Date: 2023-03-18 12:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -900,13 +900,25 @@ msgstr ""
 "Bitte benutze das Passwort, das du in deiner Save-the-Date E-Mail erhalten "
 "hast."
 
-#: wedding/templates/login.html:128
-msgid "Invite code"
-msgstr "Einladungscode"
+#: wedding/templates/lockdown/form.html:141
+msgid "This is NOT your personal four-letter invite code."
+msgstr "Dies ist NICHT dein persönlicher vierstellige Einladungscode."
 
-#: wedding/templates/login.html:140
-msgid "You can find your invite code on your invitation."
-msgstr "Deinen persönlichen Einladungscode findest du auf deiner Einladung."
+#: wedding/templates/login.html:128 wedding/templates/login.html:130
+msgid "4-Letter Invite Code"
+msgstr "4-stelliger Einladungscode"
+
+#: wedding/templates/login.html:141
+msgid ""
+"You can find your personal four-letter invite code on your RSVP letter with "
+"the QR code."
+msgstr ""
+"Ihr findet euren persönlichen vierstellige Einladungscode auf eurem RSVP "
+"Brief über dem QR-Code."
+
+#: wedding/templates/login.html:144
+msgid "This is NOT the general access password from the save-the-date email."
+msgstr "Dies ist NICHT das Passwort aus der Save-the-Date E-Mail."
 
 #: wedding/templates/thanks.html:18
 msgid "Thank you, we have received your RSVP!"
@@ -928,6 +940,12 @@ msgstr ""
 "Schottland. Wir freuen uns schon sehr darauf, diesen Tag mit euch zu teilen! "
 "Schaut euch gerne auf dieser Website um, um mehr über unsere Pläne zu "
 "erfahren."
+
+#~ msgid "Invite code"
+#~ msgstr "Einladungscode"
+
+#~ msgid "You can find your invite code on your invitation."
+#~ msgstr "Deinen persönlichen Einladungscode findest du auf deiner Einladung."
 
 #~ msgid ""
 #~ "To welcome guests from far and wide, we are organizing a tour guided by "

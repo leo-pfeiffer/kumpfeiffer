@@ -176,38 +176,27 @@ DROPBOX = {
 
 LOCKDOWN_PASSWORDS = ("wedding2023",)
 
-LOCKDOWN_URL_EXCEPTIONS = (
-    r"/login",
-    r"/logout",
-    r"/thanks",
-    r"/home",
-    r"/admin",
-    r"/ntfy_update"
-    r"/i18n/setlang",
-)
+LOCKDOWN_URL_EXCEPTIONS = (r"^/.+",)  # Allow all URLs except base URL
 
 LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'standard': {
-            'format': '{asctime} {levelname} in {module} : {message}',
-            'style': '{',
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "standard": {
+            "format": "{asctime} {levelname} in {module} : {message}",
+            "style": "{",
         },
     },
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-            'formatter': 'standard'
-        },
-        'file': {
-            'class': 'logging.FileHandler',
-            'formatter': 'standard',
-            'filename': BASE_DIR / 'kumpfeiffer.log',
+    "handlers": {
+        "console": {"class": "logging.StreamHandler", "formatter": "standard"},
+        "file": {
+            "class": "logging.FileHandler",
+            "formatter": "standard",
+            "filename": BASE_DIR / "kumpfeiffer.log",
         },
     },
-    'root': {
-        'handlers': ['console', 'file'],
-        'level': 'INFO',
+    "root": {
+        "handlers": ["console", "file"],
+        "level": "INFO",
     },
 }

@@ -125,9 +125,9 @@
                     {% csrf_token %}
                     <div class="row">
                         <div class="col-md-12">
-                            <label for="invite-code" style="display: none">{% trans "Invite code" %}</label>
+                            <label for="invite-code" style="display: none">{% trans "4-Letter Invite Code" %}</label>
                             <input type="text" name="invite-code" class="form-control form-opacity"
-                                   placeholder="Invite code"
+                                   placeholder="{% trans "4-Letter Invite Code" %}"
                                    style="max-width: 300px; background-color: black; opacity: 0.9; color: white"
                             >
                         </div>
@@ -137,7 +137,12 @@
                     </div>
                 </form>
                 <div style="margin: 30px">
-                    <p>{% trans "You can find your invite code on your invitation." %}</p>
+                    <h5>
+                        {% trans "You can find your personal four-letter invite code on your RSVP letter with the QR code." %}
+                    </h5>
+                    <h5>
+                        <strong>{% trans "This is NOT the general access password from the save-the-date email." %}</strong>
+                    </h5>
                 </div>
             </div>
 
