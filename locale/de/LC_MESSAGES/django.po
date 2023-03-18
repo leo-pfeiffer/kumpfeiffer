@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-18 12:19+0000\n"
+"POT-Creation-Date: 2023-03-18 12:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -904,6 +904,10 @@ msgstr ""
 msgid "This is NOT your personal four-letter invite code."
 msgstr "Dies ist NICHT dein persönlicher vierstellige Einladungscode."
 
+#: wedding/templates/lockdown/form.html:143
+msgid "To RSVP please click here: "
+msgstr "Um deine RSVP abzugeben, klicke bitte hier: "
+
 #: wedding/templates/login.html:128 wedding/templates/login.html:130
 msgid "4-Letter Invite Code"
 msgstr "4-stelliger Einladungscode"
@@ -989,9 +993,6 @@ msgstr ""
 
 #~ msgid "Summer salad with berries and goat cheese"
 #~ msgstr "Sommersalat mit Beeren und Ziegenkäse"
-
-#~ msgid "To RSVP please click here:"
-#~ msgstr "Um deine RSVP abzugeben, klicke bitte hier:"
 
 #~ msgid "Attending?"
 #~ msgstr "Kommt ihr?"
