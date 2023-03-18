@@ -76,7 +76,7 @@ class Rsvp(models.Model):
     )
 
     def __str__(self):
-        return f"{self.guest.first_name}"
+        return f"{self.guest.name}"
 
 
 class RsvpSummary(Rsvp):
