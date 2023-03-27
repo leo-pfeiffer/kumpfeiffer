@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-18 12:58+0000\n"
+"POT-Creation-Date: 2023-03-27 12:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -753,7 +753,7 @@ msgstr ""
 "seriös ist, achte bitte auf das Logo 'Authorised Provider' auf der Website "
 "oder den sozialen Medien."
 
-#: wedding/templates/hero.html:11 wedding/templates/login.html:120
+#: wedding/templates/hero.html:11 wedding/templates/login.html:118
 msgid "21 June 2023"
 msgstr "21. Juni 2023"
 
@@ -830,13 +830,17 @@ msgstr "20. Juni 2023, 18 Uhr"
 msgid "21 June 2023, 2 PM"
 msgstr "21. Juni 2023, 14 Uhr"
 
-#: wedding/templates/home.html:170 wedding/templates/home.html:183
+#: wedding/templates/home.html:170
 msgid "20 June 2023, 5 PM"
 msgstr "20. Juni 2023, 17 Uhr"
 
 #: wedding/templates/home.html:177
 msgid "21 June 2023, 3 PM"
 msgstr "21. Juni 2023, 15 Uhr"
+
+#: wedding/templates/home.html:183
+msgid "21 June 2023, 5 PM"
+msgstr "21. Juni 2023, 17 Uhr"
 
 #: wedding/templates/home.html:190 wedding/templates/save_the_date.html:130
 msgid "View Map"
@@ -894,25 +898,25 @@ msgstr ""
 msgid "Show All"
 msgstr "Alle anzeigen"
 
-#: wedding/templates/lockdown/form.html:140
+#: wedding/templates/lockdown/form.html:138
 msgid "Please use the password provided to you in your save-the-date email."
 msgstr ""
 "Bitte benutze das Passwort, das du in deiner Save-the-Date E-Mail erhalten "
 "hast."
 
-#: wedding/templates/lockdown/form.html:141
+#: wedding/templates/lockdown/form.html:139
 msgid "This is NOT your personal four-letter invite code."
 msgstr "Dies ist NICHT dein persönlicher vierstellige Einladungscode."
 
-#: wedding/templates/lockdown/form.html:143
+#: wedding/templates/lockdown/form.html:141
 msgid "To RSVP please click here: "
 msgstr "Um deine RSVP abzugeben, klicke bitte hier: "
 
-#: wedding/templates/login.html:128 wedding/templates/login.html:130
+#: wedding/templates/login.html:126 wedding/templates/login.html:128
 msgid "4-Letter Invite Code"
 msgstr "4-stelliger Einladungscode"
 
-#: wedding/templates/login.html:141
+#: wedding/templates/login.html:139
 msgid ""
 "You can find your personal four-letter invite code on your RSVP letter with "
 "the QR code."
@@ -920,7 +924,7 @@ msgstr ""
 "Ihr findet euren persönlichen vierstellige Einladungscode auf eurem RSVP "
 "Brief über dem QR-Code."
 
-#: wedding/templates/login.html:144
+#: wedding/templates/login.html:142
 msgid "This is NOT the general access password from the save-the-date email."
 msgstr "Dies ist NICHT das Passwort aus der Save-the-Date E-Mail."
 
