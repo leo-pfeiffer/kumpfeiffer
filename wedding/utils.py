@@ -193,12 +193,58 @@ def get_status_update_msg():
     rsvp_coming = Rsvp.objects.filter(coming=True).count()
     return (
         f"Here's your update:\n"
-        f"Total users: {total_users}\n"
+        f"Total invites: {total_users}\n"
         f"Total guests: {total_guests}\n"
         f"Total RSVPs: {total_rsvp}\n"
         f"    Coming: {rsvp_coming}\n"
         f"    Not coming: {total_rsvp - rsvp_coming}"
     )
+
+
+def get_email_update():
+
+    intro_msg = "Hello everyone,<br>Here's the current update on the RSVPs:<br><br>"
+
+    # get list of guests that have RSVPed
+    rsvped_guests = (
+        Rsvp.objects.all()
+        .order_by("guest__primary_guest")
+        .values_list("guest__name", "coming")
+    )
+
+    # get number of guests that have not RSVPed
+    not_rsvped_guests_count = Guest.objects.all().exclude(rsvp__isnull=False).count()
+
+    summary_message = (
+        f"Of {len(rsvped_guests) + not_rsvped_guests_count} guests, "
+        f"{len(rsvped_guests)} have RSVPed and "
+        f"{not_rsvped_guests_count} have not RSVPed yet.<br><br>"
+        f"Here's the list of guests that have RSVPed:<br><br>"
+    )
+
+    html_table = "<table>"
+    html_table += "<tr><th>Guest</th><th>Coming</th></tr>"
+    for guest in rsvped_guests:
+        html_table += (
+            f"<tr><td>{guest[0]}</td>"
+            f"<td>{'Coming' if guest[1] else 'Not coming'}</td></tr>"
+        )
+    html_table += "</table><br>"
+
+    style = """
+    <style>
+    table, th, td {
+        border: 1px;
+        border-collapse: collapse;
+        text-align: left;
+    }
+    th, td {
+        padding-right: 24px;
+    }
+    </style>
+    """
+
+    return intro_msg + summary_message + html_table + style
 
 
 def notify_with_ntfy(data: str):

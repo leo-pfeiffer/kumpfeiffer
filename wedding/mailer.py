@@ -24,12 +24,14 @@ class Mailer:
 
     @classmethod
     def send_mail(cls, receiver_email, subject, html_message):
+        if type(receiver_email) is not list:
+            receiver_email = [receiver_email]
         return requests.post(
             f"{cls.API_BASE_URL}/messages",
             auth=("api", cls.API_KEY),
             data={
                 "from": "Kumpf-Pfeiffer Wedding <reply@kumpfeiffer.wedding>",
-                "to": [receiver_email],
+                "to": receiver_email,
                 "subject": subject,
                 "html": html_message,
             },
