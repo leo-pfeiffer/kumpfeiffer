@@ -61,7 +61,9 @@ def validate_guest_list_rows(rows: list[list[str]]):
     user_key_to_invite_code = {}
     for row in rows:
         if len(row) != 4 and len(row) != 5:
-            raise ValueError(f"Expected row to have 4 or 5 elements but got {len(row)}.")
+            raise ValueError(
+                f"Expected row to have 4 or 5 elements but got {len(row)}."
+            )
         guest_name = row[0]
         email = row[2]
         rehearsal_flag = row[3]
@@ -69,10 +71,17 @@ def validate_guest_list_rows(rows: list[list[str]]):
             raise ValueError(f"Rehearsal element must be true or false, got {row[3]}.")
         guest_key = "".join(row[:3])
         if guest_key in guest_objects:
-            raise ValueError(f"Duplicate guest entry for guest {guest_name} of user {email}")
+            raise ValueError(
+                f"Duplicate guest entry for guest {guest_name} of user {email}"
+            )
         user_key = get_user_key_from_row(row)
-        if user_key in user_to_rehearsal_flag and user_to_rehearsal_flag[user_key] != rehearsal_flag.lower():
-            raise ValueError(f"Got two different values for rehearsal flag for user {email}")
+        if (
+            user_key in user_to_rehearsal_flag
+            and user_to_rehearsal_flag[user_key] != rehearsal_flag.lower()
+        ):
+            raise ValueError(
+                f"Got two different values for rehearsal flag for user {email}"
+            )
         user_to_rehearsal_flag[user_key] = rehearsal_flag.lower()
         if len(row) == 5:
             if not re.fullmatch(INVITE_CODE_PATTERN, row[4]):
@@ -131,12 +140,16 @@ def save_guest_list_rows(rows: list[list[str]]):
     # query for any user in the list that already exists in the DB
     existing_users = Q()
     for user in all_users.values():
-        existing_users = existing_users | Q(first_name=user.first_name, email=user.email)
+        existing_users = existing_users | Q(
+            first_name=user.first_name, email=user.email
+        )
     existing_users_query = User.objects.filter(existing_users)
 
     # we need the actual user object from the DB for existing users. Store it in update_users
     for existing_user in existing_users_query.all():
-        logger.info(f"User {existing_user.email} already exists. Keeping existing user.")
+        logger.info(
+            f"User {existing_user.email} already exists. Keeping existing user."
+        )
         user_key = existing_user.first_name + existing_user.email
         update_users[user_key] = existing_user
         all_users.pop(user_key)
@@ -144,18 +157,21 @@ def save_guest_list_rows(rows: list[list[str]]):
     # Create the guest objects with the correct user objects
     for row in rows:
         user_key = get_user_key_from_row(row)
-        user = update_users[user_key] if user_key in update_users else all_users[user_key]
-        all_guests.append(Guest(
-            primary_guest=user,
-            name=row[0]
-        ))
+        user = (
+            update_users[user_key] if user_key in update_users else all_users[user_key]
+        )
+        all_guests.append(Guest(primary_guest=user, name=row[0]))
 
     # query for existing guests
     existing_guests = Q()
     for guest in all_guests:
-        existing_guests = existing_guests | Q(primary_guest=guest.primary_guest, name=guest.name)
+        existing_guests = existing_guests | Q(
+            primary_guest=guest.primary_guest, name=guest.name
+        )
     existing_guests_query = Guest.objects.filter(existing_guests)
-    existing_guests_set = {f"{guest.name}_{guest.primary_guest_id}" for guest in existing_guests_query}
+    existing_guests_set = {
+        f"{guest.name}_{guest.primary_guest_id}" for guest in existing_guests_query
+    }
 
     # remove existing guests from the list of guests to create
     for guest in all_guests:
@@ -174,13 +190,15 @@ def get_status_update_msg():
     total_users = get_user_model().objects.filter(~Q(username="admin")).count()
     total_guests = Guest.objects.count()
     total_rsvp = Rsvp.objects.count()
-    rsvp_coming = Rsvp.objects.filter(coming=False).count()
-    return f"Here's your update:\n" \
-           f"Total users: {total_users}\n" \
-           f"Total guests: {total_guests}\n" \
-           f"Total RSVPs: {total_rsvp}\n" \
-           f"    Coming: {rsvp_coming}\n" \
-           f"    Not coming: {total_rsvp - rsvp_coming}"
+    rsvp_coming = Rsvp.objects.filter(coming=True).count()
+    return (
+        f"Here's your update:\n"
+        f"Total users: {total_users}\n"
+        f"Total guests: {total_guests}\n"
+        f"Total RSVPs: {total_rsvp}\n"
+        f"    Coming: {rsvp_coming}\n"
+        f"    Not coming: {total_rsvp - rsvp_coming}"
+    )
 
 
 def notify_with_ntfy(data: str):
