@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-27 12:17+0000\n"
+"POT-Creation-Date: 2023-03-29 15:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -88,7 +88,7 @@ msgstr ""
 #: wedding/templates/faq.html:32 wedding/templates/home.html:47
 #: wedding/templates/home.html:81 wedding/templates/home.html:312
 msgid "Registry"
-msgstr "Hochzeitstisch"
+msgstr "Geschenke"
 
 #: wedding/templates/faq.html:38 wedding/templates/home.html:314
 msgid "We have registered at"
@@ -830,17 +830,13 @@ msgstr "20. Juni 2023, 18 Uhr"
 msgid "21 June 2023, 2 PM"
 msgstr "21. Juni 2023, 14 Uhr"
 
-#: wedding/templates/home.html:170
-msgid "20 June 2023, 5 PM"
-msgstr "20. Juni 2023, 17 Uhr"
+#: wedding/templates/home.html:170 wedding/templates/home.html:183
+msgid "21 June 2023, 5 PM"
+msgstr "21. Juni 2023, 17 Uhr"
 
 #: wedding/templates/home.html:177
 msgid "21 June 2023, 3 PM"
 msgstr "21. Juni 2023, 15 Uhr"
-
-#: wedding/templates/home.html:183
-msgid "21 June 2023, 5 PM"
-msgstr "21. Juni 2023, 17 Uhr"
 
 #: wedding/templates/home.html:190 wedding/templates/save_the_date.html:130
 msgid "View Map"
@@ -948,6 +944,9 @@ msgstr ""
 "Schottland. Wir freuen uns schon sehr darauf, diesen Tag mit euch zu teilen! "
 "Schaut euch gerne auf dieser Website um, um mehr über unsere Pläne zu "
 "erfahren."
+
+#~ msgid "20 June 2023, 5 PM"
+#~ msgstr "20. Juni 2023, 17 Uhr"
 
 #~ msgid "Invite code"
 #~ msgstr "Einladungscode"
