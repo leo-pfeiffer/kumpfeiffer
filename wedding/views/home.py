@@ -66,8 +66,10 @@ class HomeView(LoginRequiredMixin, TemplateView):
 
             # user has already RSVP'd -> shouldn't even get here
             if Rsvp.objects.filter(guest__primary_guest=request.user).exists():
-                logger.warning(f"User {request.user} has already RSVP'd but still reposted the form. "
-                               f"This shouldn't happen.")
+                logger.warning(
+                    f"User {request.user} has already RSVP'd but still reposted the form. "
+                    f"This shouldn't happen."
+                )
 
                 return render(
                     request,
@@ -92,6 +94,8 @@ class HomeView(LoginRequiredMixin, TemplateView):
                 rsvp.save()
 
             logger.info(f"Saved RSVP form of {request.user}.")
+
+            ntfy_msg += f"Note: {form.cleaned_data.get('note', None)}"
 
             # send notification to ntfy channel
             requests.post("https://ntfy.sh/kumpfeiffer-rsvp", data=ntfy_msg)
