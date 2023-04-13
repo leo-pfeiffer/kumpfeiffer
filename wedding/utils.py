@@ -215,6 +215,17 @@ def get_email_update():
     # get number of guests that have not RSVPed
     not_rsvped_guests_count = Guest.objects.all().exclude(rsvp__isnull=False).count()
 
+    rsvp_users = Guest.objects.filter(rsvp__isnull=False).values_list(
+        "primary_guest_id", flat=True
+    )
+
+    # get list of guests that have not RSVPed
+    not_rsvped_users = (
+        User.objects.filter(~Q(id__in=rsvp_users))
+        .filter(is_superuser=False)
+        .values_list("first_name")
+    )
+
     summary_message = (
         f"Of {len(rsvped_guests) + not_rsvped_guests_count} guests, "
         f"{len(rsvped_guests)} have RSVPed and "
@@ -229,7 +240,14 @@ def get_email_update():
             f"<tr><td>{guest[0]}</td>"
             f"<td>{'Coming' if guest[1] else 'Not coming'}</td></tr>"
         )
-    html_table += "</table><br>"
+    html_table += "</table><br><br>"
+
+    not_rsvped_msg = "<strong>Not RSVPed yet:</strong><br>"
+
+    for user in not_rsvped_users:
+        not_rsvped_msg += f"{user[0]}<br>"
+
+    not_rsvped_msg += "<br>"
 
     style = """
     <style>
@@ -244,7 +262,7 @@ def get_email_update():
     </style>
     """
 
-    return intro_msg + summary_message + html_table + style
+    return intro_msg + summary_message + html_table + not_rsvped_msg + style
 
 
 def notify_with_ntfy(data: str):
