@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-29 15:18+0000\n"
+"POT-Creation-Date: 2023-04-13 16:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -86,8 +86,8 @@ msgstr ""
 "ideale Kulisse für unseren besonderen Tag."
 
 #: wedding/templates/faq.html:32 wedding/templates/home.html:47
-#: wedding/templates/home.html:81 wedding/templates/home.html:312
-msgid "Registry"
+#: wedding/templates/home.html:312
+msgid "Gift Registry"
 msgstr "Geschenke"
 
 #: wedding/templates/faq.html:38 wedding/templates/home.html:314
@@ -776,6 +776,10 @@ msgstr ""
 #: wedding/templates/save_the_date.html:76
 msgid "Engagement"
 msgstr "Verlobung"
+
+#: wedding/templates/home.html:81
+msgid "Registry"
+msgstr "Geschenke"
 
 #: wedding/templates/home.html:128
 msgid "Our Story"
