@@ -26,7 +26,7 @@ class Command(BaseCommand):
 
         just_me = ["leopold.pfeiffer@icloud.com"]
 
-        print("Sending", msg, "to", all_emails if send_to_all else just_me, sep="\n")
+        print("Sending update to", all_emails if send_to_all else just_me, sep="\n")
 
         Mailer().send_mail(
             all_emails if send_to_all else just_me, "RSVP status update", msg
