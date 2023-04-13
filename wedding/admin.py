@@ -30,7 +30,7 @@ class HasRsvpFilter(SimpleListFilter):
         )
 
     def queryset(self, request, queryset):
-        rsvp_users = Rsvp.objects.values_list("guest_id")
+        rsvp_users = Rsvp.objects.values_list("guest__primary_guest_id")
         if self.value() == "yes":
             return queryset.filter(id__in=rsvp_users)
         if self.value() == "no":
