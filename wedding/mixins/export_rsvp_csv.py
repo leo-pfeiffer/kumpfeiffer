@@ -16,7 +16,7 @@ class ExportRsvpMixin:
         ]
 
         response = HttpResponse(content_type="text/csv")
-        response["Content-Disposition"] = "attachment; filename=guest_list.csv"
+        response["Content-Disposition"] = "attachment; filename=rsvps.csv"
         writer = csv.writer(response)
 
         writer.writerow(column_names)
@@ -34,4 +34,4 @@ class ExportRsvpMixin:
 
         return response
 
-    export_rsvp_csv.short_description = "Export"
+    export_rsvp_csv.short_description = "Export RSVPs"

@@ -7,6 +7,7 @@ from django.urls import path, reverse
 from django.utils.html import format_html
 
 from wedding.mixins.export_csv_mixin import ExportCsvMixin
+from wedding.mixins.export_invites_csv import ExportInvitesCsvMixin
 from wedding.mixins.export_rsvp_csv import ExportRsvpMixin
 from wedding.mixins.generate_invite_links_mixin import GenerateInviteLinksMixin
 from wedding.mixins.generate_qr_codes import GenerateQrCodes
@@ -42,6 +43,7 @@ class HasRsvpFilter(SimpleListFilter):
 class UserAdmin(
     admin.ModelAdmin,
     ExportCsvMixin,
+    ExportInvitesCsvMixin,
     SendReminderMixin,
     GenerateInviteLinksMixin,
     GenerateQrCodes,
@@ -60,6 +62,7 @@ class UserAdmin(
     )
     actions = [
         "export_as_csv",
+        "export_invites_csv",
         "generate_invite_links",
         "generate_qr_codes",
         "send_reminder",
