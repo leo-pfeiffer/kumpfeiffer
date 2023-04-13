@@ -1,5 +1,5 @@
 import csv
-
+from datetime import date
 from django.http import HttpResponse
 
 
@@ -16,7 +16,9 @@ class ExportRsvpMixin:
         ]
 
         response = HttpResponse(content_type="text/csv")
-        response["Content-Disposition"] = "attachment; filename=rsvps.csv"
+        response[
+            "Content-Disposition"
+        ] = f"attachment; filename={date.today()}_rsvps.csv"
         writer = csv.writer(response)
 
         writer.writerow(column_names)

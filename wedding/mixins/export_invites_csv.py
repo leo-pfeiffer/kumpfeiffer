@@ -1,4 +1,5 @@
 import csv
+from datetime import date
 
 from django.http import HttpResponse
 
@@ -9,7 +10,9 @@ class ExportInvitesCsvMixin:
         column_names = ["Invite Code", "Name"]
 
         response = HttpResponse(content_type="text/csv")
-        response["Content-Disposition"] = "attachment; filename=invites.csv"
+        response[
+            "Content-Disposition"
+        ] = f"attachment; filename={date.today()}_invites.csv"
         writer = csv.writer(response)
 
         writer.writerow(column_names)
