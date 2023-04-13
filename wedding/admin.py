@@ -7,6 +7,7 @@ from django.urls import path, reverse
 from django.utils.html import format_html
 
 from wedding.mixins.export_csv_mixin import ExportCsvMixin
+from wedding.mixins.export_rsvp_csv import ExportRsvpMixin
 from wedding.mixins.generate_invite_links_mixin import GenerateInviteLinksMixin
 from wedding.mixins.generate_qr_codes import GenerateQrCodes
 from wedding.mixins.send_reminder_mixin import SendReminderMixin
@@ -139,7 +140,7 @@ class GuestAdmin(admin.ModelAdmin):
 
 
 @admin.register(Rsvp)
-class RsvpAdmin(admin.ModelAdmin):
+class RsvpAdmin(admin.ModelAdmin, ExportRsvpMixin):
     list_display = (
         "name",
         "invite_code",
@@ -148,6 +149,9 @@ class RsvpAdmin(admin.ModelAdmin):
         "second_course",
         "note",
     )
+    actions = [
+        "export_rsvp_csv",
+    ]
 
     def invite_code(self, obj):
         return obj.guest.primary_guest.username
