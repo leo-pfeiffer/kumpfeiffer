@@ -43,7 +43,7 @@ class Rsvp(models.Model):
 
     FIRST_COURSE_CHOICES = [
         (
-            "cheese-salad",
+            "soup",
             "Butternut Squash and Sweet Potato Soup / Butternusskürbis- und Süßkartoffelsuppe",
         ),
         (
